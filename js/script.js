@@ -5,10 +5,13 @@ let chosenImageIndex = null; // на початку гри користувач 
 // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
 const cardsContainer = document.querySelector('.cards-container');
 const finishedImagesIndexes = solution.join('');
-createTaskBoard(solution);
+// РОзраховуємо скільки всього має бути рядків на дошці
+const rowsQuantity = solution.length;
+const totalCards = calculateTotalCardsQuantity(solution);
+createTaskBoard();
 createImageSelectionBlock(solution);
 
-function createTaskBoard(solution) {
+function calculateTotalCardsQuantity(solution) {
   // Створюємо змінну, в яку будемо записувати скільки всього клітинок в нас має бути в завданні. Для початку записуємо в цю змінну нуль.
   let totalCards = 0;
   // Для того , щоб дізнатись скільки клітинок ми маємо створити, нам треба порахувати скільки всього цифр є в рядках масиву solutions. У нас 4 рядки по 4 цифри, тобто всього маэ бути 16 клітинок
@@ -17,11 +20,13 @@ function createTaskBoard(solution) {
     //Тобто, на кожній ітерації додаємо до totalCards 4 (так як в кожному рядку 4 цифри), так і отримуємо 16.
     totalCards += solution[i].length;
   }
+  return totalCards;
+}
 
+function createTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
   ul.className = 'cards';
-
   // Далі треба для кожного рядку із індексами картинок та дефісами (['-23-', '41-3', '-4-2', '23-1']) створити лішку із відповідною картинкою
   // Перебираємо кожен рядок із індексами картинок
   for (let i = 0; i < cardsTaskBoard.length; i++) {
@@ -54,20 +59,21 @@ function createTaskBoard(solution) {
 
   // Список із всіма готовими лішками вставляємо у контейнер
   cardsContainer.appendChild(ul);
-  const allCardsElements = document.querySelectorAll('.card');
-  const totalCardsElementsQuantity = allCardsElements.length;
+  setUniqueIdForCards();
+  // const allCardsElements = document.querySelectorAll('.card');
+  // const totalCards = allCardsElements.length;
 
-  //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
-  for (let index = 0; index < totalCardsElementsQuantity; index++) {
-    const li = allCardsElements[index];
-    // РОзраховуємо скільки всього має бути рядків на дошці
-    let rowsQuantity = solution.length;
-    const rowIndex = Math.ceil(
-      (index + 1) / (totalCardsElementsQuantity / rowsQuantity),
-    );
-    const liID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
-    li.id = liID;
-  }
+  // //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
+  // for (let index = 0; index < totalCards; index++) {
+  //   const li = allCardsElements[index];
+  //   // РОзраховуємо скільки всього має бути рядків на дошці
+  //   let rowsQuantity = solution.length;
+  //   const rowIndex = Math.ceil(
+  //     (index + 1) / (totalCards / rowsQuantity),
+  //   );
+  //   const liID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
+  //   li.id = liID;
+  // }
 }
 
 function onСellOnBoardClick(e) {
@@ -137,4 +143,19 @@ function createImageSelectionBlock(solution) {
   cardsSElectionBlock.appendChild(cardsDiv);
   // Вставляємо блок із картинками, з-поміж яких користувач має обирати , у загальний наш лок розмітки
   cardsContainer.appendChild(cardsSElectionBlock);
+}
+
+function setUniqueIdForCards() {
+  // Знаходимо всі елементи лішки із класом card на сторінці
+  const allCardsElements = document.querySelectorAll('.card');
+  console.log('allCardsElements: ', allCardsElements);
+
+  //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
+  console.log('totalCards: ', totalCards);
+  for (let index = 0; index < totalCards; index++) {
+    const li = allCardsElements[index];
+    const rowIndex = Math.ceil((index + 1) / (totalCards / rowsQuantity));
+    const liID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
+    li.id = liID;
+  }
 }
