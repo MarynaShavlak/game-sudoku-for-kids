@@ -4,7 +4,7 @@ let emptyCellIndex = null; // на початку гри користувач щ
 let chosenImageIndex = null; // на початку гри користувач ще не натиснув на жодну пустую клітинку, тому null
 // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
 const cardsContainer = document.querySelector('.cards-container');
-
+const finishedImagesIndexes = solution.join('');
 createTaskBoard(solution);
 createImageSelectionBlock(solution);
 
@@ -28,6 +28,7 @@ function createTaskBoard(solution) {
     const solutionRow = cardsTaskBoard[i];
     // Кожен рядок із індексами картинок перетворюємо в масив цих індексів. Наприклад , рядок '1234' стає масиовм ['1', '2', '3', '4']
     const imageIndexesArray = solutionRow.split(''); // цей метод split зробить ыз рядка масив із 4-х елементів. (наприклад, ['1', '2', '3', '4'])
+
     // Для кожного індекса  із масиву:
     for (let j = 0; j < imageIndexesArray.length; j++) {
       // створюємо лішку(додаємо їй потрібний клас)
@@ -53,6 +54,20 @@ function createTaskBoard(solution) {
 
   // Список із всіма готовими лішками вставляємо у контейнер
   cardsContainer.appendChild(ul);
+  const allCardsElements = document.querySelectorAll('.card');
+  const totalCardsElementsQuantity = allCardsElements.length;
+
+  //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
+  for (let index = 0; index < totalCardsElementsQuantity; index++) {
+    const li = allCardsElements[index];
+    // РОзраховуємо скільки всього має бути рядків на дошці
+    let rowsQuantity = solution.length;
+    const rowIndex = Math.ceil(
+      (index + 1) / (totalCardsElementsQuantity / rowsQuantity),
+    );
+    const liID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
+    li.id = liID;
+  }
 }
 
 function onСellOnBoardClick(e) {
