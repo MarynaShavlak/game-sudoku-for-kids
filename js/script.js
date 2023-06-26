@@ -1,7 +1,7 @@
 const solution = ['1234', '4123', '3412', '2341']; // Масив, в якому кожен елемент - це рядок із порядковими номерами картинок(Вже вирішене завдання)
 const cardsTaskBoard = ['-23-', '41-3', '--12', '23-1']; // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефісю.
 let emptyCellIndex = null; // на початку гри користувач ще не обрав жодної картинки, яку б вын хотів вставити, тому null
-let chosenImageIndex = null; // на початку гри користувач ще не натиснув на жодну пустую клітинку, тому null
+let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
 // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
 const cardsContainer = document.querySelector('.cards-container');
 const finishedImagesIndexes = solution.join('');
@@ -23,7 +23,30 @@ function calculateTotalCardsQuantity(solution) {
   return totalCards;
 }
 
-function createTaskBoard() {
+function createListItem(imageIndex) {
+  // створюємо лішку(додаємо їй потрібний клас)
+  const li = document.createElement('li');
+  li.className = 'card';
+  // Перевіряємо чи має в нас клітинка бути вже із картинкою на початку гри чи повинна бути пустою
+  // Вставляємо у лішку картинку тільки тоді коли ми маємо номер картинки ,  а не дефіс
+  if (imageIndex !== '-') {
+    // Створюємо елемент картинки із відповідними атрибутами
+    const img = createImageItem(imageIndex);
+    // Вставляємо картинку в лішку
+    li.appendChild(img);
+  }
+  li.onclick = onСellOnBoardClick;
+  return li;
+}
+
+function createImageItem(imageIndex) {
+  // Створюємо елемент картинки із відповідними атрибутами
+  const img = document.createElement('img');
+  img.src = `./images/sea/${imageIndex}.jpg`;
+  img.alt = `fish-${imageIndex}`;
+  return img;
+}
+function generateTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
   ul.className = 'cards';
@@ -36,44 +59,23 @@ function createTaskBoard() {
 
     // Для кожного індекса  із масиву:
     for (let j = 0; j < imageIndexesArray.length; j++) {
-      // створюємо лішку(додаємо їй потрібний клас)
-      const li = document.createElement('li');
-      li.className = 'card';
       // знаходимо номер картинки, яку потрібно вставити
       const imageIndex = imageIndexesArray[j];
-      // Створюємо елемент картинки із відповідними атрибутами
-      const img = document.createElement('img');
-      // Перевіряємо чи має в нас клітинка бути вже із картинкою на початку гри чи повинна бути пустою
-      // Вставляємо у лішку картинку тільки тоді коли ми маємо номер картинки ,  а не дефіс
-      if (imageIndex !== '-') {
-        img.src = `./images/sea/${imageIndex}.jpg`;
-        img.alt = `fish-${imageIndex}`;
-        // Вставляємо картинку в лішку
-        li.appendChild(img);
-      }
-      li.onclick = onСellOnBoardClick;
+      const li = createListItem(imageIndex);
       // Вставляємо лішку ( вже із картинкою чи пусту) у загальний список
       ul.appendChild(li);
     }
   }
+  return ul;
+}
 
+function createTaskBoard() {
+  // Створюємо розмітку із картками
+  const ul = generateTaskBoard();
   // Список із всіма готовими лішками вставляємо у контейнер
   cardsContainer.appendChild(ul);
+  // Задаємо лішкам унікальні айдішники
   setUniqueIdForCards();
-  // const allCardsElements = document.querySelectorAll('.card');
-  // const totalCards = allCardsElements.length;
-
-  // //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
-  // for (let index = 0; index < totalCards; index++) {
-  //   const li = allCardsElements[index];
-  //   // РОзраховуємо скільки всього має бути рядків на дошці
-  //   let rowsQuantity = solution.length;
-  //   const rowIndex = Math.ceil(
-  //     (index + 1) / (totalCards / rowsQuantity),
-  //   );
-  //   const liID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
-  //   li.id = liID;
-  // }
 }
 
 function onСellOnBoardClick(e) {
@@ -84,13 +86,30 @@ function onСellOnBoardClick(e) {
     clickedElement.tagName === 'IMG'
       ? clickedElement.parentElement
       : clickedElement;
-  console.log('clickedCell: ', clickedCell);
+  // console.log('clickedCell: ', clickedCell);
   // Перевіряємо чи є в натиснутій лішці картинка чи немає(чи пуста натиснута лішка)
   const isCellEmpty = !clickedCell.querySelector('img');
-  console.log('e.target: ', e.target);
-  //Якщо ми клікнули в пусту клітинку
+  // console.log('e.target: ', e.target);
+  //Якщо ми клікнули в пусту клітинку, то:
   if (isCellEmpty) {
-    console.log('пуста');
+    // Знаходимо який номер картинки правильний для натиснутої пустої клітинки
+    const correctIndex = getIndexOfCorrectImageForClickedEmtyCell(clickedCell);
+    // Порівнюємо айдішник пустої клітинки із номером картинки , яку ми до цього обрали в блоці selection
+    const isMatched = correctIndex == chosenImageIndex;
+    // Якщо співпадыння Є, то:
+    if (isMatched) {
+      //  створюємо розмітку картинки із коректнимм ідексом в  та вставляємо її в пусту лішку а яку ми клікнули
+      const imageToSetOnBoard = createImageItem(correctIndex);
+      clickedElement.appendChild(imageToSetOnBoard);
+      console.log('ПОКАЗАТИ КАРТИНКУ');
+      console.log('Може додати тут якийсь звук? типу аплодисменти? ');
+    } else {
+      console.log(
+        'Треба реалізувати логіку помилки реалізувати логіку помилки? може як писав Ігор якусь картинку помилки також додати? або просто червону заливку? ',
+      );
+      console.log('ТУТ треба додати звук помилки');
+    }
+    console.log('isMatched : ', isMatched);
   } else {
     // Якщо користувач натискає на клітинку, яка не пуста, то ніяких дій виконувати не треба і ми просто виходимо із функції
 
@@ -98,6 +117,13 @@ function onСellOnBoardClick(e) {
   }
 }
 
+function getIndexOfCorrectImageForClickedEmtyCell(emptyCell) {
+  // Знаходимо айдішник натиснутої пустої клітинки(лішки)
+  const idOfLi = emptyCell.id;
+  // Так як айдішник - це рядок, що складається із двох цифр розділених дефісом, то треба перетворити цей рядок на масив , і в цьому масиві знайти другий елемент, так як перший відповідає за номер рядку на якому лішка знаходиться  в дошці,  а другий саме за номер картинки
+  const index = idOfLi.split('-')[1];
+  return index;
+}
 function onImageFromSelectionBlockClick(e) {
   // Знаходимо, яка картинка була натиснута із переліку
   const clickedImage = e.target;
@@ -148,10 +174,7 @@ function createImageSelectionBlock(solution) {
 function setUniqueIdForCards() {
   // Знаходимо всі елементи лішки із класом card на сторінці
   const allCardsElements = document.querySelectorAll('.card');
-  console.log('allCardsElements: ', allCardsElements);
-
   //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
-  console.log('totalCards: ', totalCards);
   for (let index = 0; index < totalCards; index++) {
     const li = allCardsElements[index];
     const rowIndex = Math.ceil((index + 1) / (totalCards / rowsQuantity));
