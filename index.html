@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>KIDS Sudoku</title>
+  </head>
+  <body>
+    <!------- МЕНЮ ------->
+    <div class="menu">
+      <div class="lifes">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="timer">Час: <span>59</span></div>
+    </div>
+
+    <!--============================ МОРСЬКА ТЕМАТИКА ===========================-->
+
+    <!------- ГОЛОВНЕ ПОЛЕ ГРИ ------->
+    <div class="cards-container">
+      <!-- <ul class="cards">
+        <li class="card">
+          <img class="hidden" src="./images/sea/1.jpg" alt="fish-1" />
+        </li>
+        <li class="card"><img src="./images/sea/2.jpg" alt="fish-2" /></li>
+        <li class="card"><img src="./images/sea/3.jpg" alt="fish-3" /></li>
+        <li class="card"><img src="./images/sea/4.jpg" alt="fish-4" /></li>
+
+        <li class="card"><img src="./images/sea/4.jpg" alt="fish-4" /></li>
+        <li class="card"><img src="./images/sea/1.jpg" alt="fish-1" /></li>
+        <li class="card">
+          <img class="hidden" src="./images/sea/2.jpg" alt="fish-2" />
+        </li>
+        <li class="card"><img src="./images/sea/3.jpg" alt="fish-3" /></li>
+
+        <li class="card">
+          <img class="hidden" src="./images/sea/3.jpg" alt="fish-3" />
+        </li>
+        <li class="card"><img src="./images/sea/4.jpg" alt="fish-4" /></li>
+        <li class="card"><img src="./images/sea/1.jpg" alt="fish-1" /></li>
+        <li class="card"><img src="./images/sea/2.jpg" alt="fish-2" /></li>
+
+        <li class="card"><img src="./images/sea/2.jpg" alt="fish-2" /></li>
+        <li class="card"><img src="./images/sea/3.jpg" alt="fish-3" /></li>
+        <li class="card">
+          <img class="hidden" src="./images/sea/4.jpg" alt="fish-4" />
+        </li>
+        <li class="card"><img src="./images/sea/1.jpg" alt="fish-1" /></li>
+      </ul> -->
+
+      <!------- ПОЛЕ З ВИБОРОМ КАРТОЧОК ------->
+      <div class="card-selection">
+        <!-- Або як і головне ігрове поле списком -->
+        <!-- <ul class="cards">            
+                <li class="card"><img src="./images/1.jpg" alt="fish-1"></li>
+                <li class="card"><img src="./images/2.jpg" alt="fish-2"></li>
+                <li class="card"><img src="./images/3.jpg" alt="fish-3"></li>
+                <li class="card"><img src="./images/4.jpg" alt="fish-4"></li>
+            </ul> -->
+
+        <!-- Або можно зробити як в стартовому вікні Гри Space Invaders при вибору літачка через Radio Checked-->
+        <div class="cards">
+          <input type="radio" id="fish-1" name="fish" value="skin1" checked />
+          <label class="card" for="fish-1">
+            <img src="./images/sea/1.jpg" alt="fish-1" />
+          </label>
+
+          <input type="radio" id="fish-2" name="fish" value="skin2" />
+          <label class="card" for="fish-2">
+            <img src="./images/sea/2.jpg" alt="fish-2" />
+          </label>
+
+          <input type="radio" id="fish-3" name="fish" value="skin3" />
+          <label class="card" for="fish-3">
+            <img src="./images/sea/3.jpg" alt="fish-3" />
+          </label>
+
+          <input type="radio" id="fish-4" name="fish" value="skin4" />
+          <label class="card" for="fish-4">
+            <img src="./images/sea/4.jpg" alt="fish-4" />
+          </label>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
