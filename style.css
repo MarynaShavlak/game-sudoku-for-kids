@@ -91,7 +91,7 @@ img {
 .card-selection {
     max-width: 400px;    
     margin: 20px;    
-    border-bottom: 3px dashed #64195f;
+    border-top: 3px dashed #64195f;
 }
 
 .cards input{
