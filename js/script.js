@@ -1,5 +1,8 @@
 const solution = ['1234', '4123', '3412', '2341']; // Масив, в якому кожен елемент - це рядок із порядковими номерами картинок(Вже вирішене завдання)
-const cardsTaskBoard = ['-23-', '41-3', '-4-2', '23-1']; // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефісю.
+const cardsTaskBoard = ['-23-', '41-3', '--12', '23-1']; // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефісю.
+let emptyCellIndex = null; // на початку гри користувач ще не обрав жодної картинки, яку б вын хотів вставити, тому null
+let chosenImageIndex = null; // на початку гри користувач ще не натиснув на жодну пустую клітинку, тому null
+createTaskBoard(solution);
 
 function createTaskBoard(solution) {
   // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
@@ -37,12 +40,11 @@ function createTaskBoard(solution) {
       if (imageIndex !== '-') {
         img.src = `./images/sea/${imageIndex}.jpg`;
         img.alt = `image-${imageIndex}`;
+        // Вставляємо картинку в лішку
         li.appendChild(img);
       }
-
-      // Вставляємо картинку в лішку
-
-      // Вставляємо лішку ( вже із картинкою) у загальний список
+      li.onclick = choseImage;
+      // Вставляємо лішку ( вже із картинкою чи пусту) у загальний список
       ul.appendChild(li);
     }
   }
@@ -50,4 +52,16 @@ function createTaskBoard(solution) {
   // Список із всіма готовими лішками вставляємо у контейнер
   cardsContainer.appendChild(ul);
 }
-createTaskBoard(solution);
+
+function choseImage(e) {
+  const clickedCell =
+    e.target.tagName === 'IMG' ? e.target.parentElement : e.target;
+  console.log('clickedCell: ', clickedCell);
+  // Перевіряємо
+  const isEmpty = !clickedCell.querySelector('img');
+  console.log('isEmpty : ', isEmpty);
+  console.log('e.target: ', e.target);
+  // if (isClickedCellEmpty) {
+
+  // }
+}
