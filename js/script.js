@@ -2,6 +2,7 @@ const solution = ['1234', '4123', '3412', '2341']; // Масив, в якому 
 const cardsTaskBoard = ['-23-', '41-3', '--12', '23-1']; // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефісю.
 let emptyCellIndex = null; // на початку гри користувач ще не обрав жодної картинки, яку б вын хотів вставити, тому null
 let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
+let chosenTopic = 'sea';
 // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
 const cardsContainer = document.querySelector('.cards-container');
 const finishedImagesIndexes = solution.join('');
@@ -27,6 +28,11 @@ function createListItem(imageIndex) {
   // створюємо лішку(додаємо їй потрібний клас)
   const li = document.createElement('li');
   li.className = 'card';
+  if (chosenTopic === 'sea') {
+    li.style.backgroundColor = '#74eafd87';
+  } else if (chosenTopic === 'princesses') {
+    li.style.backgroundColor = '#cfb1cf87';
+  }
   // Перевіряємо чи має в нас клітинка бути вже із картинкою на початку гри чи повинна бути пустою
   // Вставляємо у лішку картинку тільки тоді коли ми маємо номер картинки ,  а не дефіс
   if (imageIndex !== '-') {
@@ -42,8 +48,14 @@ function createListItem(imageIndex) {
 function createImageItem(imageIndex) {
   // Створюємо елемент картинки із відповідними атрибутами
   const img = document.createElement('img');
-  img.src = `./images/sea/${imageIndex}.png`;
-  img.alt = `fish-${imageIndex}`;
+
+  if (chosenTopic === 'sea') {
+    img.src = `./images/${chosenTopic}/${imageIndex}.png`;
+    img.alt = `fish-${imageIndex}`;
+  } else if (chosenTopic === 'princesses') {
+    img.src = `./images/${chosenTopic}/${imageIndex}.jpg`;
+    img.alt = `princess-${imageIndex}`;
+  }
   return img;
 }
 function generateTaskBoard() {
@@ -150,18 +162,24 @@ function createImageSelectionBlock(solution) {
   for (let i = 1; i <= imagesQuantity; i++) {
     const input = document.createElement('input');
     input.type = 'radio';
-    input.id = `fish-${i}`;
-    input.name = 'fish';
     input.value = i;
     input.checked = i === 1;
-
     const label = document.createElement('label');
     label.className = 'card';
-    label.htmlFor = `fish-${i}`;
-
     const img = document.createElement('img');
-    img.src = `./images/sea/${i}.png`;
-    img.alt = `fish-${i}`;
+    if (chosenTopic === 'sea') {
+      input.id = `fish-${i}`;
+      input.name = 'fish';
+      label.htmlFor = `fish-${i}`;
+      img.src = `./images/${chosenTopic}/${i}.png`;
+      img.alt = `fish-${i}`;
+    } else if (chosenTopic === 'princesses') {
+      input.id = `princess-${i}`;
+      input.name = 'princess';
+      label.htmlFor = `princess-${i}`;
+      img.src = `./images/${chosenTopic}/${i}.jpg`;
+      img.alt = `princess-${i}`;
+    }
 
     label.appendChild(img);
 
