@@ -6,8 +6,8 @@ html, body {
 
 }
 body {
-background: url('./images/sea/background.jpg') no-repeat center center;
-background-size: cover; 
+    background: url('./images/sea/background.jpg') no-repeat center center;
+    background-size: cover; 
 
 
        
@@ -27,11 +27,8 @@ ul, li {
     align-items: center;
     padding: 10px 20px;
     margin-bottom: 50px;
-    width: 360px;
-    margin: 0 auto;
-    /* position: absolute; 
-    left: 50%;
-    transform: translate(-50%);    */
+    max-width: 360px;
+    margin: 0 auto;    
 }
 
 .lifes {
@@ -39,7 +36,7 @@ ul, li {
 }
 
 .lifes span {
-    background: url('./images/sea/fish-heart2.png');
+    background: url('./images/sea/fish-heart.png');
     width: 50px;
     height: 50px;
     margin-right: 10px;
@@ -74,20 +71,20 @@ ul, li {
     display: flex;
     flex-wrap: wrap;  
     /* margin: 10px; */
-    border: 1px solid #64195f;  
+    border: 2px solid #002a42;  
 }
 
 .card {
     width: 25%;
     height: 25%;
     box-sizing: border-box;
-    border: 1px solid #64195f; 
+    border: 1px solid #002a42; 
     cursor: pointer; 
-    background-color: #FFF;  
+    background-color: #74eafd87;  
 }
 
 .card:hover {
-    border: 3px solid #64195f;
+    border: 3px solid #002a42;
 }
 
 img {
@@ -105,7 +102,11 @@ img {
 .card-selection {
     max-width: 400px;    
     /* margin: 20px;     */
-    border-top: 3px dashed #64195f;
+    border-top: 3px dashed #46004b;
+}
+
+.card-selection .card {
+    background-color: #0c6abb8c;
 }
 
 .cards input{
@@ -113,7 +114,7 @@ img {
 }
 
 .cards input[type=radio]:checked + label {
-    border: 3px solid red;
+    border: 3px solid #46004b;
     border-radius: 5px;
     transform: scale(1.1);    
 }

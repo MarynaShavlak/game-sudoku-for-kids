@@ -42,7 +42,7 @@ function createListItem(imageIndex) {
 function createImageItem(imageIndex) {
   // Створюємо елемент картинки із відповідними атрибутами
   const img = document.createElement('img');
-  img.src = `./images/sea/${imageIndex}.jpg`;
+  img.src = `./images/sea/${imageIndex}.png`;
   img.alt = `fish-${imageIndex}`;
   return img;
 }
@@ -102,12 +102,14 @@ function onСellOnBoardClick(e) {
       const imageToSetOnBoard = createImageItem(correctIndex);
       clickedElement.appendChild(imageToSetOnBoard);
       console.log('ПОКАЗАТИ КАРТИНКУ');
-      console.log('Може додати тут якийсь звук? типу аплодисменти? ');
+      //Позитивний звук(якщо вгадали)
+      positiveSound();
     } else {
       console.log(
         'Треба реалізувати логіку помилки реалізувати логіку помилки? може як писав Ігор якусь картинку помилки також додати? або просто червону заливку? ',
       );
-      console.log('ТУТ треба додати звук помилки');
+      //Негативний звук(якщо помилка)
+      negativeSound();
     }
     console.log('isMatched : ', isMatched);
   } else {
@@ -132,6 +134,8 @@ function onImageFromSelectionBlockClick(e) {
   // Зберігаємо у нашу глобальну змінну порядковий номер обраної картинки
   chosenImageIndex = clickedImageIndex;
   console.log('chosenImageIndex : ', chosenImageIndex);
+  //Звук вибору картинки
+  choiceSound();
 }
 
 function createImageSelectionBlock(solution) {
@@ -156,7 +160,7 @@ function createImageSelectionBlock(solution) {
     label.htmlFor = `fish-${i}`;
 
     const img = document.createElement('img');
-    img.src = `./images/sea/${i}.jpg`;
+    img.src = `./images/sea/${i}.png`;
     img.alt = `fish-${i}`;
 
     label.appendChild(img);
