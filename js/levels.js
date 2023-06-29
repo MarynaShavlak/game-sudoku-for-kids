@@ -1,18 +1,14 @@
 let chosenTopic = 'theme1';
 
-const topics = [
-  document.querySelector('#theme1'),
-  document.querySelector('#theme2'),
-  document.querySelector('#theme3'),
-  document.querySelector('#theme4'),
-  document.querySelector('#theme5'),
-  document.querySelector('#theme6'),
-  document.querySelector('#theme7'),
+const levels = [
+  document.querySelector('#level1'),
+  document.querySelector('#level2'),
+  document.querySelector('#level3'),
 ];
-console.log('topics: ', topics);
+console.log('levels : ', levels);
 
-topics.forEach(topic => {
-  topic.onclick = onTopicBtnClick;
+levels.forEach(level => {
+  level.onclick = onTopicBtnClick;
 });
 
 function onTopicBtnClick(e) {
@@ -32,10 +28,5 @@ function onTopicBtnClick(e) {
       topic.classList.remove('active');
     }
     bodyEl.style.background = `url('./images/${chosenTopic}/background.jpg') repeat center center`;
-    // if (chosenTopic === 'theme1') {
-    //   topicsBlock.style.backgroundColor = '#74eafd87';
-    // } else if (chosenTopic === 'theme2') {
-    //   topicsBlock.style.backgroundColor = '#cfb1cf87';
-    // }
   });
 }

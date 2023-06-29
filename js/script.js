@@ -2,9 +2,11 @@ const solution = ['1234', '4123', '3412', '2341']; // Масив, в якому 
 const cardsTaskBoard = ['-23-', '41-3', '--12', '23-1']; // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефісю.
 let emptyCellIndex = null; // на початку гри користувач ще не обрав жодної картинки, яку б вын хотів вставити, тому null
 let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
-let chosenTopic = 'sea';
+
 // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
 const cardsContainer = document.querySelector('.cards-container');
+const bodyEl = document.querySelector('body');
+const backBtn = document.querySelector('.back-btn');
 const finishedImagesIndexes = solution.join('');
 // РОзраховуємо скільки всього має бути рядків на дошці
 const rowsQuantity = solution.length;
@@ -28,9 +30,9 @@ function createListItem(imageIndex) {
   // створюємо лішку(додаємо їй потрібний клас)
   const li = document.createElement('li');
   li.className = 'card';
-  if (chosenTopic === 'sea') {
+  if (chosenTopic === 'theme1') {
     li.style.backgroundColor = '#74eafd87';
-  } else if (chosenTopic === 'princesses') {
+  } else if (chosenTopic === 'theme2') {
     li.style.backgroundColor = '#cfb1cf87';
   }
   // Перевіряємо чи має в нас клітинка бути вже із картинкою на початку гри чи повинна бути пустою
@@ -49,10 +51,10 @@ function createImageItem(imageIndex) {
   // Створюємо елемент картинки із відповідними атрибутами
   const img = document.createElement('img');
 
-  if (chosenTopic === 'sea') {
+  if (chosenTopic === 'theme1') {
     img.src = `./images/${chosenTopic}/${imageIndex}.png`;
     img.alt = `fish-${imageIndex}`;
-  } else if (chosenTopic === 'princesses') {
+  } else if (chosenTopic === 'theme2') {
     img.src = `./images/${chosenTopic}/${imageIndex}.jpg`;
     img.alt = `princess-${imageIndex}`;
   }
@@ -166,13 +168,13 @@ function createImageSelectionBlock(solution) {
     const label = document.createElement('label');
     label.className = 'card';
     const img = document.createElement('img');
-    if (chosenTopic === 'sea') {
+    if (chosenTopic === 'theme1') {
       input.id = `fish-${i}`;
       input.name = 'fish';
       label.htmlFor = `fish-${i}`;
       img.src = `./images/${chosenTopic}/${i}.png`;
       img.alt = `fish-${i}`;
-    } else if (chosenTopic === 'princesses') {
+    } else if (chosenTopic === 'theme2') {
       input.id = `princess-${i}`;
       input.name = 'princess';
       label.htmlFor = `princess-${i}`;
@@ -206,46 +208,6 @@ function setUniqueIdForCards() {
 
 // ___________________________________________________________________
 
-const startWindow = document.getElementById('start-window');
-const gameWindow = document.getElementById('game-window');
-const startGame = document.getElementById('start-game');
-const endWindow = document.getElementById('end-window');
-
-document.getElementById('rules').addEventListener('click', showRules);
-
-//----правила гри----//
-function showRules() {
-  const rulesWindow = document.createElement('div');
-  rulesWindow.id = 'rules-window';
-  rulesWindow.innerHTML = '<h2>Правила гри:</h2><p></p>';
-
-  startWindow.appendChild(rulesWindow);
-
-  document.addEventListener('click', closeRules);
-
-  startWindow.style.pointerEvents = 'none';
-}
-
-function closeRules(event) {
-  if (!event.target.closest('#rules-window')) {
-    const rulesWindow = document.getElementById('rules-window');
-    rulesWindow.parentNode.removeChild(rulesWindow);
-
-    startWindow.style.pointerEvents = 'auto';
-
-    document.removeEventListener('click', closeRules);
-  }
-}
-
-document.getElementById('start-game').addEventListener('click', startGame);
-document.getElementById('restart-game').addEventListener('click', restartGame);
-
-startGame.onclick = function () {
-  startWindow.style.display = 'none';
-  gameWindow.style.display = 'block';
-  cardsContainer.style.display = 'flex';
-};
-
 //Фукція появи error-картинки на деякий час
 function errorImage(clickedElement) {
   const imgError = document.createElement('img');
@@ -255,13 +217,3 @@ function errorImage(clickedElement) {
     clickedElement.removeChild(imgError);
   }, 500);
 }
-
-//----перезапуск гри----//
-document.getElementById('restart-game').addEventListener('click', restartGame);
-
-function restartGame() {
-  endWindow.style.display = 'none';
-  startWindow.style.display = 'flex';
-}
-
-// ___________________________________________________________________

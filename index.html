@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>KIDS Sudoku</title>
   </head>
@@ -10,29 +16,49 @@
     <!------- Розробка стартового вікна ------->
     <div id="start-window">
       <h1 class="greeting">Судоку для малюків</h1>
+
       <ul id="start-window-categories">
         <li class="start-window-item">
           <h2>Виберіть тему:</h2>
-          <button id="theme1">Морська</button>
-          <button id="theme2">Принцеси</button>
-          <button id="theme2">Солодощі</button>
-          <button id="theme2">Машинки</button>
-          <button id="theme2">Звірята</button>
-          <button id="theme2">Фіксики</button>
-          <button id="theme2">Щенячий патруль</button>
+          <button id="theme1" type="button" class="topic-btn btn">
+            Морська
+          </button>
+          <button id="theme2" type="button" class="topic-btn btn">
+            Принцеси
+          </button>
+          <button id="theme3" type="button" class="topic-btn btn">
+            Солодощі
+          </button>
+          <button id="theme4" type="button" class="topic-btn btn active">
+            Машинки
+          </button>
+          <button id="theme5" type="button" class="topic-btn btn">
+            Звірята
+          </button>
+          <button id="theme6" type="button" class="topic-btn btn">
+            Фіксики
+          </button>
+          <button id="theme7" type="button" class="topic-btn btn">
+            Щенячий патруль
+          </button>
         </li>
         <li class="start-window-item">
           <h2>Виберіть рівень складності:</h2>
-          <button id="level1">Рівень 1</button>
-          <button id="level2">Рівень 2</button>
+          <button id="level1" class="btn active">Рівень 1</button>
+          <button id="level2" class="btn">Рівень 2</button>
+          <button id="level3" class="btn">Рівень 3</button>
         </li>
         <li class="start-window-item">
           <h2>Виберіть тип гри:</h2>
-          <button id="game-with-timer">Гра з таймером</button>
-          <button id="game-without-timer">Гра без таймера</button>
+          <button id="game-with-timer " class="btn">Гра з таймером</button>
+          <button id="game-without-timer" class="btn active">
+            Гра без таймера
+          </button>
         </li>
       </ul>
-      <button id="start-game">Старт гри</button>
+      <button id="start-game">Старт</button>
+      <img src="images/cloud.png" alt="cloud-rules" class="cloud-rules" />
+      <!-- <img src="images/cat.png" alt="cat" class="cloud-rules" /> -->
       <div id="rules-window">
         <button id="rules">Правила гри</button>
         <p></p>
@@ -42,21 +68,8 @@
     <!------- МЕНЮ ------->
     <div id="game-window">
       <div class="menu">
-        <div class="topics-block">
-          <h2 class="topics-title">Topics</h2>
-          <ul class="topics-list">
-            <li class="topic-item">
-              <button type="button" class="topic-btn active" id="sea">
-                Sea
-              </button>
-            </li>
-            <li class="topic-item">
-              <button type="button" class="topic-btn" id="princesses">
-                Princesses
-              </button>
-            </li>
-          </ul>
-        </div>
+        <button type="button" class="back-btn">Назад до меню</button>
+
         <div class="lifes"></div>
         <div class="timer"><span></span></div>
       </div>
@@ -72,9 +85,11 @@
       <button id="restart-game">Перезапустити гру</button>
     </div>
     <script src="js/audio.js"></script>
+    <script src="js/startGame.js"></script>
     <script src="js/lifes.js"></script>
     <script src="js/timer.js"></script>
     <script src="js/topics.js"></script>
+    <script src="js/levels.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

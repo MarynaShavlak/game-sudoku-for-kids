@@ -5,12 +5,19 @@ html, body {
     height: 100%;  
 
 }
+
 body {
-    background: url('./images/sea/background.jpg') repeat center center;
-    
-    background-size: cover; 
+        /* background: url('./images/start-background.jpg') no-repeat center center fixed; */
+        background: url('./images/start-background.jpg') no-repeat center center;
+        background-size: 100% auto;
+        background-size: cover;
+        display: flex;
+        justify-content: end;
+        font-family: 'Rubik Bubbles', cursive;
+      
+    }
  
-}
+
 
 ul, li, h1, h2  {
     margin: 0;
@@ -36,7 +43,7 @@ ul, li, h1, h2  {
 }
 
 .lifes span {
-    background: url('./images/sea/fish-heart.png');
+    background: url('./images/theme1/fish-heart.png');
     width: 50px;
     height: 50px;
     margin-right: 10px;
@@ -53,18 +60,12 @@ ul, li, h1, h2  {
 
 /*==================== ГОЛОВНЕ ПОЛЕ ГРИ ====================*/
 .cards-container { 
-    /* width: 100%;    */
-    /* height: 100%; */
     display: none;
-    /* display: flex; */
     gap: 50px;
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 60px;
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* background: url('./images/sea/background.jpg') no-repeat center center;
-    background-size: cover; */
+
    
 }
 
@@ -137,24 +138,30 @@ ul {
     justify-content: center;
 }
 
-.topic-btn {
+.btn {
+    font-family: 'Rubik Bubbles', cursive;
     width: 100%;
     height: auto;
-    background-color: yellow;
+    background-color: rgb(245, 186, 187);
     border-radius: 10px;
-    border: none;
+    border: 1px solid rgb(238, 119, 139);
     padding: 10px;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 100;
     color: black;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.topic-btn.active {
-    background-color: orangered;
+.btn.active {
+    color: white;
+    background-color: rgb(217, 0, 51);
 }
-
+.btn:hover, .btn:focus {
+    color: white;
+    background-color: rgb(217, 0, 51);
+}
 .topics-title {
     margin: 0;
     padding: 0;
@@ -163,7 +170,7 @@ ul {
     margin-bottom: 10px;
 }
 
-.topics-block {
+.back-btn {
     padding: 15px 30px;
     background-color: #74eafd87;
     border-radius: 20px;
@@ -173,19 +180,15 @@ ul {
 /*==================== Стилі для стартового вікна ====================*/
 /*==================== Стилі для стартового вікна ====================*/
 /*==================== Стилі для стартового вікна ====================*/
-#start-window,
+/* #start-window, */
 #end-window {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: opacity;
+    /* justify-content: center; */
+    /* height: 100vh; */
+    /* background-color: opacity; */
 }
-#start-window {
-    padding-top: 30px;
-}
-
 
 #start-window #theme1,
 #theme2,
@@ -197,7 +200,7 @@ ul {
 #rules,
 #restart-game {
     padding: 10px;
-     border-radius: 5px;
+    border-radius: 5px;
 
 }
 
@@ -210,16 +213,18 @@ ul {
 }
 
 /*==================== Стилі для кнопки з правилами  ====================*/
-#rules {
-    margin: 10px;
+
+
+#start-window {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    
 }
-
-
-
 #start-window-categories {
     display: flex;
     gap: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 
@@ -231,11 +236,8 @@ gap: 20px;
 
 
 .greeting {
-    font-weight: 900;
-  background-color: white;
-  padding: 10px;
-
-    font-size: 60px;
+  /* padding: 10px; */
+  font-size: 70px;
     margin-bottom: 30px;
     
 }
@@ -246,4 +248,67 @@ gap: 20px;
 }
 #end-window {
     display: none;
+}
+
+
+.back-btn{
+font-weight: 900;
+}
+
+
+#start-game {
+    position: absolute;
+    bottom: 200px;
+    right: 200px;
+    font-family: 'Rubik Bubbles', cursive;
+    color: white;
+    padding: 10px 30px;
+    font-size: 50px;
+    border: none;
+    border: 3px solid rgb(217, 0, 51);
+    border-radius: 20px;
+    background-color: rgb(217, 0, 51);
+    margin: 0 auto;
+    cursor: pointer;
+    transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+#start-game:hover, #start-game:focus {
+    background-color: white;
+    color: rgb(217, 0, 51);
+  
+}
+
+.cloud-rules {
+    position: absolute;
+    bottom: 280px;
+    left: 250px;
+    width: 300px;
+
+}
+
+#rules-window{
+    position: absolute;
+    bottom: 380px;
+    left: 300px;
+}
+
+#rules {
+        font-family: 'Rubik Bubbles', cursive;
+            width: 100%;
+            height: auto;
+            background-color: transparent;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            font-size: 30px;
+            font-weight: 100;
+            color: black;
+            cursor: pointer;
+            transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#rules:hover, #rules:focus{
+   color: rgb(217, 0, 51);
 }
