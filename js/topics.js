@@ -1,12 +1,12 @@
 let chosenTopic = 'theme1';
 const themes = {
-  theme1: { id: 'fish', name: 'fish' },
-  theme2: { id: 'princess', name: 'princess' },
-  theme3: { id: 'cake', name: 'cake' },
-  theme4: { id: 'car', name: 'car' },
-  theme5: { id: 'animal', name: 'animal' },
-  theme6: { id: 'fixic', name: 'fixic' },
-  theme7: { id: 'paw', name: 'paw' },
+  theme1: 'fish',
+  theme2: 'princess',
+  theme3: 'cake',
+  theme4: 'car',
+  theme5: 'animal',
+  theme6: 'fixic',
+  theme7: 'paw',
 };
 
 const topics = [
