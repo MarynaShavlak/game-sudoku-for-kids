@@ -1,14 +1,14 @@
-const solution = ['1234', '4123', '3412', '2341']; // Масив, в якому кожен елемент - це рядок із порядковими номерами картинок(Вже вирішене завдання)
-const cardsTaskBoard = ['-23-', '41-3', '--12', '23-1']; // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефісю.
 let emptyCellIndex = null; // на початку гри користувач ще не обрав жодної картинки, яку б вын хотів вставити, тому null
 let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
-
+let solution = levelTasks[chosenLevel].solution;
+let cardsTaskBoard = levelTasks[chosenLevel].task;
 // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
 const cardsContainer = document.querySelector('.cards-container');
 const bodyEl = document.querySelector('body');
 const backBtn = document.querySelector('.back-btn');
 const finishedImagesIndexes = solution.join('');
 // РОзраховуємо скільки всього має бути рядків на дошці
+
 const rowsQuantity = solution.length;
 const totalCards = calculateTotalCardsQuantity(solution);
 createTaskBoard();
@@ -66,9 +66,14 @@ function generateTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
   ul.className = 'cards';
+  cardsTaskBoard = levelTasks[chosenLevel].task;
+  const cardsInRowQuantity = cardsTaskBoard.length;
+  // Встановлюємо правильно ширину дошки для відповідної кількості картинок
+  setCardsBoardWidth(ul, cardsInRowQuantity);
   // Далі треба для кожного рядку із індексами картинок та дефісами (['-23-', '41-3', '-4-2', '23-1']) створити лішку із відповідною картинкою
   // Перебираємо кожен рядок із індексами картинок
-  for (let i = 0; i < cardsTaskBoard.length; i++) {
+
+  for (let i = 0; i < cardsInRowQuantity; i++) {
     const solutionRow = cardsTaskBoard[i];
     // Кожен рядок із індексами картинок перетворюємо в масив цих індексів. Наприклад , рядок '1234' стає масиовм ['1', '2', '3', '4']
     const imageIndexesArray = solutionRow.split(''); // цей метод split зробить ыз рядка масив із 4-х елементів. (наприклад, ['1', '2', '3', '4'])
@@ -172,4 +177,15 @@ backBtn.onclick = onBackBtnClick;
 function onBackBtnClick() {
   hideGameField();
   showStartWindow();
+}
+
+function setCardsBoardWidth(block, elementsInOneRow) {
+  // В залежності від того скільки карток має бути у рядку встановлюємо ширину дошки
+  if (elementsInOneRow == 4) {
+    block.style.width = '600px';
+  } else if (elementsInOneRow == 5) {
+    block.style.width = '750px';
+  } else if (elementsInOneRow == 6) {
+    block.style.width = '900px';
+  }
 }

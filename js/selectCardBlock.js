@@ -16,10 +16,8 @@ function createLabel(theme, index) {
 }
 
 function createImage(theme, index) {
-  console.log('theme: ', theme);
   const img = document.createElement('img');
   img.src = `./images/${chosenTopic}/${index}.png`;
-  console.log('img.src: ', img.src);
   img.alt = `${theme}-${index}`;
   return img;
 }
@@ -29,12 +27,10 @@ function createImageSelectionCard(container, index) {
   // Щоб дізнатись як називатимусь картинки для цієї теми ми звертаємось до певної властивості обєкту themes
   // Наприклад, якщо chosenTopic - це "theme3", тоді  themes[chosenTopic]  - це рядок 'cakes'
   const theme = themes[chosenTopic];
-  console.log('theme: ', theme);
 
   const input = createInput(theme, index);
   const label = createLabel(theme, index);
   const img = createImage(theme, index);
-  console.log('img: ', img);
 
   label.appendChild(img);
   container.appendChild(input);
@@ -61,7 +57,10 @@ function createImageSelectionBlock(solution) {
   const cardsWrapper = document.createElement('div');
   cardsWrapper.className = 'cards';
   // Знаходимо загальну кількість карток , яку треба вставити в цей блок
+  solution = levelTasks[chosenLevel].solution;
   const imagesQuantity = solution.length;
+  // Встановлюємо правильно ширину дошки для відповідної кількості картинок
+  setCardsBoardWidth(cardsWrapper, imagesQuantity);
   // Створюємо відповідну розмітку для кожної картки
   for (let i = 1; i <= imagesQuantity; i++) {
     createImageSelectionCard(cardsWrapper, i);

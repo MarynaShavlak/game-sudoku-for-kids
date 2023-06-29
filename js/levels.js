@@ -1,30 +1,28 @@
-const levels = [
+let chosenLevel = 'level1';
+
+const levelBtnCollection = [
   document.querySelector('#level1'),
   document.querySelector('#level2'),
   document.querySelector('#level3'),
 ];
-console.log('levels : ', levels);
 
-levels.forEach(level => {
-  level.onclick = onTopicBtnClick;
+levelBtnCollection.forEach(level => {
+  level.onclick = onLevelBtnClick;
 });
 
-function onTopicBtnClick(e) {
-  console.log('e: ', e);
-  const clickedTopic = e.target;
+function onLevelBtnClick(e) {
+  const clickedLevel = e.target;
 
-  if (clickedTopic.classList.contains('active')) return;
-  topics.forEach(topic => {
-    if (topic === clickedTopic) {
-      chosenTopic = clickedTopic.id;
-      console.log('chosenTopic: ', chosenTopic);
-      topic.classList.add('active');
+  if (clickedLevel.classList.contains('active')) return;
+  levelBtnCollection.forEach(level => {
+    if (level === clickedLevel) {
+      chosenLevel = clickedLevel.id;
+      level.classList.add('active');
       cardsContainer.innerHTML = '';
       createTaskBoard();
       createImageSelectionBlock(solution);
     } else {
-      topic.classList.remove('active');
+      level.classList.remove('active');
     }
-    bodyEl.style.background = `url('./images/${chosenTopic}/background.jpg') repeat center center`;
   });
 }
