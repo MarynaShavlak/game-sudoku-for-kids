@@ -18,8 +18,6 @@ const topics = [
   document.querySelector('#theme6'),
   document.querySelector('#theme7'),
 ];
-console.log('topics: ', topics);
-
 topics.forEach(topic => {
   topic.onclick = onTopicBtnClick;
 });
@@ -31,7 +29,6 @@ function onTopicBtnClick(e) {
   topics.forEach(topic => {
     if (topic === clickedTopic) {
       chosenTopic = clickedTopic.id;
-      console.log('chosenTopic: ', chosenTopic);
       topic.classList.add('active');
       cardsContainer.innerHTML = '';
       createTaskBoard();
@@ -39,10 +36,5 @@ function onTopicBtnClick(e) {
     } else {
       topic.classList.remove('active');
     }
-    // if (chosenTopic === 'theme1') {
-    //   backBtn.style.backgroundColor = '#74eafd87';
-    // } else if (chosenTopic === 'theme2') {
-    //   backBtn.style.backgroundColor = '#cfb1cf87';
-    // }
   });
 }

@@ -16,8 +16,10 @@ function createLabel(theme, index) {
 }
 
 function createImage(theme, index) {
+  console.log('theme: ', theme);
   const img = document.createElement('img');
   img.src = `./images/${chosenTopic}/${index}.png`;
+  console.log('img.src: ', img.src);
   img.alt = `${theme}-${index}`;
   return img;
 }
@@ -27,13 +29,16 @@ function createImageSelectionCard(container, index) {
   // Щоб дізнатись як називатимусь картинки для цієї теми ми звертаємось до певної властивості обєкту themes
   // Наприклад, якщо chosenTopic - це "theme3", тоді  themes[chosenTopic]  - це рядок 'cakes'
   const theme = themes[chosenTopic];
+  console.log('theme: ', theme);
 
   const input = createInput(theme, index);
   const label = createLabel(theme, index);
   const img = createImage(theme, index);
+  console.log('img: ', img);
 
   label.appendChild(img);
   container.appendChild(input);
+  // Додаємо функцію-обробник події кліку по картці
   input.onclick = onImageFromSelectionBlockClick;
   container.appendChild(label);
 }

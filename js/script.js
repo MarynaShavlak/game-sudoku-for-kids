@@ -39,7 +39,8 @@ function createListItem(imageIndex) {
   // Вставляємо у лішку картинку тільки тоді коли ми маємо номер картинки ,  а не дефіс
   if (imageIndex !== '-') {
     // Створюємо елемент картинки із відповідними атрибутами
-    const img = createImageItem(imageIndex);
+    const theme = themes[chosenTopic];
+    const img = createImage(theme, imageIndex);
     // Вставляємо картинку в лішку
     li.appendChild(img);
   }
@@ -47,19 +48,20 @@ function createListItem(imageIndex) {
   return li;
 }
 
-function createImageItem(imageIndex) {
-  // Створюємо елемент картинки із відповідними атрибутами
-  const img = document.createElement('img');
+// function createImage(theme, imageIndex) {
+//   // Створюємо елемент картинки із відповідними атрибутами
+//   const img = document.createElement('img');
 
-  if (chosenTopic === 'theme1') {
-    img.src = `./images/${chosenTopic}/${imageIndex}.png`;
-    img.alt = `fish-${imageIndex}`;
-  } else if (chosenTopic === 'theme2') {
-    img.src = `./images/${chosenTopic}/${imageIndex}.png`;
-    img.alt = `princess-${imageIndex}`;
-  }
-  return img;
-}
+//   if (chosenTopic === 'theme1') {
+//     img.src = `./images/${chosenTopic}/${imageIndex}.png`;
+//     img.alt = `fish-${imageIndex}`;
+//   } else if (chosenTopic === 'theme2') {
+//     img.src = `./images/${chosenTopic}/${imageIndex}.png`;
+//     img.alt = `princess-${imageIndex}`;
+//   }
+//   return img;
+// }
+
 function generateTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
@@ -113,7 +115,7 @@ function onСellOnBoardClick(e) {
     // Якщо співпадыння Є, то:
     if (isMatched) {
       //  створюємо розмітку картинки із коректнимм ідексом в  та вставляємо її в пусту лішку а яку ми клікнули
-      const imageToSetOnBoard = createImageItem(correctIndex);
+      const imageToSetOnBoard = createImage(correctIndex);
       clickedElement.appendChild(imageToSetOnBoard);
       //Позитивний звук(якщо вгадали)
       positiveSound();
@@ -163,4 +165,11 @@ function errorImage(clickedElement) {
   setTimeout(function () {
     clickedElement.removeChild(imgError);
   }, 500);
+}
+
+// Гравець може повернутись на стартове меню при кліці на кнопку "назад"
+backBtn.onclick = onBackBtnClick;
+function onBackBtnClick() {
+  hideGameField();
+  showStartWindow();
 }
