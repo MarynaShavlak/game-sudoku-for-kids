@@ -9,12 +9,10 @@ body {
     background: url('./images/sea/background.jpg') repeat center center;
     
     background-size: cover; 
-
-
-       
+ 
 }
 
-ul, li {
+ul, li, h1, h2  {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -57,7 +55,8 @@ ul, li {
 .cards-container { 
     /* width: 100%;    */
     /* height: 100%; */
-    display: flex;
+    display: none;
+    /* display: flex; */
     gap: 50px;
     padding-left: 15px;
     padding-right: 15px;
@@ -183,6 +182,10 @@ ul {
     height: 100vh;
     background-color: opacity;
 }
+#start-window {
+    padding-top: 30px;
+}
+
 
 #start-window #theme1,
 #theme2,
@@ -193,10 +196,13 @@ ul {
 #start-game,
 #rules,
 #restart-game {
-    border-bottom: 3px;
-    border-radius: 5px;
-    margin: 5px;
+    padding: 10px;
+     border-radius: 5px;
+
 }
+
+
+
 
 /*==================== Стилі для вікна гри ====================*/
 /*#game-window {
@@ -206,4 +212,38 @@ ul {
 /*==================== Стилі для кнопки з правилами  ====================*/
 #rules {
     margin: 10px;
+}
+
+
+
+#start-window-categories {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+
+.start-window-item {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+
+.greeting {
+    font-weight: 900;
+  background-color: white;
+  padding: 10px;
+
+    font-size: 60px;
+    margin-bottom: 30px;
+    
+}
+
+
+#game-window {
+    display: none;
+}
+#end-window {
+    display: none;
 }

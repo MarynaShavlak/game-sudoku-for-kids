@@ -243,6 +243,7 @@ document.getElementById('restart-game').addEventListener('click', restartGame);
 startGame.onclick = function () {
   startWindow.style.display = 'none';
   gameWindow.style.display = 'block';
+  cardsContainer.style.display = 'flex';
 };
 
 //Фукція появи error-картинки на деякий час
