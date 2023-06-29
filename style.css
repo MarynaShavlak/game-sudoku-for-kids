@@ -17,7 +17,9 @@ body {
       
     }
  
-
+button {
+font-family: 'Rubik Bubbles', cursive;
+}
 
 ul, li, h1, h2  {
     margin: 0;
@@ -172,8 +174,18 @@ ul {
 
 .back-btn {
     padding: 15px 30px;
-    background-color: #74eafd87;
+    font-weight: 100;
+    font-size: 24px;
+    background-color: white;
     border-radius: 20px;
+    transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+.back-btn:hover,
+.back-btn:focus {
+    color: white;
+    background-color: black;
 }
 
 /*==================== Стилі для стартового вікна ====================*/
@@ -252,7 +264,9 @@ gap: 20px;
 
 
 .back-btn{
-font-weight: 900;
+    cursor: pointer;
+    font-weight: 900;
+
 }
 
 

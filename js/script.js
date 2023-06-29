@@ -55,7 +55,7 @@ function createImageItem(imageIndex) {
     img.src = `./images/${chosenTopic}/${imageIndex}.png`;
     img.alt = `fish-${imageIndex}`;
   } else if (chosenTopic === 'theme2') {
-    img.src = `./images/${chosenTopic}/${imageIndex}.jpg`;
+    img.src = `./images/${chosenTopic}/${imageIndex}.png`;
     img.alt = `princess-${imageIndex}`;
   }
   return img;
@@ -153,45 +153,20 @@ function onImageFromSelectionBlockClick(e) {
 
 function createImageSelectionBlock(solution) {
   // Створюємо блок , в якому будуть зберігатись картки для вибору
-  const cardsSElectionBlock = document.createElement('div');
-  cardsSElectionBlock.className = 'card-selection';
-  const cardsDiv = document.createElement('div');
-  cardsDiv.className = 'cards';
+  const cardsSelectionBlock = document.createElement('div');
+  cardsSelectionBlock.className = 'card-selection';
+  const cardsWrapper = document.createElement('div');
+  cardsWrapper.className = 'cards';
   // Знаходимо загальну кількість карток , яку треба вставити в цей блок
   const imagesQuantity = solution.length;
   // Створюємо відповідну розмітку для кожної картки
   for (let i = 1; i <= imagesQuantity; i++) {
-    const input = document.createElement('input');
-    input.type = 'radio';
-    input.value = i;
-    input.checked = i === 1;
-    const label = document.createElement('label');
-    label.className = 'card';
-    const img = document.createElement('img');
-    if (chosenTopic === 'theme1') {
-      input.id = `fish-${i}`;
-      input.name = 'fish';
-      label.htmlFor = `fish-${i}`;
-      img.src = `./images/${chosenTopic}/${i}.png`;
-      img.alt = `fish-${i}`;
-    } else if (chosenTopic === 'theme2') {
-      input.id = `princess-${i}`;
-      input.name = 'princess';
-      label.htmlFor = `princess-${i}`;
-      img.src = `./images/${chosenTopic}/${i}.jpg`;
-      img.alt = `princess-${i}`;
-    }
-
-    label.appendChild(img);
-
-    cardsDiv.appendChild(input);
-    input.onclick = onImageFromSelectionBlockClick;
-    cardsDiv.appendChild(label);
+    createImageSelectionCard(cardsWrapper, i);
   }
 
-  cardsSElectionBlock.appendChild(cardsDiv);
+  cardsSelectionBlock.appendChild(cardsWrapper);
   // Вставляємо блок із картинками, з-поміж яких користувач має обирати , у загальний наш лок розмітки
-  cardsContainer.appendChild(cardsSElectionBlock);
+  cardsContainer.appendChild(cardsSelectionBlock);
 }
 
 function setUniqueIdForCards() {
@@ -204,6 +179,31 @@ function setUniqueIdForCards() {
     const liID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
     li.id = liID;
   }
+}
+
+function createImageSelectionCard(container, i) {
+  const theme = themes[chosenTopic] || themes.theme1;
+
+  const input = document.createElement('input');
+  input.type = 'radio';
+  input.value = i;
+  input.checked = i === 1;
+  input.id = `${theme.id}-${i}`;
+  input.name = theme.name;
+
+  const label = document.createElement('label');
+  label.className = 'card';
+  label.htmlFor = `${theme.id}-${i}`;
+
+  const img = document.createElement('img');
+  img.src = `./images/${chosenTopic}/${i}.png`;
+  img.alt = `${theme.id}-${i}`;
+
+  label.appendChild(img);
+
+  container.appendChild(input);
+  input.onclick = onImageFromSelectionBlockClick;
+  container.appendChild(label);
 }
 
 // ___________________________________________________________________

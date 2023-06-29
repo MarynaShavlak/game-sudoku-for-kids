@@ -35,14 +35,16 @@ restartGameBtn.addEventListener('click', onRestartGameBtnClick);
 //----при кліці на кнопку Старт----//
 function onStartGameBtnClick() {
   // Перевіряємо чи обрав гравець всі опції
-  if (
-    gameSettings.topic === null ||
-    gameSettings.level === null ||
-    gameSettings.timer === null
-  ) {
-    // якщо хоча б одна опція не вибрана, то гра не має запускатись
-    return;
-  }
+  // if (
+  //   gameSettings.topic === null ||
+  //   gameSettings.level === null ||
+  //   gameSettings.timer === null
+  // ) {
+  //   // якщо хоча б одна опція не вибрана, то гра не має запускатись
+  //   return;
+  // }
+  bodyEl.style.background = `url('./images/${chosenTopic}/background.jpg') repeat center center`;
+  bodyEl.style.display = 'block';
   startWindow.style.display = 'none';
   gameWindow.style.display = 'block';
   cardsContainer.style.display = 'flex';

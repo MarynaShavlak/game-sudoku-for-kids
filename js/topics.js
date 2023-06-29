@@ -1,4 +1,13 @@
 let chosenTopic = 'theme1';
+const themes = {
+  theme1: { id: 'fish', name: 'fish' },
+  theme2: { id: 'princess', name: 'princess' },
+  theme3: { id: 'cake', name: 'cake' },
+  theme4: { id: 'car', name: 'car' },
+  theme5: { id: 'animal', name: 'animal' },
+  theme6: { id: 'fixic', name: 'fixic' },
+  theme7: { id: 'paw', name: 'paw' },
+};
 
 const topics = [
   document.querySelector('#theme1'),
@@ -16,7 +25,6 @@ topics.forEach(topic => {
 });
 
 function onTopicBtnClick(e) {
-  console.log('e: ', e);
   const clickedTopic = e.target;
 
   if (clickedTopic.classList.contains('active')) return;
@@ -31,11 +39,10 @@ function onTopicBtnClick(e) {
     } else {
       topic.classList.remove('active');
     }
-    bodyEl.style.background = `url('./images/${chosenTopic}/background.jpg') repeat center center`;
     // if (chosenTopic === 'theme1') {
-    //   topicsBlock.style.backgroundColor = '#74eafd87';
+    //   backBtn.style.backgroundColor = '#74eafd87';
     // } else if (chosenTopic === 'theme2') {
-    //   topicsBlock.style.backgroundColor = '#cfb1cf87';
+    //   backBtn.style.backgroundColor = '#cfb1cf87';
     // }
   });
 }

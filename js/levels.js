@@ -1,5 +1,3 @@
-let chosenTopic = 'theme1';
-
 const levels = [
   document.querySelector('#level1'),
   document.querySelector('#level2'),
