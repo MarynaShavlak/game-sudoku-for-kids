@@ -169,3 +169,41 @@ ul {
     background-color: #74eafd87;
     border-radius: 20px;
 }
+
+/*==================== Стилі для стартового вікна ====================*/
+/*==================== Стилі для стартового вікна ====================*/
+/*==================== Стилі для стартового вікна ====================*/
+/*==================== Стилі для стартового вікна ====================*/
+#start-window,
+#end-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: opacity;
+}
+
+#start-window #theme1,
+#theme2,
+#level1,
+#level2,
+#game-with-timer,
+#game-without-timer,
+#start-game,
+#rules,
+#restart-game {
+    border-bottom: 3px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+/*==================== Стилі для вікна гри ====================*/
+/*#game-window {
+    display: none;   
+}
+
+/*==================== Стилі для кнопки з правилами  ====================*/
+#rules {
+    margin: 10px;
+}

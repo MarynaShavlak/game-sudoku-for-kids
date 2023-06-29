@@ -113,17 +113,17 @@ function onСellOnBoardClick(e) {
       //  створюємо розмітку картинки із коректнимм ідексом в  та вставляємо її в пусту лішку а яку ми клікнули
       const imageToSetOnBoard = createImageItem(correctIndex);
       clickedElement.appendChild(imageToSetOnBoard);
-      console.log('ПОКАЗАТИ КАРТИНКУ');
       //Позитивний звук(якщо вгадали)
       positiveSound();
     } else {
-      console.log(
-        'Треба реалізувати логіку помилки реалізувати логіку помилки? може як писав Ігор якусь картинку помилки також додати? або просто червону заливку? ',
-      );
+      //Зменшення життів
+      minusLife();
+
+      //При помилці з'являється картинка-еррор на деякий час
+      errorImage(clickedElement);
       //Негативний звук(якщо помилка)
       negativeSound();
     }
-    console.log('isMatched : ', isMatched);
   } else {
     // Якщо користувач натискає на клітинку, яка не пуста, то ніяких дій виконувати не треба і ми просто виходимо із функції
 
@@ -145,7 +145,6 @@ function onImageFromSelectionBlockClick(e) {
   const clickedImageIndex = clickedImage.value;
   // Зберігаємо у нашу глобальну змінну порядковий номер обраної картинки
   chosenImageIndex = clickedImageIndex;
-  console.log('chosenImageIndex : ', chosenImageIndex);
   //Звук вибору картинки
   choiceSound();
 }
@@ -204,3 +203,64 @@ function setUniqueIdForCards() {
     li.id = liID;
   }
 }
+
+// ___________________________________________________________________
+
+const startWindow = document.getElementById('start-window');
+const gameWindow = document.getElementById('game-window');
+const startGame = document.getElementById('start-game');
+const endWindow = document.getElementById('end-window');
+
+document.getElementById('rules').addEventListener('click', showRules);
+
+//----правила гри----//
+function showRules() {
+  const rulesWindow = document.createElement('div');
+  rulesWindow.id = 'rules-window';
+  rulesWindow.innerHTML = '<h2>Правила гри:</h2><p></p>';
+
+  startWindow.appendChild(rulesWindow);
+
+  document.addEventListener('click', closeRules);
+
+  startWindow.style.pointerEvents = 'none';
+}
+
+function closeRules(event) {
+  if (!event.target.closest('#rules-window')) {
+    const rulesWindow = document.getElementById('rules-window');
+    rulesWindow.parentNode.removeChild(rulesWindow);
+
+    startWindow.style.pointerEvents = 'auto';
+
+    document.removeEventListener('click', closeRules);
+  }
+}
+
+document.getElementById('start-game').addEventListener('click', startGame);
+document.getElementById('restart-game').addEventListener('click', restartGame);
+
+startGame.onclick = function () {
+  startWindow.style.display = 'none';
+  gameWindow.style.display = 'block';
+};
+
+//Фукція появи error-картинки на деякий час
+function errorImage(clickedElement) {
+  const imgError = document.createElement('img');
+  imgError.src = `./images/error.png`;
+  clickedElement.appendChild(imgError);
+  setTimeout(function () {
+    clickedElement.removeChild(imgError);
+  }, 500);
+}
+
+//----перезапуск гри----//
+document.getElementById('restart-game').addEventListener('click', restartGame);
+
+function restartGame() {
+  endWindow.style.display = 'none';
+  startWindow.style.display = 'flex';
+}
+
+// ___________________________________________________________________
