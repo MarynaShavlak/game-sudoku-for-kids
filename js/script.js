@@ -54,8 +54,15 @@ function generateTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
   ul.className = 'cards';
-  generatedSolution = generateArrayWithUniqueDigit(4);
-  generatedTask = replaceDigits(generatedSolution);
+  if ((chosenLevel = 'level1')) {
+    generatedSolution = generateArrayWithUniqueDigit(4);
+  } else if ((chosenLevel = 'level2')) {
+    generatedSolution = generateArrayWithUniqueDigit(5);
+  } else if ((chosenLevel = 'level3')) {
+    generatedSolution = generateArrayWithUniqueDigit(6);
+  }
+
+  generatedTask = createTaskArrayWithHyphen(generatedSolution);
   console.log('generatedTask: ', generatedTask);
   // cardsTaskBoard = levelTasks[chosenLevel].task;
   cardsTaskBoard = generatedTask;

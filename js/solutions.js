@@ -14,10 +14,7 @@ const levelTasks = {
 };
 
 let generatedSolution = generateArrayWithUniqueDigit(4);
-let generatedTask = replaceDigits(generatedSolution);
-
-// levelTasks.level1.solution = generateArrayWithUniqueDigit(4);
-// levelTasks.level1.task = replaceDigits(levelTasks.level1.solution);
+let generatedTask = createTaskArrayWithHyphen(generatedSolution);
 
 // Функція, для рандомного перемішування елементів масиву
 function shuffleArray(array) {
@@ -84,55 +81,74 @@ function generateArrayWithUniqueDigit(N) {
 
 // Функція для заміни цифр на дефіси у масиві , потрбна для того щоб із готового вирішенго завдання згенерувати рандомне розмішення пустих(дефіси) і заповнених(цифри) карток
 // Для дошки 4*4 вигадали таку умову: 2 рядки будуть мати по 2 пустих клітинки, а інші 2 рядки по одній пустій клітинці
-function replaceDigits(array) {
-  // Рандомно визначаємо індекс першого елементу масиву(рядку), в якому будемо 2 цифри заміняти на дефіси
-  const stringWithTwoHyphensIndex1 = getRandomArrayElementIndex(array);
-  // Оголошуємо змінну , в яку запишемо індекс другого елементу масиву(рядку), в якому також будемо 2 цифри заміняти на дефіси
-  let stringWithTwoHyphensIndex2;
-  // Індекс другого рядку на заміну цифр двома дефісами має бути відмінним від індексу першого рядку.
-  // Цикл do ...while виконуватиметься доти, доки індекс 2 стане не таким як індекс 1 ,
-  //тобто індекс другого рядка, в якому ми будемо 2 цифри заміняти на дефіси, буде рандомно генеруватись до першого неспівпадіння із індексом 1 ю
+function createTaskArrayWithHyphen(array) {
+  let task;
+  let isError;
   do {
-    stringWithTwoHyphensIndex2 = getRandomArrayElementIndex(array);
-  } while (stringWithTwoHyphensIndex2 === stringWithTwoHyphensIndex1);
+    // Рандомно визначаємо індекс першого елементу масиву(рядку), в якому будемо 2 цифри заміняти на дефіси
+    const stringWithTwoHyphensIndex1 = getRandomArrayElementIndex(array);
+    // Оголошуємо змінну , в яку запишемо індекс другого елементу масиву(рядку), в якому також будемо 2 цифри заміняти на дефіси
+    let stringWithTwoHyphensIndex2;
+    // Індекс другого рядку на заміну цифр двома дефісами має бути відмінним від індексу першого рядку.
+    // Цикл do ...while виконуватиметься доти, доки індекс 2 стане не таким як індекс 1 ,
+    //тобто індекс другого рядка, в якому ми будемо 2 цифри заміняти на дефіси, буде рандомно генеруватись до першого неспівпадіння із індексом 1 ю
+    do {
+      stringWithTwoHyphensIndex2 = getRandomArrayElementIndex(array);
+    } while (stringWithTwoHyphensIndex2 === stringWithTwoHyphensIndex1);
 
-  // console.log('stringWithTwoHyphensIndex1: ', stringWithTwoHyphensIndex1);
-  // console.log('stringWithTwoHyphensIndex2: ', stringWithTwoHyphensIndex2);
-  // Перебираємо кожен елемент масиву, тобто кожен рядок і виконуємо дії для кожного рядка.
-  return array.map((str, index) => {
-    // Рандомно визначаємо індекс першої цифри рядку, яку будемо заміняти на дефіс
-    const randomIndex1 = getRandomCharacterIndex(str);
-    // Оголошуємо змінну , в яку запишемо індекс другої цифри в рядку, яку також будемо заміняти на дефіс
-    let randomIndex2;
-    // Якщо індекс рядка у масиві на поточній ітерації співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то
-    if (
-      index === stringWithTwoHyphensIndex1 ||
-      index === stringWithTwoHyphensIndex2
-    ) {
-      // рандомно знаходимо ындекс другоъ цифри цього рядку (відмінна від першого індексу)
-      do {
-        randomIndex2 = getRandomCharacterIndex(str);
-      } while (randomIndex2 === randomIndex1);
-      // Тепер ми маємо 2 індекси цифрр у рядку , які треба замінити на дефіси, робимо у поточному рядку заміну 2-х цифр на дефіси
-      return replaceCharsInString(str, randomIndex1, randomIndex2);
-      // Якщо індекс рядка у масиві на поточній ітерації НЕ співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то значить дефісом замінити треба тільки одну цифру, індекс якої ми вже визначили вище
-    } else {
-      // РОбимо заміну однієї цифри поточного рядку на дефіс
-      return replaceCharsInString(str, randomIndex1);
-    }
-  });
+    // console.log('stringWithTwoHyphensIndex1: ', stringWithTwoHyphensIndex1);
+    // console.log('stringWithTwoHyphensIndex2: ', stringWithTwoHyphensIndex2);
+    // Перебираємо кожен елемент масиву, тобто кожен рядок і виконуємо дії для кожного рядка.
+    task = array.map((str, index) => {
+      // Рандомно визначаємо індекс першої цифри рядку, яку будемо заміняти на дефіс
+      const randomIndex1 = getRandomCharacterIndex(str);
+      // Оголошуємо змінну , в яку запишемо індекс другої цифри в рядку, яку також будемо заміняти на дефіс
+      let randomIndex2;
+      // Якщо індекс рядка у масиві на поточній ітерації співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то
+      if (
+        index === stringWithTwoHyphensIndex1 ||
+        index === stringWithTwoHyphensIndex2
+      ) {
+        // рандомно знаходимо ындекс другоъ цифри цього рядку (відмінна від першого індексу)
+        do {
+          randomIndex2 = getRandomCharacterIndex(str);
+        } while (randomIndex2 === randomIndex1);
+        // Тепер ми маємо 2 індекси цифрр у рядку , які треба замінити на дефіси, робимо у поточному рядку заміну 2-х цифр на дефіси
+        return replaceCharsInString(str, randomIndex1, randomIndex2);
+        // Якщо індекс рядка у масиві на поточній ітерації НЕ співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то значить дефісом замінити треба тільки одну цифру, індекс якої ми вже визначили вище
+      } else {
+        // РОбимо заміну однієї цифри поточного рядку на дефіс
+        return replaceCharsInString(str, randomIndex1);
+      }
+    });
+    // Перевіряємо чи не згенерувався масив рядків завдання таким чинном, що зявився хоча б один стовпчик ,де всі або цифри або дефіси(в грі не має бути стовпчика повністю заповненого картакми на початку, або повністю пустого)
+
+    const transformedArray = transformArray(task);
+    // Якщо таку помилку виявлено , то треба заново генерувати масив завдання.
+    isError = containsOnlyDigitsOrHyphens(transformedArray);
+  } while (isError);
+
   // Повертаємо новий масив із рядками, де є вже і цифри і дефіси
+  return task;
 }
 
-// const с1 = generateArrayWithUniqueDigit(4);
-// const replacedArray = replaceDigits(с1);
-// console.log('replacedArray: ', replacedArray);
-// console.log('с1: ', с1);
-// const с2 = generateArrayWithUniqueDigit(4);
-// console.log('с2: ', с2);
-// const с3 = generateArrayWithUniqueDigit(4);
-// console.log('с3: ', с3);
-// const с4 = generateArrayWithUniqueDigit(4);
-// console.log('с4: ', с4);
-// const с5 = generateArrayWithUniqueDigit(4);
-// console.log('с5: ', с5);
+//Функція , що створює масив із рядків, кожен із яких з n-го символу рядків із array.
+function transformArray(array) {
+  const newArray = array.reduce((result, string) => {
+    const length = string.length;
+    for (let i = 0; i < length; i++) {
+      if (!result[i]) {
+        result[i] = '';
+      }
+      result[i] += string[i];
+    }
+    return result;
+  }, []);
+
+  return newArray;
+}
+
+// Функція, щоб перевірити чи є в масиві рядок в якому всі або цифри або дефіси
+function containsOnlyDigitsOrHyphens(arr) {
+  return arr.some(string => /^\d+$|^[-]+$/.test(string));
+}
