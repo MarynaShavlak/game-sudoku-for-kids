@@ -1,14 +1,28 @@
 /*========== ТАЙМЕР ========== */
 
-let timer = 10; //Кількість секунд, можно міняти в залежності від складності
+let timer; //Кількість секунд, можно міняти в залежності від складності
+let timerID;
+const timerWrapper = document.querySelector('.timer');
 let timerBlock = document.querySelector('.timer span'); //Блок з таймером
 timerBlock.innerHTML = timer;
 
+const timerValue = {
+  level1: 120,
+  level2: 15,
+  level3: 20,
+};
+
 //Функція відліку часу
 function countdownTime() {
-  let timerID = setInterval(function () {
+  //Записуємо скіьки часу виділяємо на гру в залежності від рівня гри
+  timer = timerValue[chosenLevel];
+  console.log('timer: ', timer);
+  timerBlock.innerHTML = timer;
+  console.log('timerBlock.innerHTML: ', timerBlock.innerHTML);
+  timerID = setInterval(function () {
     timer--;
     timerBlock.innerHTML = timer;
+    console.log('timerBlock.innerHTML: ', timerBlock.innerHTML);
     if (timer <= 0) {
       // timerBlock.innerText = "0";
       clearInterval(timerID);
@@ -20,4 +34,3 @@ function countdownTime() {
     }
   }, 1000);
 }
-// countdownTime();

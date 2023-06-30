@@ -170,7 +170,10 @@ function errorImage(clickedElement) {
 
 // Гравець може повернутись на стартове меню при кліці на кнопку "назад"
 backBtn.onclick = onBackBtnClick;
+
 function onBackBtnClick() {
+  // якщо таймер був запущений, то при клыцы на кпопку переходу у стартому меню треба зупиняти таймер
+  clearInterval(timerID);
   hideGameField();
   showStartWindow();
 }

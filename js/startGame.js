@@ -4,7 +4,6 @@ const gameWindow = document.getElementById('game-window');
 const startGameBtn = document.getElementById('start-game');
 const restartGameBtn = document.getElementById('restart-game');
 const endWindow = document.getElementById('end-window');
-
 //----правила гри----//
 function showRules() {
   const rulesWindow = document.createElement('div');
@@ -47,6 +46,8 @@ function onStartGameBtnClick() {
   hideStartWindow();
   // Показуємо всі елементи гри
   showGameField();
+  // В залежності від того чи є обмеження у часі чи немає ми або показуємо блок із таймером або ні
+  setTimerInterface();
 }
 
 //----ховаємо блок із стартом гри ----//
@@ -81,18 +82,3 @@ function onRestartGameBtnClick() {
   endWindow.style.display = 'none';
   startWindow.style.display = 'flex';
 }
-
-// ___________________________________________________________________
-
-const gameSettings = {
-  topic: null,
-  level: null,
-  timer: null,
-};
-
-//----знаходимо кнопку теми яка є активною----//
-const activeTopic = Array.from(topics).find(topic =>
-  topic.classList.contains('active'),
-);
-//----записуємо айді активної кнопки теми у обєкт налаштування для старту гри----//
-gameSettings.topic = activeTopic ? activeTopic.id : null;
