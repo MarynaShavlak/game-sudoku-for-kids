@@ -1,13 +1,7 @@
-// const solution = ['1234', '4123', '3412', '2341']; // Масив, в якому кожен елемент - це рядок із порядковими номерами картинок(Вже вирішене завдання)
-// const cardsTaskBoard = ['-23-', '41-3', '--12', '23-1']; // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефісю.
-
-// const solution2 = ['34125', '51253', '25431', '43512', '12354'];
-// const cardsTaskBoard2 = ['-4125', '5--53', '-5-31', '435-2', '1-3--'];
-
 const levelTasks = {
   level1: {
-    task: ['-23-', '41-3', '--12', '23-1'],
-    solution: ['1234', '4123', '3412', '2341'],
+    task: ['-23-', '41-3', '--12', '23-1'], // Масив, який будемо використовувати для того, щоб відобразити дошку із картинками та пустими клітинками. Замість індексу картинки тут прописуємо дефіс
+    solution: ['1234', '4123', '3412', '2341'], // Масив, в якому кожен елемент - це рядок із порядковими номерами картинок(Вже вирішене завдання)
   },
   level2: {
     task: ['-4125', '5--43', '-5-31', '435-2', '1-3--'],
@@ -19,6 +13,13 @@ const levelTasks = {
   },
 };
 
+let generatedSolution = generateArrayWithUniqueDigit(4);
+let generatedTask = replaceDigits(generatedSolution);
+
+// levelTasks.level1.solution = generateArrayWithUniqueDigit(4);
+// levelTasks.level1.task = replaceDigits(levelTasks.level1.solution);
+
+// Функція, для рандомного перемішування елементів масиву
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -65,7 +66,6 @@ function generateArrayWithUniqueDigit(N) {
 
   // Створюємо цикл, що виконається N (задану) кількість разів для обертання масиву цифр , щоб згенерувати різні комбінації цих цифр. Тобто потрібно отримати N різних комбінацій цифр
   for (let i = 0; i < N; i++) {
-    console.log('i: ', i);
     // Здвигаємо масив цифр на одну позицію на кожній ітерації
     const firstPartOfNewArray = digits.slice(i); // Cтворюємо новий масив , який включатиме всі елементи від масиву digits , починаючи від і-того і до кінця
     const lastPartOfNewArray = digits.slice(0, i); // Cтворюємо новий масив , який включатиме всі елементи від масиву digits , починаючи від нульвого і до і-того(не включно)
@@ -76,7 +76,6 @@ function generateArrayWithUniqueDigit(N) {
     // Додаємо у результуючий масив вже трансформований рядок із числами
     result.push(rotatedDigitsString);
   }
-  console.log('result: ', result);
   // Коли в результуючому масиві вже є рядки із цифрами, то послідовність цих рядків треба змінити у рандомному вигляді.
   shuffleArray(result);
   // Повертаємо масив із рядками в рандомному порядку.
@@ -97,8 +96,8 @@ function replaceDigits(array) {
     stringWithTwoHyphensIndex2 = getRandomArrayElementIndex(array);
   } while (stringWithTwoHyphensIndex2 === stringWithTwoHyphensIndex1);
 
-  console.log('stringWithTwoHyphensIndex1: ', stringWithTwoHyphensIndex1);
-  console.log('stringWithTwoHyphensIndex2: ', stringWithTwoHyphensIndex2);
+  // console.log('stringWithTwoHyphensIndex1: ', stringWithTwoHyphensIndex1);
+  // console.log('stringWithTwoHyphensIndex2: ', stringWithTwoHyphensIndex2);
   // Перебираємо кожен елемент масиву, тобто кожен рядок і виконуємо дії для кожного рядка.
   return array.map((str, index) => {
     // Рандомно визначаємо індекс першої цифри рядку, яку будемо заміняти на дефіс
@@ -125,10 +124,10 @@ function replaceDigits(array) {
   // Повертаємо новий масив із рядками, де є вже і цифри і дефіси
 }
 
-const с1 = generateArrayWithUniqueDigit(4);
-const replacedArray = replaceDigits(с1);
-console.log('replacedArray: ', replacedArray);
-console.log('с1: ', с1);
+// const с1 = generateArrayWithUniqueDigit(4);
+// const replacedArray = replaceDigits(с1);
+// console.log('replacedArray: ', replacedArray);
+// console.log('с1: ', с1);
 // const с2 = generateArrayWithUniqueDigit(4);
 // console.log('с2: ', с2);
 // const с3 = generateArrayWithUniqueDigit(4);

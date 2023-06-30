@@ -12,7 +12,8 @@ function createLabel(theme, index) {
   const label = document.createElement('label');
   label.className = 'card';
   label.htmlFor = `${theme}-${index}`;
-  cardsTaskBoard = levelTasks[chosenLevel].task;
+  // cardsTaskBoard = levelTasks[chosenLevel].task;
+  cardsTaskBoard = generatedTask;
   const cardsInRowQuantity = cardsTaskBoard.length;
   setCardImageSizes(label, cardsInRowQuantity);
   setEmptyCellBackground(label);
@@ -56,6 +57,7 @@ function onImageFromSelectionBlockClick(e) {
 }
 
 function createImageSelectionBlock(solution) {
+  console.log('solution: ', solution);
   // Створюємо блок , в якому будуть зберігатись картки для вибору
   const cardsSelectionBlock = document.createElement('div');
   cardsSelectionBlock.className = 'card-selection';
@@ -65,7 +67,8 @@ function createImageSelectionBlock(solution) {
   title.innerText = 'Обери картинку';
   cardsWrapper.className = 'cards';
   // Знаходимо загальну кількість карток , яку треба вставити в цей блок
-  solution = levelTasks[chosenLevel].solution;
+  // solution = levelTasks[chosenLevel].solution;
+  solution = generatedSolution;
   const imagesQuantity = solution.length;
   // Встановлюємо правильно ширину дошки для відповідної кількості картинок
   // Створюємо відповідну розмітку для кожної картки

@@ -1,7 +1,11 @@
 let emptyCellIndex = null; // на початку гри користувач ще не обрав жодної картинки, яку б вын хотів вставити, тому null
 let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
-let solution = levelTasks[chosenLevel].solution;
-let cardsTaskBoard = levelTasks[chosenLevel].task;
+
+// let solution = levelTasks[chosenLevel].solution;
+// let cardsTaskBoard = levelTasks[chosenLevel].task;
+
+let solution = generatedSolution;
+let cardsTaskBoard = generatedTask;
 // Обираємо контейнер, в який будемо вставляти нашу розмітку із картинками
 const cardsContainer = document.querySelector('.cards-container');
 const bodyEl = document.querySelector('body');
@@ -26,7 +30,9 @@ function createListItem(imageIndex) {
   // створюємо лішку(додаємо їй потрібний клас)
   const li = document.createElement('li');
   li.className = 'card';
-  cardsTaskBoard = levelTasks[chosenLevel].task;
+  // cardsTaskBoard = levelTasks[chosenLevel].task;
+
+  cardsTaskBoard = generatedTask;
   const cardsInRowQuantity = cardsTaskBoard.length;
   setCardImageSizes(li, cardsInRowQuantity);
   setEmptyCellBackground(li);
@@ -48,7 +54,11 @@ function generateTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
   ul.className = 'cards';
-  cardsTaskBoard = levelTasks[chosenLevel].task;
+  generatedSolution = generateArrayWithUniqueDigit(4);
+  generatedTask = replaceDigits(generatedSolution);
+  console.log('generatedTask: ', generatedTask);
+  // cardsTaskBoard = levelTasks[chosenLevel].task;
+  cardsTaskBoard = generatedTask;
   const cardsInRowQuantity = cardsTaskBoard.length;
   // Встановлюємо правильно ширину дошки для відповідної кількості картинок
   // Далі треба для кожного рядку із індексами картинок та дефісами (['-23-', '41-3', '-4-2', '23-1']) створити лішку із відповідною картинкою
@@ -138,7 +148,8 @@ function getIndexOfCorrectImageForClickedEmtyCell(emptyCell) {
 function setUniqueIdForCards() {
   // Знаходимо всі елементи лішки із класом card на сторінці
   const allCardsElements = document.querySelectorAll('.card');
-  solution = levelTasks[chosenLevel].solution;
+  // solution = levelTasks[chosenLevel].solution;
+  solution = generatedSolution;
   // Розраховуємо скільки всього картинок має бути на дошці
   totalCards = calculateTotalCardsQuantity(solution);
   // Розраховуємо скільки всього має бути рядків на дошці
