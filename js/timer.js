@@ -7,9 +7,9 @@ let timerBlock = document.querySelector('.timer span'); //Блок з тайме
 timerBlock.innerHTML = timer;
 
 const timerValue = {
-  level1: 120,
-  level2: 15,
-  level3: 20,
+  level1: 60,
+  level2: 120,
+  level3: 180,
 };
 
 //Функція відліку часу

@@ -72,6 +72,7 @@ ul, li, h1, h2  {
 /*==================== ГОЛОВНЕ ПОЛЕ ГРИ ====================*/
 .cards-container { 
     display: none;
+    justify-content: center;
     /* flex-direction: column; */
     gap: 50px;
     padding-left: 15px;
