@@ -9,7 +9,7 @@ const levelTasks = {
   },
   level3: {
     task: ['-16-4-', '4--6-1', '-4-256', '6-5-13', '1-2--4', '-6-132'],
-    solution: ['216345', '453621', '341256', '625413', '132564', '56413-'],
+    solution: ['216345', '453621', '341256', '625413', '132564', '564132'],
   },
 };
 
@@ -34,14 +34,14 @@ function getRandomCharacterIndex(string) {
 }
 
 // Функція для заміни цифр у рядку дефісами, приймає як аргументи рядок для заміни та індекси елементів йього рядку , які треба замінити на дефіси
-function replaceCharsInString(str, index1, index2) {
+function replaceCharsInString(str, index1, index2, index3) {
   return str
     .split('') // Перетворюємо рядок із цифр на масив , в якому кожен елемент - рядок із однією цифрою.
     .map((char, index) => {
       // За допомогою цього методу проходимось по кожному елементу масиву (сhar)
       // Перевіряємо чи співпадає індекс елементу масиву на поточній ітерації із будь-яким індексом , який треба замінити на дефіс
       // Якщо співпадіння є, то замінюємо елемент під цим індексом на дефіс
-      if (index === index1 || index === index2) {
+      if (index === index1 || index === index2 || index === index3) {
         return '-';
       }
       // Якщо співпадіння немає, то повертаємо елемент без змін
@@ -89,6 +89,11 @@ function createTaskArrayWithHyphen(array) {
     const stringWithTwoHyphensIndex1 = getRandomArrayElementIndex(array);
     // Оголошуємо змінну , в яку запишемо індекс другого елементу масиву(рядку), в якому також будемо 2 цифри заміняти на дефіси
     let stringWithTwoHyphensIndex2;
+    let stringWithTwoHyphensIndex3;
+    let stringWithThreeHyphensIndex1;
+    let stringWithThreeHyphensIndex2;
+    let stringWithThreeHyphensIndex3;
+
     // Індекс другого рядку на заміну цифр двома дефісами має бути відмінним від індексу першого рядку.
     // Цикл do ...while виконуватиметься доти, доки індекс 2 стане не таким як індекс 1 ,
     //тобто індекс другого рядка, в якому ми будемо 2 цифри заміняти на дефіси, буде рандомно генеруватись до першого неспівпадіння із індексом 1 ю
@@ -96,28 +101,112 @@ function createTaskArrayWithHyphen(array) {
       stringWithTwoHyphensIndex2 = getRandomArrayElementIndex(array);
     } while (stringWithTwoHyphensIndex2 === stringWithTwoHyphensIndex1);
 
-    // console.log('stringWithTwoHyphensIndex1: ', stringWithTwoHyphensIndex1);
-    // console.log('stringWithTwoHyphensIndex2: ', stringWithTwoHyphensIndex2);
+    console.log('array.length == 5: ', array.length == 5);
+    if (array.length > 4) {
+      do {
+        stringWithThreeHyphensIndex1 = getRandomArrayElementIndex(array);
+      } while (
+        stringWithThreeHyphensIndex1 === stringWithTwoHyphensIndex2 ||
+        stringWithThreeHyphensIndex1 === stringWithTwoHyphensIndex1
+      );
+    }
+    if (array.length > 5) {
+      do {
+        stringWithTwoHyphensIndex3 = getRandomArrayElementIndex(array);
+      } while (
+        stringWithTwoHyphensIndex3 === stringWithTwoHyphensIndex1 ||
+        stringWithTwoHyphensIndex3 === stringWithTwoHyphensIndex2
+      );
+
+      do {
+        stringWithThreeHyphensIndex2 = getRandomArrayElementIndex(array);
+      } while (
+        stringWithThreeHyphensIndex2 === stringWithTwoHyphensIndex2 ||
+        stringWithThreeHyphensIndex2 === stringWithTwoHyphensIndex1 ||
+        stringWithThreeHyphensIndex2 === stringWithThreeHyphensIndex1
+      );
+      do {
+        stringWithThreeHyphensIndex3 = getRandomArrayElementIndex(array);
+      } while (
+        stringWithThreeHyphensIndex3 === stringWithTwoHyphensIndex2 ||
+        stringWithThreeHyphensIndex3 === stringWithTwoHyphensIndex1 ||
+        stringWithThreeHyphensIndex3 === stringWithThreeHyphensIndex1 ||
+        stringWithThreeHyphensIndex3 === stringWithThreeHyphensIndex2
+      );
+    }
+
     // Перебираємо кожен елемент масиву, тобто кожен рядок і виконуємо дії для кожного рядка.
     task = array.map((str, index) => {
       // Рандомно визначаємо індекс першої цифри рядку, яку будемо заміняти на дефіс
       const randomIndex1 = getRandomCharacterIndex(str);
       // Оголошуємо змінну , в яку запишемо індекс другої цифри в рядку, яку також будемо заміняти на дефіс
       let randomIndex2;
+      // Оголошуємо змінну , в яку запишемо індекс третьоЇ цифри в рядку, яку також будемо заміняти на дефіс
+      let randomIndex3;
       // Якщо індекс рядка у масиві на поточній ітерації співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то
       if (
         index === stringWithTwoHyphensIndex1 ||
         index === stringWithTwoHyphensIndex2
       ) {
-        // рандомно знаходимо ындекс другоъ цифри цього рядку (відмінна від першого індексу)
+        // рандомно знаходимо індекс другої цифри цього рядку (відмінна від першого індексу)
         do {
           randomIndex2 = getRandomCharacterIndex(str);
         } while (randomIndex2 === randomIndex1);
         // Тепер ми маємо 2 індекси цифрр у рядку , які треба замінити на дефіси, робимо у поточному рядку заміну 2-х цифр на дефіси
         return replaceCharsInString(str, randomIndex1, randomIndex2);
         // Якщо індекс рядка у масиві на поточній ітерації НЕ співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то значить дефісом замінити треба тільки одну цифру, індекс якої ми вже визначили вище
+      } else if (array.length == 5 && index === stringWithThreeHyphensIndex1) {
+        do {
+          randomIndex2 = getRandomCharacterIndex(str);
+        } while (randomIndex2 === randomIndex1);
+        do {
+          randomIndex3 = getRandomCharacterIndex(str);
+        } while (
+          randomIndex3 === randomIndex1 ||
+          randomIndex3 === randomIndex2
+        );
+        return replaceCharsInString(
+          str,
+          randomIndex1,
+          randomIndex2,
+          randomIndex3,
+        );
+      } else if (
+        array.length == 6 &&
+        (index === stringWithTwoHyphensIndex1 ||
+          index === stringWithTwoHyphensIndex2 ||
+          index === stringWithTwoHyphensIndex3)
+      ) {
+        // рандомно знаходимо індекс другої цифри цього рядку (відмінна від першого індексу)
+        do {
+          randomIndex2 = getRandomCharacterIndex(str);
+        } while (randomIndex2 === randomIndex1);
+        // Тепер ми маємо 2 індекси цифрр у рядку , які треба замінити на дефіси, робимо у поточному рядку заміну 2-х цифр на дефіси
+        return replaceCharsInString(str, randomIndex1, randomIndex2);
+        // Якщо індекс рядка у масиві на поточній ітерації НЕ співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то значить дефісом замінити треба тільки одну цифру, індекс якої ми вже визначили вище
+      } else if (
+        array.length == 6 &&
+        (index === stringWithThreeHyphensIndex1 ||
+          index === stringWithThreeHyphensIndex2 ||
+          index === stringWithThreeHyphensIndex3)
+      ) {
+        do {
+          randomIndex2 = getRandomCharacterIndex(str);
+        } while (randomIndex2 === randomIndex1);
+        do {
+          randomIndex3 = getRandomCharacterIndex(str);
+        } while (
+          randomIndex3 === randomIndex1 ||
+          randomIndex3 === randomIndex2
+        );
+        return replaceCharsInString(
+          str,
+          randomIndex1,
+          randomIndex2,
+          randomIndex3,
+        );
       } else {
-        // РОбимо заміну однієї цифри поточного рядку на дефіс
+        // Робимо заміну однієї цифри поточного рядку на дефіс
         return replaceCharsInString(str, randomIndex1);
       }
     });
