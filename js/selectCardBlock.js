@@ -60,6 +60,9 @@ function createImageSelectionBlock(solution) {
   const cardsSelectionBlock = document.createElement('div');
   cardsSelectionBlock.className = 'card-selection';
   const cardsWrapper = document.createElement('div');
+  const title = document.createElement('h2');
+  title.className = 'selection-block-title';
+  title.innerText = 'Обери картинку';
   cardsWrapper.className = 'cards';
   // Знаходимо загальну кількість карток , яку треба вставити в цей блок
   solution = levelTasks[chosenLevel].solution;
@@ -70,6 +73,7 @@ function createImageSelectionBlock(solution) {
     createImageSelectionCard(cardsWrapper, i);
   }
 
+  cardsSelectionBlock.appendChild(title);
   cardsSelectionBlock.appendChild(cardsWrapper);
   // Вставляємо блок із картинками, з-поміж яких користувач має обирати , у загальний наш лок розмітки
   cardsContainer.appendChild(cardsSelectionBlock);
