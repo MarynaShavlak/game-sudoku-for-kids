@@ -36,7 +36,7 @@ function getRandomCharacterIndex(string) {
 }
 
 // Функція для заміни цифр у рядку дефісами, приймає як аргументи рядок для заміни та індекси елементів йього рядку , які треба замінити на дефіси
-function replaceChars(str, index1, index2) {
+function replaceCharsInString(str, index1, index2) {
   return str
     .split('') // Перетворюємо рядок із цифр на масив , в якому кожен елемент - рядок із однією цифрою.
     .map((char, index) => {
@@ -73,6 +73,8 @@ function generateArrayWithUniqueDigit(N) {
   return result;
 }
 
+// Функція для заміни цифр на дефіси у масиві , потрбна для того щоб із готового вирішенго завдання згенерувати рандомне розмішення пустих(дефіси) і заповнених(цифри) карток
+// Для дошки 4*4 вигадали таку умову: 2 рядки будуть мати по 2 пустих клітинки, а інші 2 рядки по одній пустій клітинці
 function replaceDigits(array) {
   // Рандомно визначаємо індекс першого елементу масиву(рядку), в якому будемо 2 цифри заміняти на дефіси
   const stringWithTwoHyphensIndex1 = getRandomArrayElementIndex(array);
@@ -87,38 +89,30 @@ function replaceDigits(array) {
 
   console.log('stringWithTwoHyphensIndex1: ', stringWithTwoHyphensIndex1);
   console.log('stringWithTwoHyphensIndex2: ', stringWithTwoHyphensIndex2);
+  // Перебираємо кожен елемент масиву, тобто кожен рядок і виконуємо дії для кожного рядка.
   return array.map((str, index) => {
+    // Рандомно визначаємо індекс першої цифри рядку, яку будемо заміняти на дефіс
+    const randomIndex1 = getRandomCharacterIndex(str);
+    // Оголошуємо змінну , в яку запишемо індекс другої цифри в рядку, яку також будемо заміняти на дефіс
+    let randomIndex2;
+    // Якщо індекс рядка у масиві на поточній ітерації співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то
     if (
       index === stringWithTwoHyphensIndex1 ||
       index === stringWithTwoHyphensIndex2
     ) {
-      const randomIndex1 = Math.floor(Math.random() * str.length);
-      let randomIndex2;
-
+      // рандомно знаходимо ындекс другоъ цифри цього рядку (відмінна від першого індексу)
       do {
-        randomIndex2 = Math.floor(Math.random() * str.length);
+        randomIndex2 = getRandomCharacterIndex(str);
       } while (randomIndex2 === randomIndex1);
-
-      const replacedStr = str.split('').map((char, index) => {
-        if (index === randomIndex1 || index === randomIndex2) {
-          return '-';
-        }
-        return char;
-      });
-
-      return replacedStr.join('');
+      // Тепер ми маємо 2 індекси цифрр у рядку , які треба замінити на дефіси, робимо у поточному рядку заміну 2-х цифр на дефіси
+      return replaceCharsInString(str, randomIndex1, randomIndex2);
+      // Якщо індекс рядка у масиві на поточній ітерації НЕ співпадає із одним із індексів тих рядків, які ми визначили для замінити 2-ма дефісами, то значить дефісом замінити треба тільки одну цифру, індекс якої ми вже визначили вище
     } else {
-      const randomIndex1 = Math.floor(Math.random() * str.length);
-      const replacedStr = str.split('').map((char, index) => {
-        if (index === randomIndex1) {
-          return '-';
-        }
-        return char;
-      });
-
-      return replacedStr.join('');
+      // РОбимо заміну однієї цифри поточного рядку на дефіс
+      return replaceCharsInString(str, randomIndex1);
     }
   });
+  // Повертаємо новий масив із рядками, де є вже і цифри і дефіси
 }
 
 const с1 = generateArrayWithUniqueDigit(4);
@@ -133,26 +127,3 @@ console.log('с1: ', с1);
 // console.log('с4: ', с4);
 // const с5 = generateArrayWithUniqueDigit(4);
 // console.log('с5: ', с5);
-
-// function replaceDigits(array) {
-//   return array.map(str => {
-//     const strArray = str.split('');
-//     const randomIndex1 = Math.floor(Math.random() * str.length);
-//     let randomIndex2;
-//     let randomIndex3;
-
-//     do {
-//       randomIndex2 = Math.floor(Math.random() * str.length);
-//     } while (randomIndex2 === randomIndex1);
-
-//     do {
-//       randomIndex3 = Math.floor(Math.random() * str.length);
-//     } while (randomIndex3 === randomIndex1 || randomIndex3 === randomIndex2);
-
-//     strArray[randomIndex1] = '-';
-//     strArray[randomIndex2] = '-';
-//     strArray[randomIndex3] = '-';
-
-//     return strArray.join('');
-//   });
-// }
