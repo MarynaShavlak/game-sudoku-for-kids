@@ -35,6 +35,23 @@ function getRandomCharacterIndex(string) {
   return Math.floor(Math.random() * string.length);
 }
 
+// Функція для заміни цифр у рядку дефісами, приймає як аргументи рядок для заміни та індекси елементів йього рядку , які треба замінити на дефіси
+function replaceChars(str, index1, index2) {
+  return str
+    .split('') // Перетворюємо рядок із цифр на масив , в якому кожен елемент - рядок із однією цифрою.
+    .map((char, index) => {
+      // За допомогою цього методу проходимось по кожному елементу масиву (сhar)
+      // Перевіряємо чи співпадає індекс елементу масиву на поточній ітерації із будь-яким індексом , який треба замінити на дефіс
+      // Якщо співпадіння є, то замінюємо елемент під цим індексом на дефіс
+      if (index === index1 || index === index2) {
+        return '-';
+      }
+      // Якщо співпадіння немає, то повертаємо елемент без змін
+      return char;
+    }) // Отримуємо новий масив , в якому будуть вже дефіси замість тих цифр,індекси яких ми передали у функцію
+    .join(''); // Отриманий масив цифр та дефісів перетворюємо на рядок (склеюємо всі елементи)
+}
+
 function generateArrayWithUniqueDigit(N) {
   // Create an array with numbers from 1 to N
   const digits = Array.from({ length: N }, (_, index) =>
@@ -59,9 +76,13 @@ function generateArrayWithUniqueDigit(N) {
 function replaceDigits(array) {
   // Рандомно визначаємо індекс першого елементу масиву(рядку), в якому будемо 2 цифри заміняти на дефіси
   const stringWithTwoHyphensIndex1 = getRandomArrayElementIndex(array);
+  // Оголошуємо змінну , в яку запишемо індекс другого елементу масиву(рядку), в якому також будемо 2 цифри заміняти на дефіси
   let stringWithTwoHyphensIndex2;
+  // Індекс другого рядку на заміну цифр двома дефісами має бути відмінним від індексу першого рядку.
+  // Цикл do ...while виконуватиметься доти, доки індекс 2 стане не таким як індекс 1 ,
+  //тобто індекс другого рядка, в якому ми будемо 2 цифри заміняти на дефіси, буде рандомно генеруватись до першого неспівпадіння із індексом 1 ю
   do {
-    stringWithTwoHyphensIndex2 = Math.floor(Math.random() * array.length);
+    stringWithTwoHyphensIndex2 = getRandomArrayElementIndex(array);
   } while (stringWithTwoHyphensIndex2 === stringWithTwoHyphensIndex1);
 
   console.log('stringWithTwoHyphensIndex1: ', stringWithTwoHyphensIndex1);
