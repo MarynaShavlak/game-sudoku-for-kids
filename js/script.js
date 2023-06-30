@@ -6,15 +6,12 @@ let cardsTaskBoard = levelTasks[chosenLevel].task;
 const cardsContainer = document.querySelector('.cards-container');
 const bodyEl = document.querySelector('body');
 const backBtn = document.querySelector('.back-btn');
-const finishedImagesIndexes = solution.join('');
-// РОзраховуємо скільки всього має бути рядків на дошці
 
-const rowsQuantity = solution.length;
-const totalCards = calculateTotalCardsQuantity(solution);
 createTaskBoard();
 createImageSelectionBlock(solution);
 
 function calculateTotalCardsQuantity(solution) {
+  console.log('solution in calculateTotalCardsQuantity: ', solution);
   // Створюємо змінну, в яку будемо записувати скільки всього клітинок в нас має бути в завданні. Для початку записуємо в цю змінну нуль.
   let totalCards = 0;
   // Для того , щоб дізнатись скільки клітинок ми маємо створити, нам треба порахувати скільки всього цифр є в рядках масиву solutions. У нас 4 рядки по 4 цифри, тобто всього маэ бути 16 клітинок
@@ -30,11 +27,11 @@ function createListItem(imageIndex) {
   // створюємо лішку(додаємо їй потрібний клас)
   const li = document.createElement('li');
   li.className = 'card';
-  if (chosenTopic === 'theme1') {
-    li.style.backgroundColor = '#74eafd87';
-  } else if (chosenTopic === 'theme2') {
-    li.style.backgroundColor = '#cfb1cf87';
-  }
+  cardsTaskBoard = levelTasks[chosenLevel].task;
+  const cardsInRowQuantity = cardsTaskBoard.length;
+  setCardImageSizes(li, cardsInRowQuantity);
+  setEmptyCellBackground(li);
+
   // Перевіряємо чи має в нас клітинка бути вже із картинкою на початку гри чи повинна бути пустою
   // Вставляємо у лішку картинку тільки тоді коли ми маємо номер картинки ,  а не дефіс
   if (imageIndex !== '-') {
@@ -48,20 +45,6 @@ function createListItem(imageIndex) {
   return li;
 }
 
-// function createImage(theme, imageIndex) {
-//   // Створюємо елемент картинки із відповідними атрибутами
-//   const img = document.createElement('img');
-
-//   if (chosenTopic === 'theme1') {
-//     img.src = `./images/${chosenTopic}/${imageIndex}.png`;
-//     img.alt = `fish-${imageIndex}`;
-//   } else if (chosenTopic === 'theme2') {
-//     img.src = `./images/${chosenTopic}/${imageIndex}.png`;
-//     img.alt = `princess-${imageIndex}`;
-//   }
-//   return img;
-// }
-
 function generateTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
@@ -69,7 +52,6 @@ function generateTaskBoard() {
   cardsTaskBoard = levelTasks[chosenLevel].task;
   const cardsInRowQuantity = cardsTaskBoard.length;
   // Встановлюємо правильно ширину дошки для відповідної кількості картинок
-  setCardsBoardWidth(ul, cardsInRowQuantity);
   // Далі треба для кожного рядку із індексами картинок та дефісами (['-23-', '41-3', '-4-2', '23-1']) створити лішку із відповідною картинкою
   // Перебираємо кожен рядок із індексами картинок
 
@@ -107,6 +89,7 @@ function onСellOnBoardClick(e) {
     clickedElement.tagName === 'IMG'
       ? clickedElement.parentElement
       : clickedElement;
+  console.log('clickedCell: ', clickedCell);
   // console.log('clickedCell: ', clickedCell);
   // Перевіряємо чи є в натиснутій лішці картинка чи немає(чи пуста натиснута лішка)
   const isCellEmpty = !clickedCell.querySelector('img');
@@ -115,12 +98,16 @@ function onСellOnBoardClick(e) {
   if (isCellEmpty) {
     // Знаходимо який номер картинки правильний для натиснутої пустої клітинки
     const correctIndex = getIndexOfCorrectImageForClickedEmtyCell(clickedCell);
+    console.log('correctIndex: ', correctIndex);
     // Порівнюємо айдішник пустої клітинки із номером картинки , яку ми до цього обрали в блоці selection
     const isMatched = correctIndex == chosenImageIndex;
+    console.log('chosenImageIndex: ', chosenImageIndex);
+
     // Якщо співпадыння Є, то:
     if (isMatched) {
       //  створюємо розмітку картинки із коректнимм ідексом в  та вставляємо її в пусту лішку а яку ми клікнули
-      const imageToSetOnBoard = createImage(correctIndex);
+      const theme = themes[chosenTopic];
+      const imageToSetOnBoard = createImage(theme, correctIndex);
       clickedElement.appendChild(imageToSetOnBoard);
       //Позитивний звук(якщо вгадали)
       positiveSound();
@@ -143,6 +130,7 @@ function onСellOnBoardClick(e) {
 function getIndexOfCorrectImageForClickedEmtyCell(emptyCell) {
   // Знаходимо айдішник натиснутої пустої клітинки(лішки)
   const idOfLi = emptyCell.id;
+  console.log('idOfLi: ', idOfLi);
   // Так як айдішник - це рядок, що складається із двох цифр розділених дефісом, то треба перетворити цей рядок на масив , і в цьому масиві знайти другий елемент, так як перший відповідає за номер рядку на якому лішка знаходиться  в дошці,  а другий саме за номер картинки
   const index = idOfLi.split('-')[1];
   return index;
@@ -151,7 +139,15 @@ function getIndexOfCorrectImageForClickedEmtyCell(emptyCell) {
 function setUniqueIdForCards() {
   // Знаходимо всі елементи лішки із класом card на сторінці
   const allCardsElements = document.querySelectorAll('.card');
+  solution = levelTasks[chosenLevel].solution;
+  // Розраховуємо скільки всього картинок має бути на дошці
+  totalCards = calculateTotalCardsQuantity(solution);
+  // Розраховуємо скільки всього має бути рядків на дошці
+  const rowsQuantity = solution.length;
+  const finishedImagesIndexes = solution.join('');
+
   //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
+
   for (let index = 0; index < totalCards; index++) {
     const li = allCardsElements[index];
     const rowIndex = Math.ceil((index + 1) / (totalCards / rowsQuantity));
@@ -179,13 +175,20 @@ function onBackBtnClick() {
   showStartWindow();
 }
 
-function setCardsBoardWidth(block, elementsInOneRow) {
-  // В залежності від того скільки карток має бути у рядку встановлюємо ширину дошки
+function setCardImageSizes(card, elementsInOneRow) {
   if (elementsInOneRow == 4) {
-    block.style.width = '600px';
+    card.style.width = '150px';
+    card.style.height = '150px';
   } else if (elementsInOneRow == 5) {
-    block.style.width = '750px';
+    card.style.width = '120px';
+    card.style.height = '120px';
   } else if (elementsInOneRow == 6) {
-    block.style.width = '900px';
+    card.style.width = '100px';
+    card.style.height = '100px';
   }
+}
+
+function setEmptyCellBackground(cell) {
+  const themeColor = themeEmptyCellColors[chosenTopic];
+  cell.style.backgroundColor = themeColor;
 }

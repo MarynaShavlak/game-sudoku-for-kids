@@ -8,6 +8,16 @@ const themes = {
   theme6: 'fixic',
   theme7: 'paw',
 };
+// Кольори для пустих клітинок на дошці та у блоці вибоу картинки
+const themeEmptyCellColors = {
+  theme1: '#74eafd87',
+  theme2: '#cfb1cf87',
+  theme3: '#cef4ff87',
+  theme4: '#fec7aaa6',
+  theme5: '#f7afdf8f',
+  theme6: '#dbf1fecc',
+  theme7: '#5db8ed87',
+};
 
 const topics = [
   document.querySelector('#theme1'),

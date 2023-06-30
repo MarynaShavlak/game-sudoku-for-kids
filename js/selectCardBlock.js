@@ -12,6 +12,10 @@ function createLabel(theme, index) {
   const label = document.createElement('label');
   label.className = 'card';
   label.htmlFor = `${theme}-${index}`;
+  cardsTaskBoard = levelTasks[chosenLevel].task;
+  const cardsInRowQuantity = cardsTaskBoard.length;
+  setCardImageSizes(label, cardsInRowQuantity);
+  setEmptyCellBackground(label);
   return label;
 }
 
@@ -19,6 +23,7 @@ function createImage(theme, index) {
   const img = document.createElement('img');
   img.src = `./images/${chosenTopic}/${index}.png`;
   img.alt = `${theme}-${index}`;
+
   return img;
 }
 
@@ -60,7 +65,6 @@ function createImageSelectionBlock(solution) {
   solution = levelTasks[chosenLevel].solution;
   const imagesQuantity = solution.length;
   // Встановлюємо правильно ширину дошки для відповідної кількості картинок
-  setCardsBoardWidth(cardsWrapper, imagesQuantity);
   // Створюємо відповідну розмітку для кожної картки
   for (let i = 1; i <= imagesQuantity; i++) {
     createImageSelectionCard(cardsWrapper, i);
