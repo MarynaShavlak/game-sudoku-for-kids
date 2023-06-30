@@ -52,24 +52,34 @@ function replaceCharsInString(str, index1, index2) {
     .join(''); // Отриманий масив цифр та дефісів перетворюємо на рядок (склеюємо всі елементи)
 }
 
+//Функція для рандомного генерування варіантів розміщення карток. Приймає як аргумент кількість карток, що має бути в одному рядку.
 function generateArrayWithUniqueDigit(N) {
-  // Create an array with numbers from 1 to N
-  const digits = Array.from({ length: N }, (_, index) =>
-    (index + 1).toString(),
-  );
+  // Створюємо масив рядків, де кожен рядок - це цифра  від 1 до  N
+  const digits = [];
+  for (let i = 1; i <= N; i++) {
+    digits.push(i.toString());
+  }
 
-  // Create a new array to store the result
+  // Створюєсо новий масив, в якому будемо зберігати рядки із різними рандомними комбінаціями цифр.
   let result = [];
 
-  // Iterate over the digits array
+  // Створюємо цикл, що виконається N (задану) кількість разів для обертання масиву цифр , щоб згенерувати різні комбінації цих цифр. Тобто потрібно отримати N різних комбінацій цифр
   for (let i = 0; i < N; i++) {
-    // Rotate the digits array by one position for each iteration
-    const rotatedDigits = digits.slice(i).concat(digits.slice(0, i));
+    console.log('i: ', i);
+    // Здвигаємо масив цифр на одну позицію на кожній ітерації
+    const firstPartOfNewArray = digits.slice(i); // Cтворюємо новий масив , який включатиме всі елементи від масиву digits , починаючи від і-того і до кінця
+    const lastPartOfNewArray = digits.slice(0, i); // Cтворюємо новий масив , який включатиме всі елементи від масиву digits , починаючи від нульвого і до і-того(не включно)
 
-    // Push the rotated digits array as a string to the result array
-    result.push(rotatedDigits.join(''));
+    const rotatedDigits = firstPartOfNewArray.concat(lastPartOfNewArray); // З'єднуэмо два відрізки масивів у один у зворотньому порядку
+    const rotatedDigitsString = rotatedDigits.join(''); // Перетворюємо масив із рядок із цих чисел
+
+    // Додаємо у результуючий масив вже трансформований рядок із числами
+    result.push(rotatedDigitsString);
   }
+  console.log('result: ', result);
+  // Коли в результуючому масиві вже є рядки із цифрами, то послідовність цих рядків треба змінити у рандомному вигляді.
   shuffleArray(result);
+  // Повертаємо масив із рядками в рандомному порядку.
   return result;
 }
 
