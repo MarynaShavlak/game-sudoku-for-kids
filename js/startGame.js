@@ -33,15 +33,8 @@ restartGameBtn.addEventListener('click', onRestartGameBtnClick);
 
 //----при кліці на кнопку Старт----//
 function onStartGameBtnClick() {
-  // Перевіряємо чи обрав гравець всі опції
-  // if (
-  //   gameSettings.topic === null ||
-  //   gameSettings.level === null ||
-  //   gameSettings.timer === null
-  // ) {
-  //   // якщо хоча б одна опція не вибрана, то гра не має запускатись
-  //   return;
-  // }
+  createLifes();
+
   // Приховуємо стартове меню
   hideStartWindow();
   // Показуємо всі елементи гри

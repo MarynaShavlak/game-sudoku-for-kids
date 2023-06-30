@@ -11,7 +11,6 @@ createTaskBoard();
 createImageSelectionBlock(solution);
 
 function calculateTotalCardsQuantity(solution) {
-  console.log('solution in calculateTotalCardsQuantity: ', solution);
   // Створюємо змінну, в яку будемо записувати скільки всього клітинок в нас має бути в завданні. Для початку записуємо в цю змінну нуль.
   let totalCards = 0;
   // Для того , щоб дізнатись скільки клітинок ми маємо створити, нам треба порахувати скільки всього цифр є в рядках масиву solutions. У нас 4 рядки по 4 цифри, тобто всього маэ бути 16 клітинок
