@@ -72,28 +72,37 @@
 }
 
 /*END GAME WIN*/
-.end-game-win .modal__content {
+.end-game-win .modal__content, .end-game-lose .modal__content{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 500px;
   height: 400px;
-  background: url('../images/1.png') no-repeat center center;
+  
+  border: 1px solid white;
+}
+.end-game-win .modal__content{ 
+  background: url('../images/2.jpg') no-repeat center center;
   background-size: cover;
 }
+ .end-game-lose .modal__content{
+   background: url('../images/1.jpg') no-repeat center center;
+   background-size: cover;
+}
 
-.end-game-win h1 {
+.end-game-win p, .end-game-lose p {
+  color: white;
   font-size: 60px;
   margin: 0 auto;
 }
 
-.end-game-win img {
+.end-game-win img, .end-game-lose img {
   width: 150px;
   margin-bottom: 20px;
 }
 
-#restartBtnWin {
+#restartBtnWin, #restartBtnLose {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,67 +125,15 @@
 
 
 #restartBtnWin:hover span,
-#restartBtnWin:focus span {
-  color: rgb(217, 0, 51);
-
-}
-
-#restartBtnWin:hover,
-#restartBtnWin:focus {
-  background-color: white;
-}
-
-/*END GAME WIN*/
-.end-game-lose .modal__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 500px;
-  height: 400px;
-  background: url('../images/1.png') no-repeat center center;
-  background-size: cover;
-}
-
-.end-game-lose h1 {
-  font-size: 60px;
-  margin: 0 auto;
-}
-
-.end-game-lose img {
-  width: 150px;
-  margin-bottom: 20px;
-}
-
-#restartBtnLose {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* position: absolute; */
-  /* bottom: 200px; */
-  right: 300px;
-  font-family: 'Rubik Bubbles', cursive;
-  color: white;
-  padding: 20px 30px;
-  font-size: 40px;
-  border: none;
-  border: 3px solid rgb(217, 0, 51);
-  border-radius: 20px;
-  background-color: rgb(217, 0, 51);
-  margin: 0 auto;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.2) inset;
-  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-
-#restartBtnLose:hover span,
+#restartBtnWin:focus span, #restartBtnLose:hover span,
 #restartBtnLose:focus span {
   color: rgb(217, 0, 51);
 
 }
 
-#restartBtnLose:hover,
+#restartBtnWin:hover,
+#restartBtnWin:focus, #restartBtnLose:hover,
 #restartBtnLose:focus {
   background-color: white;
 }
+
