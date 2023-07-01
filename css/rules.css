@@ -1,0 +1,47 @@
+.cat-rules {
+  position: absolute;
+  bottom: -3px;
+  left: 30px;
+  width: 300px;
+  cursor: pointer;
+  -webkit-filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+  filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+}
+
+.cloud-rules {
+  position: absolute;
+  bottom: 340px;
+  left: 250px;
+  width: 320px;
+  cursor: pointer;
+  -webkit-filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+  filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+}
+
+#rules-window {
+  position: absolute;
+  bottom: 510px;
+  left: 300px;
+}
+
+#rules {
+  font-family: 'Rubik Bubbles', cursive;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: 100;
+  color: black;
+  cursor: pointer;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#rules:hover,
+#rules:focus {
+  color: rgb(217, 0, 51);
+}

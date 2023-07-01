@@ -1,0 +1,111 @@
+#start-window {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+
+}
+
+.game-title {
+  font-size: 70px;
+  margin-bottom: 30px;
+}
+
+#start-window-categories {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+
+.start-window-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.start-window-item .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 850px;
+}
+
+.topic-btn,
+.level,
+#game-with-timer,
+#game-without-timer {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  font-size: 0;
+}
+
+#game-without-timer {
+  background: url('../images/without-timer.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#game-with-timer {
+  background: url('../images/with-timer.gif') no-repeat center center;
+  background-size: cover;
+}
+
+#theme1 {
+  background: url('../images/theme1/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme2 {
+  background: url('../images/theme2/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme3 {
+  background: url('../images/theme3/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme4 {
+  background: url('../images/theme4/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme5 {
+  background: url('../images/theme5/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme6 {
+  background: url('../images/theme6/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme7 {
+  background: url('../images/theme7/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme8 {
+  background: url('../images/theme8/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#level1 {
+  background: url('../images/level1.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#level2 {
+  background: url('../images/level2.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#level3 {
+  background: url('../images/level3.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+

@@ -1,0 +1,35 @@
+.card-selection {
+  height: max-content;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.selection-block-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-selection .card {
+  background-color: #0c6abb8c;
+}
+
+.cards input {
+  display: none;
+}
+
+.cards input[type=radio]:checked+label {
+  border: 4px solid rgb(217, 0, 51);
+  border-radius: 5px;
+  transform: scale(1.1);
+}
+
+
+.topics-title {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 10px;
+}

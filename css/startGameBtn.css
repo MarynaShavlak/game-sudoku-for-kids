@@ -1,0 +1,88 @@
+#start-game-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Rubik Bubbles', cursive;
+  color: white;
+  padding: 20px 30px;
+  font-size: 60px;
+  border: none;
+  border: 3px solid rgb(217, 0, 51);
+  border-radius: 20px;
+  background-color: rgb(217, 0, 51);
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.2) inset;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+#start-game-btn:hover span,
+#start-game-btn:focus span {
+  color: rgb(217, 0, 51);
+
+}
+
+#start-game-btn:hover,
+#start-game-btn:focus {
+  background-color: white;
+}
+
+#start-game-btn span {
+  -webkit-text-stroke-width: 1.25px;
+  -webkit-text-stroke-color: #000;
+
+  text-shadow: 0 2px white, 0 2px rgb(245, 186, 187);
+  transform: translate(0, 20%) rotate(4deg);
+  animation: jump 2s ease-in-out infinite;
+  display: inline-block;
+  font-family: "Titan One", cursive;
+  color: white;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#start-game-btn span:nth-child(1) {
+  animation-delay: 120ms;
+}
+
+#start-game-btn span:nth-child(2) {
+  animation-delay: 240ms;
+}
+
+#start-game-btn span:nth-child(3) {
+  animation-delay: 360ms;
+}
+
+#start-game-btn span:nth-child(4) {
+  animation-delay: 480ms;
+}
+
+#start-game-btn span:nth-child(5) {
+  animation-delay: 600ms;
+}
+
+#start-game-btn span:nth-child(6) {
+  animation-delay: 720ms;
+}
+
+#start-game-btn span:nth-child(7) {
+  animation-delay: 840ms;
+}
+
+@keyframes jump {
+  50% {
+    transform: translate(0, 0) rotate(-4deg);
+    text-shadow: 0 2px black, 0 2px #84a9ac;
+  }
+}
+
+#start-game-btn,
+#rules,
+#restart-game-btn {
+  padding: 10px;
+  border-radius: 5px;
+}

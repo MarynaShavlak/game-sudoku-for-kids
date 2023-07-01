@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+body {
+  background: url('../images/start-background.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: end;
+  font-family: 'Rubik Bubbles', cursive;
+  padding-left:15px;
+  padding-right:15px;
+
+}
+
+button {
+  font-family: 'Rubik Bubbles', cursive;
+}
+
+ul,
+li,
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+
+.btn {
+  font-family: 'Rubik Bubbles', cursive;
+  width: 100%;
+  height: auto;
+  background-color: rgb(245, 186, 187);
+  border-radius: 10px;
+  border: 3px solid rgb(238, 119, 139);
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 100;
+  color: black;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.btn.active,
+.btn:hover,
+.btn:focus {
+  color: white;
+  background-color: rgb(217, 0, 51);
+  border: 5px solid rgb(217, 0, 51);
+  transform: scale(1.1);
+}
+
+.btn.active {
+  color: white;
+  background-color: rgb(217, 0, 51);
+  border: 5px solid rgb(217, 0, 51);
+  transform: scale(1.2);
+}

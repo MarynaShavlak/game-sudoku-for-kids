@@ -9,54 +9,58 @@
       href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/startPage.css" />
+    <link rel="stylesheet" href="./css/startGameBtn.css" />
+    <link rel="stylesheet" href="./css/rules.css" />
+    <link rel="stylesheet" href="./css/gameFieldMenu.css" />
+    <link rel="stylesheet" href="./css/selectCard.css" />
+    <link rel="stylesheet" href="./css/cardsBoard.css" />
     <title>KIDS Sudoku</title>
   </head>
   <body>
-    <!------- Розробка стартового вікна ------->
     <div id="start-window">
-      <h1 class="greeting">Судоку для малюків</h1>
-
+      <h1 class="game-title">Судоку для малюків</h1>
       <ul id="start-window-categories">
         <li class="start-window-item">
           <h2>Виберіть тип гри:</h2>
-          <button id="game-with-timer" class="btn">Гра з таймером</button>
-          <button id="game-without-timer" class="btn active">
-            Гра без таймера
-          </button>
+          <div class="container">
+            <button id="game-without-timer" class="btn active">
+              Гра без таймера
+            </button>
+            <button id="game-with-timer" class="btn">Гра з таймером</button>
+          </div>
         </li>
+
         <li class="start-window-item">
           <h2>Виберіть рівень складності:</h2>
-          <button id="level1" class="btn active">Рівень 1</button>
-          <button id="level2" class="btn">Рівень 2</button>
-          <button id="level3" class="btn">Рівень 3</button>
+          <div class="container">
+            <button id="level1" class="level btn active">Рівень 1</button>
+            <button id="level2" class="level btn">Рівень 2</button>
+            <button id="level3" class="level btn">Рівень 3</button>
+          </div>
         </li>
+
         <li class="start-window-item">
           <h2>Виберіть тему:</h2>
-          <button id="theme1" type="button" class="topic-btn btn active">
-            Морська
-          </button>
-          <button id="theme2" type="button" class="topic-btn btn">
-            Принцеси
-          </button>
-          <button id="theme3" type="button" class="topic-btn btn">
-            Солодощі
-          </button>
-          <button id="theme4" type="button" class="topic-btn btn">
-            Машинки
-          </button>
-          <button id="theme5" type="button" class="topic-btn btn">
-            Звірята
-          </button>
-          <button id="theme6" type="button" class="topic-btn btn">
-            Фіксики
-          </button>
-          <button id="theme7" type="button" class="topic-btn btn">
-            Щенячий патруль
-          </button>
+          <div class="container">
+            <button
+              id="theme1"
+              type="button"
+              class="topic-btn btn active"
+            ></button>
+            <button id="theme2" type="button" class="topic-btn btn"></button>
+            <button id="theme3" type="button" class="topic-btn btn"></button>
+            <button id="theme4" type="button" class="topic-btn btn"></button>
+            <button id="theme5" type="button" class="topic-btn btn"></button>
+            <button id="theme6" type="button" class="topic-btn btn"></button>
+            <button id="theme7" type="button" class="topic-btn btn"></button>
+            <button id="theme8" type="button" class="topic-btn btn"></button>
+          </div>
         </li>
       </ul>
-      <button id="start-game" class="wrapper">
+      <button id="start-game-btn">
         <span>С</span>
         <span>Т</span>
         <span>А</span>
@@ -75,16 +79,15 @@
     <div id="game-window">
       <div class="menu">
         <button type="button" class="back-btn">Назад до меню</button>
-
-        <div class="lifes"></div>
         <div class="timer"><span></span></div>
+        <div class="lifes"></div>
       </div>
     </div>
 
     <div class="cards-container"></div>
     <!------- Вікно завершення гри ------->
     <div id="end-window">
-      <button id="restart-game">Перезапустити гру</button>
+      <button id="restart-game-btn">Перезапустити гру</button>
     </div>
     <script src="js/audio.js"></script>
     <script src="js/gameTimeType.js"></script>

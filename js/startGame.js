@@ -1,8 +1,8 @@
 document.getElementById('rules').addEventListener('click', showRules);
 const startWindow = document.getElementById('start-window');
 const gameWindow = document.getElementById('game-window');
-const startGameBtn = document.getElementById('start-game');
-const restartGameBtn = document.getElementById('restart-game');
+const startGameBtn = document.getElementById('start-game-btn');
+const restartGameBtn = document.getElementById('restart-game-btn');
 const endWindow = document.getElementById('end-window');
 //----правила гри----//
 function showRules() {
