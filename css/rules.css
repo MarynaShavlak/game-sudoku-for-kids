@@ -1,5 +1,5 @@
 .cat-rules {
-    z-index: -1;
+  /* z-index: -1; */
   position: absolute;
   bottom: -3px;
   left: 30px;
@@ -10,7 +10,7 @@
 }
 
 .cloud-rules {
-  z-index: -1;
+  /* z-index: -1; */
   position: absolute;
   bottom: 240px;
   left: 170px;
@@ -21,7 +21,7 @@
 }
 
 #rules-window {
-  z-index: -1;
+  /* z-index: -1; */
   position: absolute;
   bottom: 370px;
   left: 220px;

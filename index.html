@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./css/gameFieldMenu.css" />
     <link rel="stylesheet" href="./css/selectCard.css" />
     <link rel="stylesheet" href="./css/cardsBoard.css" />
+    <link rel="stylesheet" href="./css/modals.css" />
     <title>KIDS Sudoku</title>
   </head>
   <body>
@@ -75,6 +76,65 @@
         <div id="rules-window">
           <button id="rules">Правила гри</button>
           <p></p>
+        </div>
+      </div>
+      <!-- Модальне вікно з правилами -->
+      <div class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+          <div class="modal__header">
+            <p class="modal__header-text">Правила</p>
+            <img
+              class="modal__closeIcon"
+              src="./images/icon-close.svg"
+              alt="close icon"
+            />
+          </div>
+          <img
+            class="modal__image"
+            src="./images/cloud.gif"
+            alt="rules image"
+          />
+          <p class="modal__text">
+            Обрати картинку в правому полі. Розмістити її в пусту клітину так,
+            щоб однакові фігури не збігалися в рядках і стовпчиках.
+          </p>
+        </div>
+      </div>
+
+      <!-- Модальне вікно ПЕРЕМОГА-->
+      <div class="end-game-win modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+          <img src="./images/smile.png" alt="game over" />
+          <h1>Перемога</h1>
+          <button id="restartBtnWin" class="wrapper">
+            <span>Р</span>
+            <span>Е</span>
+            <span>С</span>
+            <span>Т</span>
+            <span>А</span>
+            <span>Р</span>
+            <span>Т</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Модальне вікно ПОРАЗКА-->
+      <div class="end-game-lose modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+          <img src="./images/smile-sad.png" alt="game over" />
+          <h1>Поразка</h1>
+          <button id="restartBtnLose" class="wrapper">
+            <span>Р</span>
+            <span>Е</span>
+            <span>С</span>
+            <span>Т</span>
+            <span>А</span>
+            <span>Р</span>
+            <span>Т</span>
+          </button>
         </div>
       </div>
 
@@ -144,6 +204,7 @@
     <script src="js/lifes.js"></script>
     <script src="js/timer.js"></script>
     <script src="js/topics.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/createCardsBoard.js"></script>
     <script src="js/script.js"></script>
     <script src="js/startGame.js"></script>

@@ -1,0 +1,182 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: all .3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal--isActive {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__overlay {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 1;
+  background: url('../images/background_rules.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.modal__header {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.modal__header-text {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.modal__closeIcon {
+  width: 30px;
+}
+
+.modal__image {
+  /* width: 100%; */
+  width: 450px;
+  height: 350px;
+}
+
+.modal__text {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+}
+
+/*END GAME WIN*/
+.end-game-win .modal__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  background: url('../images/backgroundGameOver.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.end-game-win h1 {
+  font-size: 60px;
+  margin: 0 auto;
+}
+
+.end-game-win img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+#restartBtnWin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+  /* bottom: 200px; */
+  right: 300px;
+  font-family: 'Rubik Bubbles', cursive;
+  color: white;
+  padding: 20px 30px;
+  font-size: 40px;
+  border: none;
+  border: 3px solid rgb(217, 0, 51);
+  border-radius: 20px;
+  background-color: rgb(217, 0, 51);
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.2) inset;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+#restartBtnWin:hover span,
+#restartBtnWin:focus span {
+  color: rgb(217, 0, 51);
+
+}
+
+#restartBtnWin:hover,
+#restartBtnWin:focus {
+  background-color: white;
+}
+
+/*END GAME WIN*/
+.end-game-lose .modal__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  background: url('../images/backgroundGameOver.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.end-game-lose h1 {
+  font-size: 60px;
+  margin: 0 auto;
+}
+
+.end-game-lose img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+#restartBtnLose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+  /* bottom: 200px; */
+  right: 300px;
+  font-family: 'Rubik Bubbles', cursive;
+  color: white;
+  padding: 20px 30px;
+  font-size: 40px;
+  border: none;
+  border: 3px solid rgb(217, 0, 51);
+  border-radius: 20px;
+  background-color: rgb(217, 0, 51);
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.2) inset;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+#restartBtnLose:hover span,
+#restartBtnLose:focus span {
+  color: rgb(217, 0, 51);
+
+}
+
+#restartBtnLose:hover,
+#restartBtnLose:focus {
+  background-color: white;
+}
