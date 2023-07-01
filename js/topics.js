@@ -7,6 +7,7 @@ const themes = {
   theme5: 'animal',
   theme6: 'fixic',
   theme7: 'paw',
+  theme8: 'minion',
 };
 // Кольори для пустих клітинок на дошці та у блоці вибоу картинки
 const themeEmptyCellColors = {
@@ -17,6 +18,7 @@ const themeEmptyCellColors = {
   theme5: '#f7afdf8f',
   theme6: '#dbf1fecc',
   theme7: '#5db8ed87',
+  theme8: '#5db8ed87',
 };
 
 const topics = [
@@ -27,6 +29,7 @@ const topics = [
   document.querySelector('#theme5'),
   document.querySelector('#theme6'),
   document.querySelector('#theme7'),
+  document.querySelector('#theme8'),
 ];
 topics.forEach(topic => {
   topic.onclick = onTopicBtnClick;

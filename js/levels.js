@@ -1,5 +1,3 @@
-let chosenLevel = 'level1';
-
 const levelBtnCollection = [
   document.querySelector('#level1'),
   document.querySelector('#level2'),
