@@ -65,7 +65,7 @@ function createImageSelectionBlock(solution) {
   const title = document.createElement('h2');
   title.className = 'selection-block-title';
   title.innerText = 'Обери картинку';
-  cardsWrapper.className = 'cards';
+  cardsWrapper.className = 'cards-options';
   // Знаходимо загальну кількість карток , яку треба вставити в цей блок
   // solution = levelTasks[chosenLevel].solution;
   solution = generatedSolution;

@@ -1,9 +1,27 @@
 .card-selection {
+  display: flex;
+  flex-direction: column;
   height: max-content;
-  padding: 20px;
+  align-items: center;
+  
+  width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-radius: 20px;
-  background-color: white;
+  /* background-color: white; */
 }
+
+.cards-options {
+  /* width: auto; */
+  min-width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* flex-direction: column; */
+ 
+}
+
+
 
 .selection-block-title {
   font-size: 30px;
@@ -15,11 +33,11 @@
   background-color: #0c6abb8c;
 }
 
-.cards input {
+.cards-options input {
   display: none;
 }
 
-.cards input[type=radio]:checked+label {
+.cards-options input[type=radio]:checked+label {
   border: 4px solid rgb(217, 0, 51);
   border-radius: 5px;
   transform: scale(1.1);
