@@ -326,15 +326,30 @@ function createTaskArrayWithHyphen(array) {
       const randomIndex1 = getRandomCharacterIndex(str);
       let randomIndex2;
       let randomIndex3;
-      if (
+      const areTwoStringsWithTwoHyphens =
         index === stringWithTwoHyphensIndex1 ||
-        index === stringWithTwoHyphensIndex2
-      ) {
+        index === stringWithTwoHyphensIndex2;
+
+      const areThreeStringsWithTwoHyphens =
+        array.length == 6 &&
+        (index === stringWithTwoHyphensIndex1 ||
+          index === stringWithTwoHyphensIndex2 ||
+          index === stringWithTwoHyphensIndex3);
+
+      const areThreeStringsWithThreeHyphens =
+        array.length == 6 &&
+        (index === stringWithThreeHyphensIndex1 ||
+          index === stringWithThreeHyphensIndex2 ||
+          index === stringWithThreeHyphensIndex3);
+      const isOneStringWithThreeHyphens =
+        array.length == 5 && index === stringWithThreeHyphensIndex1;
+
+      if (areTwoStringsWithTwoHyphens) {
         do {
           randomIndex2 = getRandomCharacterIndex(str);
         } while (randomIndex2 === randomIndex1);
         return replaceCharsInString(str, randomIndex1, randomIndex2);
-      } else if (array.length == 5 && index === stringWithThreeHyphensIndex1) {
+      } else if (isOneStringWithThreeHyphens) {
         do {
           randomIndex2 = getRandomCharacterIndex(str);
         } while (randomIndex2 === randomIndex1);
@@ -350,22 +365,12 @@ function createTaskArrayWithHyphen(array) {
           randomIndex2,
           randomIndex3,
         );
-      } else if (
-        array.length == 6 &&
-        (index === stringWithTwoHyphensIndex1 ||
-          index === stringWithTwoHyphensIndex2 ||
-          index === stringWithTwoHyphensIndex3)
-      ) {
+      } else if (areThreeStringsWithTwoHyphens) {
         do {
           randomIndex2 = getRandomCharacterIndex(str);
         } while (randomIndex2 === randomIndex1);
         return replaceCharsInString(str, randomIndex1, randomIndex2);
-      } else if (
-        array.length == 6 &&
-        (index === stringWithThreeHyphensIndex1 ||
-          index === stringWithThreeHyphensIndex2 ||
-          index === stringWithThreeHyphensIndex3)
-      ) {
+      } else if (areThreeStringsWithThreeHyphens) {
         do {
           randomIndex2 = getRandomCharacterIndex(str);
         } while (randomIndex2 === randomIndex1);
