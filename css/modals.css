@@ -79,17 +79,16 @@
   align-items: center;
   width: 500px;
   height: 400px;
-  
   border: 1px solid white;
 }
-.end-game-win .modal__content{ 
+/* .end-game-win .modal__content{ 
   background: url('../images/2.jpg') no-repeat center center;
   background-size: cover;
 }
  .end-game-lose .modal__content{
    background: url('../images/1.jpg') no-repeat center center;
    background-size: cover;
-}
+} */
 
 .end-game-win p, .end-game-lose p {
   color: white;

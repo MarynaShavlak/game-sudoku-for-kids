@@ -45,11 +45,18 @@ let loseWindow = document.querySelector('.end-game-lose.modal');
 
 //Відкриття вікна з перемогою
 function openWinWindow() {
+  const content = document.querySelector('.end-game-win .modal__content');
+  content.style.background = `url('./images/${chosenTopic}/win.jpg') no-repeat center center`;
+  content.style.backgroundSize = 'cover';
   winWindow.classList.add('modal--isActive');
 }
 
 //Відкриття вікна з поразкою
 function openLoseWindow() {
+  const content = document.querySelector('.end-game-lose .modal__content');
+  content.style.background = `url('./images/${chosenTopic}/lose.jpg') no-repeat center center`;
+  content.style.backgroundSize = 'cover';
+
   loseWindow.classList.add('modal--isActive');
 }
 
