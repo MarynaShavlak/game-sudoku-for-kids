@@ -2,14 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  right: 300px;
+  /* position: absolute;
+  right: 180px;
+  bottom: 100px; */
   padding: 10px;
   border-radius: 5px;
   font-family: 'Rubik Bubbles', cursive;
   color: white;
   padding: 20px 30px;
-  font-size: 60px;
+  font-size: 40px;
   border: none;
   border: 3px solid rgb(217, 0, 51);
   border-radius: 20px;
@@ -80,9 +81,4 @@
   }
 }
 
-#start-game-btn,
-#rules,
-#restart-game-btn {
-  padding: 10px;
-  border-radius: 5px;
-}
+

@@ -20,75 +20,80 @@
     <title>KIDS Sudoku</title>
   </head>
   <body>
-    <div id="start-window">
-      <h1 class="game-title">Судоку для малюків</h1>
-      <ul id="start-window-categories">
-        <li class="start-window-item">
-          <h2>Виберіть тип гри:</h2>
-          <div class="container">
-            <button id="game-without-timer" class="btn active">
-              Гра без таймера
+    <div class="game-wrapper">
+      <div id="start-window">
+        <h1 class="game-title">Судоку для малюків</h1>
+        <div id="start-window-categories">
+          <div class="start-window-item">
+            <h2>Виберіть тему:</h2>
+            <div class="container topics">
+              <button
+                id="theme1"
+                type="button"
+                class="topic-btn btn active"
+              ></button>
+              <button id="theme2" type="button" class="topic-btn btn"></button>
+              <button id="theme3" type="button" class="topic-btn btn"></button>
+              <button id="theme4" type="button" class="topic-btn btn"></button>
+              <button id="theme5" type="button" class="topic-btn btn"></button>
+              <button id="theme6" type="button" class="topic-btn btn"></button>
+              <button id="theme7" type="button" class="topic-btn btn"></button>
+              <button id="theme8" type="button" class="topic-btn btn"></button>
+            </div>
+          </div>
+
+          <div class="item-wrapper">
+            <div class="start-window-item">
+              <h2>Виберіть рівень складності:</h2>
+              <div class="container">
+                <button id="level1" class="level btn active">Рівень 1</button>
+                <button id="level2" class="level btn">Рівень 2</button>
+                <button id="level3" class="level btn">Рівень 3</button>
+              </div>
+            </div>
+            <div class="start-window-item">
+              <h2>Виберіть тип гри:</h2>
+              <div class="container">
+                <button id="game-without-timer" class="btn active">
+                  Гра без таймера
+                </button>
+                <button id="game-with-timer" class="btn">Гра з таймером</button>
+              </div>
+            </div>
+            <button id="start-game-btn">
+              <span>С</span>
+              <span>Т</span>
+              <span>А</span>
+              <span>Р</span>
+              <span>Т</span>
             </button>
-            <button id="game-with-timer" class="btn">Гра з таймером</button>
           </div>
-        </li>
+        </div>
 
-        <li class="start-window-item">
-          <h2>Виберіть рівень складності:</h2>
-          <div class="container">
-            <button id="level1" class="level btn active">Рівень 1</button>
-            <button id="level2" class="level btn">Рівень 2</button>
-            <button id="level3" class="level btn">Рівень 3</button>
-          </div>
-        </li>
+        <img src="images/cat.gif" alt="cat" class="cat-rules" />
+        <img src="images/cloud.gif" alt="cat" class="cloud-rules" />
+        <div id="rules-window">
+          <button id="rules">Правила гри</button>
+          <p></p>
+        </div>
+      </div>
 
-        <li class="start-window-item">
-          <h2>Виберіть тему:</h2>
-          <div class="container">
-            <button
-              id="theme1"
-              type="button"
-              class="topic-btn btn active"
-            ></button>
-            <button id="theme2" type="button" class="topic-btn btn"></button>
-            <button id="theme3" type="button" class="topic-btn btn"></button>
-            <button id="theme4" type="button" class="topic-btn btn"></button>
-            <button id="theme5" type="button" class="topic-btn btn"></button>
-            <button id="theme6" type="button" class="topic-btn btn"></button>
-            <button id="theme7" type="button" class="topic-btn btn"></button>
-            <button id="theme8" type="button" class="topic-btn btn"></button>
-          </div>
-        </li>
-      </ul>
-      <button id="start-game-btn">
-        <span>С</span>
-        <span>Т</span>
-        <span>А</span>
-        <span>Р</span>
-        <span>Т</span>
-      </button>
-      <img src="images/cat.gif" alt="cat" class="cat-rules" />
-      <img src="images/cloud.gif" alt="cat" class="cloud-rules" />
-      <div id="rules-window">
-        <button id="rules">Правила гри</button>
-        <p></p>
+      <!------- МЕНЮ ------->
+      <div id="game-window">
+        <div class="menu">
+          <button type="button" class="back-btn">Назад до меню</button>
+          <div class="timer"><span></span></div>
+          <div class="lifes"></div>
+        </div>
+      </div>
+
+      <div class="cards-container"></div>
+      <!------- Вікно завершення гри ------->
+      <div id="end-window">
+        <button id="restart-game-btn">Перезапустити гру</button>
       </div>
     </div>
 
-    <!------- МЕНЮ ------->
-    <div id="game-window">
-      <div class="menu">
-        <button type="button" class="back-btn">Назад до меню</button>
-        <div class="timer"><span></span></div>
-        <div class="lifes"></div>
-      </div>
-    </div>
-
-    <div class="cards-container"></div>
-    <!------- Вікно завершення гри ------->
-    <div id="end-window">
-      <button id="restart-game-btn">Перезапустити гру</button>
-    </div>
     <script src="js/audio.js"></script>
     <script src="js/gameTimeType.js"></script>
     <script src="js/randomGenerateTaskAndSolution.js"></script>

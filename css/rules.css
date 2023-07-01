@@ -1,27 +1,30 @@
 .cat-rules {
+    z-index: -1;
   position: absolute;
   bottom: -3px;
   left: 30px;
-  width: 300px;
+  width: 200px;
   cursor: pointer;
   -webkit-filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
   filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
 }
 
 .cloud-rules {
+  z-index: -1;
   position: absolute;
-  bottom: 340px;
-  left: 250px;
-  width: 320px;
+  bottom: 240px;
+  left: 170px;
+  width: 250px;
   cursor: pointer;
   -webkit-filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
   filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
 }
 
 #rules-window {
+  z-index: -1;
   position: absolute;
-  bottom: 510px;
-  left: 300px;
+  bottom: 370px;
+  left: 220px;
 }
 
 #rules {
@@ -34,7 +37,7 @@
   border-radius: 10px;
   border: none;
   padding: 10px;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 100;
   color: black;
   cursor: pointer;

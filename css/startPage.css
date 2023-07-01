@@ -6,13 +6,14 @@
 }
 
 .game-title {
+  text-align: end;
   font-size: 70px;
   margin-bottom: 30px;
 }
 
 #start-window-categories {
   display: flex;
-  flex-direction: column-reverse;
+  /* flex-direction: column; */
   gap: 30px;
   margin-bottom: 50px;
 }
@@ -25,12 +26,25 @@
   gap: 20px;
 }
 
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+}
+
+.item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+
 .start-window-item .container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
-  width: 850px;
+  /* width: 850px; */
 }
 
 .topic-btn,
