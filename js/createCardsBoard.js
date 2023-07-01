@@ -105,6 +105,10 @@ function onСellOnBoardClick(e) {
       clickedElement.appendChild(imageToSetOnBoard);
       //Позитивний звук(якщо вгадали)
       positiveSound();
+      const isTaskSolved = checkIfTaskSolved();
+      if (isTaskSolved) {
+        openWinWindow();
+      }
     } else {
       //Зменшення життів
       minusLife();
@@ -183,4 +187,11 @@ function onBackBtnClick() {
   hideGameField();
   showStartWindow();
   resetAndStopAudioPlayer();
+}
+
+function checkIfTaskSolved() {
+  const cardsBox = document.querySelector('.cards');
+  const cells = [...cardsBox.children];
+  const isTaskSolved = cells.every(cell => cell.querySelector('img'));
+  return isTaskSolved;
 }

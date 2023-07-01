@@ -25,6 +25,7 @@ function countdownTime() {
     if (timer <= 0) {
       // timerBlock.innerText = "0";
       clearInterval(timerID);
+      openLoseWindow();
 
       //----------------------------------------------------------
       console.log('Game Over');
