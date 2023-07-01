@@ -16,7 +16,6 @@ const timerValue = {
 function countdownTime() {
   //Записуємо скіьки часу виділяємо на гру в залежності від рівня гри
   timer = timerValue[chosenLevel];
-  console.log('timer: ', timer);
   timerBlock.innerHTML = timer;
   console.log('timerBlock.innerHTML: ', timerBlock.innerHTML);
   timerID = setInterval(function () {

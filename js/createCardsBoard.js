@@ -38,7 +38,6 @@ function generateTaskBoard() {
   // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
   ul.className = 'cards';
-  console.log('chosenLevel: ', chosenLevel);
   if (chosenLevel === 'level1') {
     generatedSolution = generateArrayWithUniqueDigit(4);
   } else if (chosenLevel === 'level2') {
@@ -48,7 +47,6 @@ function generateTaskBoard() {
   }
 
   generatedTask = createTaskArrayWithHyphen(generatedSolution);
-  console.log('generatedTask: ', generatedTask);
   // cardsTaskBoard = levelTasks[chosenLevel].task;
   cardsTaskBoard = generatedTask;
   const cardsInRowQuantity = cardsTaskBoard.length;
@@ -90,19 +88,14 @@ function onСellOnBoardClick(e) {
     clickedElement.tagName === 'IMG'
       ? clickedElement.parentElement
       : clickedElement;
-  console.log('clickedCell: ', clickedCell);
-  // console.log('clickedCell: ', clickedCell);
   // Перевіряємо чи є в натиснутій лішці картинка чи немає(чи пуста натиснута лішка)
   const isCellEmpty = !clickedCell.querySelector('img');
-  // console.log('e.target: ', e.target);
   //Якщо ми клікнули в пусту клітинку, то:
   if (isCellEmpty) {
     // Знаходимо який номер картинки правильний для натиснутої пустої клітинки
     const correctIndex = getIndexOfCorrectImageForClickedEmtyCell(clickedCell);
-    console.log('correctIndex: ', correctIndex);
     // Порівнюємо айдішник пустої клітинки із номером картинки , яку ми до цього обрали в блоці selection
     const isMatched = correctIndex == chosenImageIndex;
-    console.log('chosenImageIndex: ', chosenImageIndex);
 
     // Якщо співпадыння Є, то:
     if (isMatched) {
@@ -131,7 +124,6 @@ function onСellOnBoardClick(e) {
 function getIndexOfCorrectImageForClickedEmtyCell(emptyCell) {
   // Знаходимо айдішник натиснутої пустої клітинки(лішки)
   const idOfLi = emptyCell.id;
-  console.log('idOfLi: ', idOfLi);
   // Так як айдішник - це рядок, що складається із двох цифр розділених дефісом, то треба перетворити цей рядок на масив , і в цьому масиві знайти другий елемент, так як перший відповідає за номер рядку на якому лішка знаходиться  в дошці,  а другий саме за номер картинки
   const index = idOfLi.split('-')[1];
   return index;

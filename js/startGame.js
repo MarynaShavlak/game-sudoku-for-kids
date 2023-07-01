@@ -3,29 +3,6 @@ const gameWindow = document.getElementById('game-window');
 const startGameBtn = document.getElementById('start-game-btn');
 const restartGameBtn = document.getElementById('restart-game-btn');
 const endWindow = document.getElementById('end-window');
-//----правила гри----//
-// function showRules() {
-//   const rulesWindow = document.createElement('div');
-//   rulesWindow.id = 'rules-window';
-//   rulesWindow.innerHTML = '<h2>Правила гри:</h2><p></p>';
-
-//   startWindow.appendChild(rulesWindow);
-
-//   document.addEventListener('click', closeRules);
-
-//   startWindow.style.pointerEvents = 'none';
-// }
-
-// function closeRules(event) {
-//   if (!event.target.closest('#rules-window')) {
-//     const rulesWindow = document.getElementById('rules-window');
-//     rulesWindow.parentNode.removeChild(rulesWindow);
-
-//     startWindow.style.pointerEvents = 'auto';
-
-//     document.removeEventListener('click', closeRules);
-//   }
-// }
 
 startGameBtn.addEventListener('click', onStartGameBtnClick);
 restartGameBtn.addEventListener('click', onRestartGameBtnClick);

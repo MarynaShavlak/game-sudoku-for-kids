@@ -27,6 +27,7 @@
 }
 
 .topics {
+  z-index:2;
   display: flex;
   flex-wrap: wrap;
   width: 300px;

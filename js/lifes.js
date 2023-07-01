@@ -34,6 +34,5 @@ function createLifes() {
 
 function setLifeStyle(el) {
   const theme = chosenTopic;
-  console.log('theme: ', theme);
   el.style.backgroundImage = `url('./images/${theme}/life.png')`;
 }

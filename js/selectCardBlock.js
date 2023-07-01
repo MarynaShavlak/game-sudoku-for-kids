@@ -57,7 +57,6 @@ function onImageFromSelectionBlockClick(e) {
 }
 
 function createImageSelectionBlock(solution) {
-  console.log('solution: ', solution);
   // Створюємо блок , в якому будуть зберігатись картки для вибору
   const cardsSelectionBlock = document.createElement('div');
   cardsSelectionBlock.className = 'card-selection';

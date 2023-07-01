@@ -56,7 +56,7 @@
 }
 
 
-.sounds svg {
+.sounds svg, .music svg {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -65,12 +65,34 @@
   height: 50px;
   cursor: pointer;
   fill: black;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.sounds {
+
+.music svg {
+  width: 40px;
+    height: 40px;
+}
+
+.sounds, .music  {
   position: absolute;
-  top: 100px;
-  right: 20px;
   background-color: #fff;
   border-radius: 50%;
   padding: 30px;
+  transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.sounds {
+  top: 15px;
+  left: 320px;
+}
+
+.music {
+  top: 15px;
+  left: 400px;
+}
+
+.sounds:hover, .music:hover {
+  background-color: black;
+}
+.sounds:hover svg, .music:hover svg {
+  fill: #fff;
 }
