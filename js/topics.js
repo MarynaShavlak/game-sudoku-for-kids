@@ -1,4 +1,3 @@
-let chosenTopic = 'theme1';
 const themes = {
   theme1: 'fish',
   theme2: 'princess',

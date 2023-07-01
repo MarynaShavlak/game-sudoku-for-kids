@@ -41,6 +41,7 @@ function onStartGameBtnClick() {
   showGameField();
   // В залежності від того чи є обмеження у часі чи немає ми або показуємо блок із таймером або ні
   setTimerInterface();
+  setBackgroundSound(chosenTopic);
 }
 
 //----ховаємо блок із стартом гри ----//

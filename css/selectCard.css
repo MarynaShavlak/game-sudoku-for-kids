@@ -8,25 +8,24 @@
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 20px;
-  /* background-color: white; */
 }
 
 .cards-options {
-  /* width: auto; */
   min-width: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* flex-direction: column; */
  
 }
-
 
 
 .selection-block-title {
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .card-selection .card {
@@ -51,3 +50,4 @@
   font-size: 40px;
   margin-bottom: 10px;
 }
+

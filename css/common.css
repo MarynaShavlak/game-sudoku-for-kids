@@ -7,11 +7,12 @@ html
   height: 100%;
 }
 
+
 html,
 body {
   height: 100%;
   overflow: hidden;
-}
+} 
 
 
 body {
@@ -20,17 +21,19 @@ body {
   display: flex;
   justify-content: end;
   font-family: 'Rubik Bubbles', cursive;
-  padding-left:15px;
-  padding-right:15px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
 
 }
 
 .game-wrapper {
-  height: 100%;
-  overflow: auto;
+
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
 
 }
 
@@ -58,7 +61,9 @@ img {
 .hidden {
   visibility: hidden;
 }
-
+ label {
+   overflow: hidden;
+ }
 
 .btn {
   font-family: 'Rubik Bubbles', cursive;
@@ -90,4 +95,29 @@ img {
   background-color: rgb(217, 0, 51);
   border: 5px solid rgb(217, 0, 51);
   transform: scale(1.2);
+}
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 5px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #ddd;
 }

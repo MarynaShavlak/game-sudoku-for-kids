@@ -1,10 +1,3 @@
-function onBackBtnClick() {
-  // якщо таймер був запущений, то при клыцы на кпопку переходу у стартому меню треба зупиняти таймер
-  clearInterval(timerID);
-  hideGameField();
-  showStartWindow();
-}
-
 function calculateTotalCardsQuantity(solution) {
   // Створюємо змінну, в яку будемо записувати скільки всього клітинок в нас має бути в завданні. Для початку записуємо в цю змінну нуль.
   let totalCards = 0;
@@ -190,4 +183,12 @@ function setCardImageSizes(card, elementsInOneRow) {
 function setEmptyCellBackground(cell) {
   const themeColor = themeEmptyCellColors[chosenTopic];
   cell.style.backgroundColor = themeColor;
+}
+
+function onBackBtnClick() {
+  // якщо таймер був запущений, то при клыцы на кпопку переходу у стартому меню треба зупиняти таймер
+  clearInterval(timerID);
+  hideGameField();
+  showStartWindow();
+  resetAndStopAudioPlayer();
 }
