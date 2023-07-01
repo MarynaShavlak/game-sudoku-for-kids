@@ -32,6 +32,7 @@ restartGameBtn.addEventListener('click', onRestartGameBtnClick);
 
 //----при кліці на кнопку Старт----//
 function onStartGameBtnClick() {
+  lifes = lifesValue[chosenLevel];
   createLifes();
 
   // Приховуємо стартове меню

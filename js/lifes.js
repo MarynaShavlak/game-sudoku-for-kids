@@ -1,5 +1,9 @@
 /*========== ЖИТТЯ ========== */
-
+const lifesValue = {
+  level1: 3,
+  level2: 4,
+  level3: 5,
+};
 //Функція віднімання життів і закінчення гри
 function minusLife() {
   lifes--;
@@ -9,6 +13,7 @@ function minusLife() {
       console.log('Game Over');
       //тут буде функція завершення гри та фінальне вікно з поразкою
       //----------------------------------------------------------
+      openLoseWindow();
     }, 300);
   }
   createLifes();

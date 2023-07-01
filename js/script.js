@@ -2,7 +2,7 @@ let emptyCellIndex = null; // на початку гри користувач щ
 let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
 let chosenLevel = 'level1';
 let chosenTopic = 'theme1';
-let lifes = 3; //Кількість життів
+let lifes; //Кількість життів
 let generatedSolution = generateArrayWithUniqueDigit(4);
 let generatedTask = createTaskArrayWithHyphen(generatedSolution);
 let solution = generatedSolution;
