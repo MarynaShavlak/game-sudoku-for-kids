@@ -91,7 +91,7 @@
 } */
 
 .end-game-win p, .end-game-lose p {
-  color: white;
+  color: rgb(217, 0, 51);
   font-size: 60px;
   margin: 0 auto;
 }
