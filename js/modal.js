@@ -71,15 +71,25 @@ function closeLoseWindow() {
 }
 
 restartBtnWin.onclick = function () {
-  clearInterval(timerID);
+  reloadGame();
   closeWinWindow();
-  hideGameField();
-  showStartWindow();
 };
 
 restartBtnLose.onclick = function () {
-  clearInterval(timerID);
+  reloadGame();
   closeLoseWindow();
+};
+
+function reloadGame() {
+  resetAndStopAudioPlayer();
+  clearInterval(timerID);
   hideGameField();
   showStartWindow();
-};
+  resetCardsBoard();
+}
+
+function resetCardsBoard() {
+  cardsContainer.innerHTML = '';
+  createTaskBoard();
+  createImageSelectionBlock(solution);
+}

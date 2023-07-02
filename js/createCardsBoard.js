@@ -187,6 +187,7 @@ function onBackBtnClick() {
   hideGameField();
   showStartWindow();
   resetAndStopAudioPlayer();
+  resetCardsBoard();
 }
 
 function checkIfTaskSolved() {

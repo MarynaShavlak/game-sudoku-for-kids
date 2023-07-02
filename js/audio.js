@@ -49,6 +49,7 @@ function toggleMusic() {
 }
 
 function resetAndStopAudioPlayer() {
+  console.log('resetAudioPlayer');
   audioPlayer.currentTime = 0;
   audioPlayer.pause();
 }

@@ -1,14 +1,13 @@
 const startWindow = document.getElementById('start-window');
 const gameWindow = document.getElementById('game-window');
 const startGameBtn = document.getElementById('start-game-btn');
-const restartGameBtn = document.getElementById('restart-game-btn');
 const endWindow = document.getElementById('end-window');
 
 startGameBtn.addEventListener('click', onStartGameBtnClick);
-restartGameBtn.addEventListener('click', onRestartGameBtnClick);
 
 //----при кліці на кнопку Старт----//
 function onStartGameBtnClick() {
+  chosenImageIndex = 1;
   lifes = lifesValue[chosenLevel];
   createLifes();
 
@@ -46,10 +45,4 @@ function hideGameField() {
 
   gameWindow.style.display = 'none';
   cardsContainer.style.display = 'none';
-}
-
-//----перезапуск гри----//
-function onRestartGameBtnClick() {
-  endWindow.style.display = 'none';
-  startWindow.style.display = 'flex';
 }
