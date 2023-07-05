@@ -1,15 +1,18 @@
 .back-btn {
+  align-self: flex-start;
   font-weight: 100;
   background-color: white;
   border-radius: 20px;
+  padding: 10px;
+  font-size: 14px;
   transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
   cursor: pointer;
 }
 
 @media (min-width: 768px) {
   .back-btn {
+    align-self: center;
     display: flex;
-    padding: 10px;
     font-size: 18px;
   }
 }
@@ -30,20 +33,58 @@
 .menu {
   position: relative;
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 15px;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+align-items: center;
+  padding: 10px 0px;
   margin-bottom: 50px;
   margin: 0 auto;
 }
 
-.lifes {
-  display: flex;
-  gap: 10px;
+
+@media (min-width: 768px) {
+  .menu {
+    
+    flex-direction: row;
+    padding: 10px 20px;
+    gap: 30px;
+  }
 }
 
+.lifes {
+  display: flex;
+  gap: 5px;
+}
+@media (min-width: 768px) {
+  .lifes {
+    gap: 10px;
+  }
+}
+
+.game-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .game-info-wrapper {
+    gap: 70px;
+  }
+}
+@media (min-width: 1200px) {
+  .game-info-wrapper {
+    gap: 100px;
+  }
+}
+
+
+
 .life-element {
+  width: 30px;
+  height:30px;
   background: url('../images/theme1/life.png');
   display: block;
   background-repeat: no-repeat;
@@ -74,6 +115,12 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
+@media (max-width: 767px) {
+  .timer {
+    width: 30px;
+    height: 30px;
+  }
+}
 @media (min-width: 768px) {
   .timer {
     width: 70px;
@@ -90,6 +137,7 @@
 
 .timer span {
   font-weight: 700;
+  font-size: 24px;
 }
 
 @media (min-width: 768px) {
@@ -106,14 +154,17 @@
 
 .sounds-control {
   position: absolute;
+  top: 10px;
+  right: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 15px;
 }
 
 @media (min-width: 768px) {
   .sounds-control {
-    bottom: -100px;
+    flex-direction: column;
+    top: 100px;
     right: 10px;
   }
 }
@@ -126,7 +177,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .sounds svg {
     width: 30px;
     height: 30px;
@@ -139,7 +190,6 @@
 }
 
 @media (min-width: 1200px) {
-
   .sounds svg,
   .music svg {
     width: 40px;
@@ -155,8 +205,7 @@
   transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-@media (min-width: 768px) {
-
+@media (min-width: 320px) {
   .sounds,
   .music {
     padding: 20px;
