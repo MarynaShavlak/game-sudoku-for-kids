@@ -4,10 +4,22 @@ const gameWindow = document.getElementById('game-window');
 const startGameBtn = document.getElementById('start-game-btn');
 const endWindow = document.getElementById('end-window');
 const parametersBtn = document.querySelector('.parameters-btn');
-console.log('parametersBtn: ', parametersBtn);
+const backToRulesBtn = document.querySelector('.back-to-rules-btn');
+const gameTitle = document.querySelector('.game-title');
 
 startGameBtn.addEventListener('click', onStartGameBtnClick);
 parametersBtn.addEventListener('click', onParametersBtnClick);
+backToRulesBtn.addEventListener('click', onBackToRulesBtnClick);
+
+function onBackToRulesBtnClick() {
+  cloudOpenModal.style.display = 'block';
+  catOpenModal.style.display = 'block';
+  rulesTitle.style.display = 'block';
+  startCategories.style.display = 'none';
+  parametersBtn.style.display = 'block';
+  gameTitle.style.display = 'block';
+  backToRulesBtn.style.display = 'none';
+}
 
 function onParametersBtnClick() {
   cloudOpenModal.style.display = 'none';
@@ -15,6 +27,8 @@ function onParametersBtnClick() {
   rulesTitle.style.display = 'none';
   startCategories.style.display = 'block';
   parametersBtn.style.display = 'none';
+  gameTitle.style.display = 'none';
+  backToRulesBtn.style.display = 'block';
 }
 
 //----при кліці на кнопку Старт----//

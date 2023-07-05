@@ -26,6 +26,11 @@ body {
   overflow: auto;
 }
 
+@media (max-width: 767px){
+  body{
+    justify-content: stretch;
+  }
+}
 @media (min-width: 1200px){
   body{
     display: flex;
@@ -110,6 +115,22 @@ img {
 }
 @media (min-width: 768px) {
   .parameters-btn {
+    display: none;
+    
+  }
+}
+
+
+@media (max-width: 767px) {
+  .back-to-rules-btn {
+    display: none;
+    width: 270px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .back-to-rules-btn {
     display: none;
     
   }
