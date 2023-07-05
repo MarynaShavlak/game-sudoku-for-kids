@@ -1,11 +1,24 @@
 .back-btn {
-  padding: 15px 30px;
   font-weight: 100;
-  font-size: 24px;
   background-color: white;
   border-radius: 20px;
   transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .back-btn {
+    display: flex;
+    padding: 10px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .back-btn {
+    padding: 15px 20px;
+    font-size: 24px;
+  }
 }
 
 .back-btn:hover,
@@ -13,6 +26,7 @@
   color: white;
   background-color: black;
 }
+
 .menu {
   position: relative;
   display: flex;
@@ -26,21 +40,31 @@
 
 .lifes {
   display: flex;
+  gap: 10px;
 }
 
 .life-element {
   background: url('../images/theme1/life.png');
-  width: 70px;
-  height: 70px;
-  margin-right: 10px;
   display: block;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
+@media (min-width: 768px) {
+  .life-element {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .life-element {
+    width: 70px;
+    height: 70px;
+  }
+}
+
 .timer {
-  width: 120px;
-  height: 120px;
   display: none;
   justify-content: center;
   align-items: center;
@@ -50,49 +74,120 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
+@media (min-width: 768px) {
+  .timer {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .timer {
+    width: 120px;
+    height: 120px;
+  }
+}
+
 .timer span {
-  font-size: 80px;
   font-weight: 700;
 }
 
+@media (min-width: 768px) {
+  .timer span {
+    font-size: 40px;
+  }
+}
 
-.sounds svg, .music svg {
+@media (min-width: 1200px) {
+  .timer span {
+    font-size: 70px;
+  }
+}
+
+.sounds-control {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 768px) {
+  .sounds-control {
+    bottom: -100px;
+    right: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sounds-control {
+    width: fit-content;
+    top: 130px;
+    right: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .sounds svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .music svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .sounds svg,
+  .music svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.sounds,
+.music {
+  position: relative;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@media (min-width: 768px) {
+
+  .sounds,
+  .music {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .sounds,
+  .music {
+    padding: 30px;
+  }
+}
+
+.sounds svg,
+.music svg {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
   cursor: pointer;
   fill: black;
   transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.music svg {
-  width: 40px;
-    height: 40px;
-}
-
-.sounds, .music  {
-  position: absolute;
-  background-color: #fff;
-  border-radius: 50%;
-  padding: 30px;
-  transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-.sounds {
-  top: 15px;
-  left: 320px;
-}
-
-.music {
-  top: 15px;
-  left: 400px;
-}
-
-.sounds:hover, .music:hover {
+.sounds:hover,
+.music:hover {
   background-color: black;
 }
-.sounds:hover svg, .music:hover svg {
+
+.sounds:hover svg,
+.music:hover svg {
   fill: #fff;
 }

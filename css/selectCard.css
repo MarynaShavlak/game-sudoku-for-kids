@@ -3,20 +3,33 @@
   flex-direction: column;
   height: max-content;
   align-items: center;
-  
-  width: 320px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 20px;
 }
+
+@media (min-width: 768px) {
+  .card-selection {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-selection {
+    width: 320px;
+  }
+}
+
+
 
 .cards-options {
   min-width: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
- 
 }
+
+
 
 
 .selection-block-title {
@@ -37,7 +50,7 @@
 }
 
 .cards-options input[type=radio]:checked+label {
-  border: 4px solid rgb(217, 0, 51);
+  border: 5px solid rgb(217, 0, 51);
   border-radius: 5px;
   transform: scale(1.1);
 }
