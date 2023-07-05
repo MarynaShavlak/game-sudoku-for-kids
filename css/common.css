@@ -18,19 +18,22 @@ body {
 body {
   background: url('../images/start-background.jpg') no-repeat center center;
   background-size: cover;
-  display: flex;
-  justify-content: end;
   font-family: 'Rubik Bubbles', cursive;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   height: 100%;
   overflow: auto;
+}
 
+@media (min-width: 1200px){
+  body{
+    display: flex;
+    justify-content: end;
+  }
 }
 
 .game-wrapper {
-
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 30px;

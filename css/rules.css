@@ -1,5 +1,4 @@
 .cat-rules {
-  /* z-index: -1; */
   position: absolute;
   bottom: -3px;
   left: 30px;
@@ -10,21 +9,45 @@
 }
 
 .cloud-rules {
-  /* z-index: -1; */
   position: absolute;
-  bottom: 240px;
-  left: 170px;
-  width: 250px;
   cursor: pointer;
   -webkit-filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
   filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
 }
 
+@media (min-width: 768px) {
+  .cloud-rules {
+      bottom: 220px;
+      left: 140px;
+      width: 250px;
+    }
+}
+
+@media (min-width: 1200px) {
+  .cloud-rules {
+    bottom: 240px;
+    left: 170px;
+    width: 250px;
+  }
+}
+
 #rules-window {
-  /* z-index: -1; */
   position: absolute;
-  bottom: 370px;
-  left: 220px;
+}
+
+@media (min-width: 768px) {
+  #rules-window {
+      bottom: 350px;
+      left: 180px;
+   
+  }
+}
+
+@media (min-width: 1200px) {
+  #rules-window {
+    bottom: 370px;
+    left: 220px;
+  }
 }
 
 #rules {

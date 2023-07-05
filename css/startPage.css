@@ -2,50 +2,99 @@
   padding-top: 20px;
   padding-bottom: 20px;
   padding-right: 30px;
-
 }
 
 .game-title {
   text-align: end;
-  font-size: 70px;
-  margin-bottom: 30px;
+  
 }
 
-#start-window-categories {
-  display: flex;
-  /* flex-direction: column; */
-  gap: 30px;
-  margin-bottom: 50px;
+@media (min-width: 768px) {
+  .game-title {
+    font-size: 60px;
+    margin-bottom: 30px;
+  }
 }
 
+@media (min-width: 1200px) {
+  .game-title {
+    font-size: 70px;
+    margin-bottom: 50px;
+  }
 
-.start-window-item {
+  #start-window-categories {
+    display: flex;
+    gap: 30px;
+  }
+}
+
+.category-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
 }
 
+@media (min-width: 768px) {
+  .category-block {
+    align-items: end;
+  }
+}
+
+@media (min-width: 1200px) {
+  .category-block {
+    align-items: center;
+  }
+}
+
 .topics {
-  z-index:2;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   width: 300px;
 }
 
-.item-wrapper {
+@media (min-width: 768px) {
+  .topics {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .topics {
+    width: 300px;
+  }
+}
+
+.category-blocks-wrapper {
+  /* z-index: 2; */
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
+@media (max-width: 1199px) {
+  .category-blocks-wrapper {
+    margin-top: 30px;
+  }
+}
 
-.start-window-item .container {
+.category-block .container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
-  /* width: 850px; */
+}
+
+@media (min-width: 768px) {
+  .category-block .container {
+    justify-content: end;
+  }
+}
+
+@media (min-width: 1200px) {
+  .category-block .container {
+    justify-content: center;
+  }
 }
 
 .topic-btn,
@@ -122,5 +171,3 @@
   background: url('../images/level3.jpg') no-repeat center center;
   background-size: cover;
 }
-
-
