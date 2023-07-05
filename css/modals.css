@@ -40,6 +40,13 @@
   background: url('../images/modal-rules.jpg') no-repeat center center;
   background-size: cover;
 }
+@media (max-width: 767px) {
+  .modal__content {
+      width: 80%;
+      height: 60%;
+      min-width: 80%;
+  }
+}
 
 .modal__header {
   position: relative;
@@ -83,6 +90,13 @@
   width: 350px;
   height: 300px;
 }
+
+@media (max-width: 767px) {
+  .modal__image {
+    display: none;
+  }
+}
+
 
 .modal__text {
   position: absolute;

@@ -81,7 +81,7 @@ img {
   color: black;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms transform cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .btn.active,
@@ -100,7 +100,20 @@ img {
   transform: scale(1.2);
 }
 
-
+@media (max-width: 767px) {
+  .parameters-btn {
+    display: block;
+    width: 270px;
+    margin: 0 auto;
+  margin-top: 120px;
+  }
+}
+@media (min-width: 768px) {
+  .parameters-btn {
+    display: none;
+    
+  }
+}
 
 ::-webkit-scrollbar {
   width: 10px;

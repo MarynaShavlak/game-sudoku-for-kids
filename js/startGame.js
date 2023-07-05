@@ -1,9 +1,21 @@
 const startWindow = document.getElementById('start-window');
+const startCategories = document.getElementById('start-window-categories');
 const gameWindow = document.getElementById('game-window');
 const startGameBtn = document.getElementById('start-game-btn');
 const endWindow = document.getElementById('end-window');
+const parametersBtn = document.querySelector('.parameters-btn');
+console.log('parametersBtn: ', parametersBtn);
 
 startGameBtn.addEventListener('click', onStartGameBtnClick);
+parametersBtn.addEventListener('click', onParametersBtnClick);
+
+function onParametersBtnClick() {
+  cloudOpenModal.style.display = 'none';
+  catOpenModal.style.display = 'none';
+  rulesTitle.style.display = 'none';
+  startCategories.style.display = 'block';
+  parametersBtn.style.display = 'none';
+}
 
 //----при кліці на кнопку Старт----//
 function onStartGameBtnClick() {

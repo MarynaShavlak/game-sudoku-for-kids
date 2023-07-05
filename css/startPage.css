@@ -1,16 +1,29 @@
+
 #start-window {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-right: 30px;
 }
+@media (max-width: 767px) {
+  #start-window {
+  padding-left: 10px;
+  padding-right: 10px;
+  }
+  #start-window-categories {
+      display: none;
+      
+  }
 
+}
 .game-title {
-  text-align: end;
-  
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 30px;
 }
 
 @media (min-width: 768px) {
   .game-title {
+    text-align: end;
     font-size: 60px;
     margin-bottom: 30px;
   }
@@ -32,6 +45,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
+  text-align: center;
+
 }
 
 @media (min-width: 768px) {
@@ -44,6 +60,7 @@
   .category-block {
     align-items: center;
   }
+ 
 }
 
 .topics {
@@ -83,6 +100,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 @media (min-width: 768px) {
@@ -97,6 +116,7 @@
   }
 }
 
+
 .topic-btn,
 .level,
 #game-with-timer,
@@ -106,6 +126,22 @@
   padding: 5px;
   font-size: 0;
 }
+
+@media (max-width: 767px) {
+.topic-btn,
+   #game-with-timer,
+  #game-without-timer  {
+    width: 80px;
+    height: 80px;
+  }
+
+  .level  {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
 
 #game-without-timer {
   background: url('../images/without-timer.jpg') no-repeat center center;
@@ -171,3 +207,6 @@
   background: url('../images/level3.jpg') no-repeat center center;
   background-size: cover;
 }
+
+
+
