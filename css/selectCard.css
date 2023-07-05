@@ -3,14 +3,14 @@
   flex-direction: column;
   height: max-content;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
   border-radius: 20px;
 }
 
 @media (min-width: 768px) {
   .card-selection {
     width: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -29,6 +29,13 @@
   justify-content: center;
 }
 
+@media (max-width: 767px) {
+  .cards-options {
+    justify-content: stretch;
+    width: fit-content;
+    min-width: 280px;
+  }
+}
 
 
 
@@ -41,9 +48,18 @@
   padding: 10px;
 }
 
+@media (max-width: 767px) {
+  .selection-block-title {
+    font-size: 20px;
+   
+  }
+}
+
 .card-selection .card {
   background-color: #0c6abb8c;
 }
+
+
 
 .cards-options input {
   display: none;

@@ -65,9 +65,14 @@ function showGameField() {
 //----ховаємо блок із із елеменами гри( дошка , блок вибору картинок, життя, таймер)----//
 function hideGameField() {
   bodyEl.style.background = `url('./images/start-background.jpg') no-repeat center center`;
-  bodyEl.style.display = 'flex';
   bodyEl.style.backgroundSize = 'cover';
-  bodyEl.style.justifyContent = 'end';
+  let screenWidth = window.innerWidth;
+  if (screenWidth >= 320 && screenWidth <= 767) {
+    bodyEl.style.display = 'block';
+  } else {
+    bodyEl.style.display = 'flex';
+    bodyEl.style.justifyContent = 'end';
+  }
 
   gameWindow.style.display = 'none';
   cardsContainer.style.display = 'none';
