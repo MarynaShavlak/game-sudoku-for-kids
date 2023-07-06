@@ -102,11 +102,8 @@
 
 
 .modal__text {
-  /* position: absolute; */
   text-align: center;
-  /* top: 50px;
-  left: 30px;
-  width: 250px; */
+
 }
 
 @media (min-width: 768px) {

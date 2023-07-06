@@ -115,6 +115,7 @@ align-items: center;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
+
 @media (max-width: 767px) {
   .timer {
     width: 30px;
@@ -158,7 +159,7 @@ align-items: center;
   right: 10px;
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 10px;
 }
 
 @media (min-width: 768px) {
@@ -178,7 +179,7 @@ align-items: center;
 }
 
 @media (min-width: 320px) {
-  .sounds svg {
+  .sounds svg, .pause-icon, .play-icon{
     width: 30px;
     height: 30px;
   }
@@ -191,14 +192,20 @@ align-items: center;
 
 @media (min-width: 1200px) {
   .sounds svg,
-  .music svg {
+   .pause-icon,
+   .play-icon {
     width: 40px;
     height: 40px;
+  }
+ 
+  .music svg {
+    width: 30px;
+    height: 30px;
   }
 }
 
 .sounds,
-.music {
+.music, .pause-icon-wrapper, .play-icon-wrapper {
   position: relative;
   background-color: #fff;
   border-radius: 50%;
@@ -207,7 +214,9 @@ align-items: center;
 
 @media (min-width: 320px) {
   .sounds,
-  .music {
+  .music, 
+  .pause-icon-wrapper,
+  .play-icon-wrapper {
     padding: 20px;
   }
 }
@@ -215,13 +224,15 @@ align-items: center;
 @media (min-width: 1200px) {
 
   .sounds,
-  .music {
+  .music, 
+  .pause-icon-wrapper,
+  .play-icon-wrapper {
     padding: 30px;
   }
 }
 
 .sounds svg,
-.music svg {
+.music svg, .pause-icon, .play-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -232,11 +243,11 @@ align-items: center;
 }
 
 .sounds:hover,
-.music:hover {
+.music:hover, .pause-icon-wrapper:hover, .play-icon-wrapper:hover {
   background-color: black;
 }
 
 .sounds:hover svg,
-.music:hover svg {
+.music:hover svg, .pause-icon-wrapper:hover svg, .play-icon-wrapper:hover svg {
   fill: #fff;
 }

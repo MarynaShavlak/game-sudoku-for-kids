@@ -67,7 +67,7 @@ img {
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
  label {
    overflow: hidden;

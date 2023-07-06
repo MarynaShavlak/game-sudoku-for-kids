@@ -23,6 +23,7 @@ const soundOffBtn = document.querySelector('.soundOff');
 const musicBtnMenu = document.querySelector('.music');
 const musicOnBtn = document.querySelector('.musicOn');
 const musicOffBtn = document.querySelector('.musicOff');
+
 let mutedMusic = false;
 let mutedSounds = false;
 let audioPlayer;
