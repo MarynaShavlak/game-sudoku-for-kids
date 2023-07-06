@@ -199,11 +199,14 @@ function setEmptyCellBackground(cell) {
 
 function onBackBtnClick() {
   // якщо таймер був запущений, то при клыцы на кпопку переходу у стартому меню треба зупиняти таймер
-  clearInterval(timerID);
-  hideGameField();
-  showStartWindow();
-  resetAndStopAudioPlayer();
-  resetCardsBoard();
+
+  // clearInterval(timerID);
+  // hideGameField();
+  // showStartWindow();
+  // resetAndStopAudioPlayer();
+  // resetCardsBoard();
+
+  openConfirmationModal();
 }
 
 function checkIfTaskSolved() {

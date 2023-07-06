@@ -28,6 +28,7 @@ function setTimerInterface() {
     timerWrapper.style.display = 'none';
   } else {
     timerWrapper.style.display = 'flex';
+    setTimer(timerValue[chosenLevel]);
     countdownTime();
   }
 }

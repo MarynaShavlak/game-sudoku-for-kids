@@ -42,14 +42,14 @@
 }
 @media (max-width: 767px) {
   .modal__content {
-      width: 80%;
+      width: 70%;
       height: 60%;
-      min-width: 80%;
+      min-width: 70%;
   }
 }
 
 .modal__header {
-  position: relative;
+  position: absolute;
   display: flex;
   flex: 1;
   align-items: center;
@@ -58,30 +58,33 @@
   cursor: pointer;
 }
 
-.modal__header-text {
-  text-transform: uppercase;
-  font-size: 24px;
-  font-weight: 600;
-}
-
 .modal__closeIcon {
   position: absolute;
-  top: -30px;
-  right: -30px;
+  top: -20px;
+  right: -20px;
   width: 30px;
   padding: 10px;
   border-radius: 50%;
-  
+  cursor: pointer;
+  background-color: white;
+  transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+@media (max-width: 767px) {
+  .modal__closeIcon {
+    top: -15px;
+    right: -15px;
+    width: 20px;
+    padding: 5px;
+  }
+}
+
+
 .modal__closeIcon:hover  {
   background-color: #d90033;
 }
 
 
-.modal__closeIcon  {
-
-  transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
-}
 
 .modal__image {
   position: absolute;
@@ -99,14 +102,25 @@
 
 
 .modal__text {
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
-  top: 50px;
+  /* top: 50px;
   left: 30px;
-  width: 250px;
+  width: 250px; */
 }
 
-.end-game-win .modal__content, .end-game-lose .modal__content{
+@media (min-width: 768px) {
+  .modal__text {
+      position: absolute;
+      text-align: center;
+      top: 50px;
+      left: 30px;
+      width: 250px;
+    }
+}
+
+
+.end-game-win .modal__content, .end-game-lose .modal__content, .confirmation-modal .modal__content{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -116,6 +130,14 @@
   border: 1px solid white;
 }
 
+@media (max-width: 767px) {
+  .end-game-win .modal__content,
+    .end-game-lose .modal__content,
+    .confirmation-modal .modal__content {
+    height: 300px;
+  }
+}
+
 
 .end-game-win p, .end-game-lose p {
   color: rgb(217, 0, 51);
@@ -123,16 +145,30 @@
   margin: 0 auto;
 }
 
+.confirmation-modal p {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  color: rgb(217, 0, 51);
+  font-size: 30px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .confirmation-modal p {
+    font-size: 18px;
+  }
+}
+
 .end-game-win img, .end-game-lose img {
   width: 150px;
   margin-bottom: 20px;
 }
 
-#restartBtnWin, #restartBtnLose {
+#restartBtnWin, #restartBtnLose, .confirmBtn, .cancelBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  right: 300px;
   font-family: 'Rubik Bubbles', cursive;
   color: white;
   padding: 20px 30px;
@@ -147,19 +183,26 @@
   transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+@media (max-width: 767px) {
+  #restartBtnWin,
+    #restartBtnLose,
+    .confirmBtn,
+    .cancelBtn {
+    font-size: 20px;
+  }
+}
 
 #restartBtnWin:hover span,
 #restartBtnWin:focus span, #restartBtnLose:hover span,
-#restartBtnLose:focus span {
+#restartBtnLose:focus span, .confirmBtn:hover,
+.cancelBtn:hover, .confirmBtn:focus,
+.cancelBtn:focus {
+  background-color: white;
   color: rgb(217, 0, 51);
 
 }
 
-#restartBtnWin:hover,
-#restartBtnWin:focus, #restartBtnLose:hover,
-#restartBtnLose:focus {
-  background-color: white;
-}
+
 
 
 
@@ -172,4 +215,11 @@
 #restart-game-btn {
   padding: 10px;
   border-radius: 5px;
+}
+
+
+.btn-list {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
 }

@@ -84,16 +84,15 @@
         </div>
       </div>
       <!-- Модальне вікно з правилами -->
-      <div class="modal">
+      <div class="rules-modal modal">
         <div class="modal__overlay"></div>
         <div class="modal__content">
-          <div class="modal__header">
-            <img
-              class="modal__closeIcon"
-              src="./images/icon-close.svg"
-              alt="close icon"
-            />
-          </div>
+          <img
+            class="modal__closeIcon rules-close-icon"
+            src="./images/icon-close.svg"
+            alt="close icon"
+          />
+
           <img
             class="modal__image"
             src="./images/cloud.gif"
@@ -137,6 +136,38 @@
             <span>Р</span>
             <span>Т</span>
           </button>
+        </div>
+      </div>
+
+      <!-- Модальне вікно Підтвердженя-->
+      <div class="confirmation-modal modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+          <img
+            class="modal__closeIcon confirm-close-icon"
+            src="./images/icon-close.svg"
+            alt="close icon"
+          />
+
+          <p>
+            Ви впевнені, що хочете перейти до стартового меню та втратити
+            прогрес у грі?
+          </p>
+          <ul class="btn-list">
+            <li class="btn-list-item">
+              <button class="confirmBtn wrapper">
+                <span>Т</span>
+                <span>А</span>
+                <span>К</span>
+              </button>
+            </li>
+            <li class="btn-list-item">
+              <button class="cancelBtn wrapper">
+                <span>Н</span>
+                <span>І</span>
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
 
