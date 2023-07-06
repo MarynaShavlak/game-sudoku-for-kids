@@ -197,18 +197,6 @@ function setEmptyCellBackground(cell) {
   cell.style.backgroundColor = themeColor;
 }
 
-function onBackBtnClick() {
-  // якщо таймер був запущений, то при клыцы на кпопку переходу у стартому меню треба зупиняти таймер
-
-  // clearInterval(timerID);
-  // hideGameField();
-  // showStartWindow();
-  // resetAndStopAudioPlayer();
-  // resetCardsBoard();
-
-  openConfirmationModal();
-}
-
 function checkIfTaskSolved() {
   const cardsBox = document.querySelector('.cards');
   const cells = [...cardsBox.children];

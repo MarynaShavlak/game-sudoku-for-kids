@@ -12,7 +12,7 @@ const cardsContainer = document.querySelector('.cards-container');
 const bodyEl = document.querySelector('body');
 const backBtn = document.querySelector('.back-btn');
 // Гравець може повернутись на стартове меню при кліці на кнопку "назад"
-backBtn.onclick = onBackBtnClick;
+backBtn.onclick = openConfirmationModal;
 
 createTaskBoard();
 createImageSelectionBlock(solution);

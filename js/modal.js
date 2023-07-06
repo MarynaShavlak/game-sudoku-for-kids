@@ -12,11 +12,15 @@ const rulesWindow = document.querySelector('.rules-modal');
 const confirmationWindow = document.querySelector('.confirmation-modal');
 const rulesCloseIcon = document.querySelector('.rules-close-icon');
 const confirmCloseIcon = document.querySelector('.confirm-close-icon');
+const cancelBtn = document.querySelector('.cancelBtn');
+const confirmBtn = document.querySelector('.confirmBtn');
 
 cloudOpenModal.onclick = openRules;
 catOpenModal.onclick = openRules;
 rulesTitle.onclick = openRules;
 confirmCloseIcon.onclick = closeConfirmationModal;
+cancelBtn.onclick = closeConfirmationModal;
+confirmBtn.onclick = backToStartMenu;
 rulesCloseIcon.onclick = closeRulesModal;
 
 function openRules() {
@@ -88,4 +92,13 @@ function resetCardsBoard() {
   cardsContainer.innerHTML = '';
   createTaskBoard();
   createImageSelectionBlock(solution);
+}
+
+function backToStartMenu() {
+  closeConfirmationModal();
+  clearInterval(timerID);
+  hideGameField();
+  showStartWindow();
+  resetAndStopAudioPlayer();
+  resetCardsBoard();
 }
