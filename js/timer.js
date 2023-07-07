@@ -1,14 +1,18 @@
 let timer;
 let timerID;
 let pausedTime;
+let isPaused = false;
+const timerValue = {
+  level1: 60,
+  level2: 120,
+  level3: 180,
+};
 const timerWrapper = document.querySelector('.timer');
 const timerBlockElement = document.querySelector('.timer span');
 const pauseGameBtn = document.querySelector('.pause-icon-wrapper');
 const playGameBtn = document.querySelector('.play-icon-wrapper');
 const pauseBtnMenu = document.querySelector('.pause');
 pauseBtnMenu.onclick = togglePause;
-
-pauseGameBtn.onclick = onPauseGameClick;
 
 function setTimer(value) {
   timer = value;
@@ -17,8 +21,11 @@ function setTimer(value) {
 
 function countdownTime() {
   timerID = setInterval(() => {
-    timer--;
-    timerBlockElement.innerHTML = timer;
+    if (!isPaused) {
+      timer--;
+      timerBlockElement.innerHTML = timer;
+    }
+
     if (timer <= 0) {
       clearInterval(timerID);
       openLoseWindow();
@@ -27,23 +34,18 @@ function countdownTime() {
 }
 
 function pauseTimer() {
-  if (timerID) {
+  if (timerID && !isPaused) {
     clearInterval(timerID);
     pausedTime = timer;
+    isPaused = true;
   }
-}
-
-const timerValue = {
-  level1: 60,
-  level2: 120,
-  level3: 180,
-};
-
-function onPauseGameClick() {
-  pauseTimer();
 }
 
 function togglePause() {
   pauseGameBtn.classList.toggle('hidden');
   playGameBtn.classList.toggle('hidden');
+  if (!isPaused) {
+    openPauseModal();
+    pauseTimer();
+  }
 }

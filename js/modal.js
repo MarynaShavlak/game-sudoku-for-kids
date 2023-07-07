@@ -10,6 +10,8 @@ const winWindow = document.querySelector('.end-game-win.modal');
 const loseWindow = document.querySelector('.end-game-lose.modal');
 const rulesWindow = document.querySelector('.rules-modal');
 const confirmationWindow = document.querySelector('.confirmation-modal');
+const pauseGameWindow = document.querySelector('.pause-game-modal');
+const continueGameBtn = document.querySelector('.continueGameBtn');
 const rulesCloseIcon = document.querySelector('.rules-close-icon');
 const confirmCloseIcon = document.querySelector('.confirm-close-icon');
 const cancelBtn = document.querySelector('.cancelBtn');
@@ -21,6 +23,7 @@ rulesTitle.onclick = openRules;
 confirmCloseIcon.onclick = closeConfirmationModal;
 cancelBtn.onclick = closeConfirmationModal;
 confirmBtn.onclick = backToStartMenu;
+continueGameBtn.onclick = continueGame;
 rulesCloseIcon.onclick = closeRulesModal;
 
 function openRules() {
@@ -44,6 +47,13 @@ function openConfirmationModal() {
   content.style.backgroundSize = 'cover';
   confirmationWindow.classList.add('modal--isActive');
   pauseTimer();
+}
+function openPauseModal() {
+  const content = document.querySelector('.pause-game-modal .modal__content');
+  content.style.background = `url('./images/${chosenTopic}/background.jpg') no-repeat center center`;
+  content.style.backgroundSize = 'cover';
+  pauseGameWindow.classList.add('modal--isActive');
+  // pauseTimer();
 }
 
 function closeConfirmationModal() {
@@ -101,4 +111,15 @@ function backToStartMenu() {
   showStartWindow();
   resetAndStopAudioPlayer();
   resetCardsBoard();
+}
+
+function continueGame() {
+  pauseGameWindow.classList.remove('modal--isActive');
+  pauseGameBtn.classList.toggle('hidden');
+  playGameBtn.classList.toggle('hidden');
+  if (timerID) {
+    isPaused = false;
+    setTimer(pausedTime);
+    countdownTime();
+  }
 }

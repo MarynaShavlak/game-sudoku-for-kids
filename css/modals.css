@@ -117,7 +117,7 @@
 }
 
 
-.end-game-win .modal__content, .end-game-lose .modal__content, .confirmation-modal .modal__content{
+.modal .modal__content{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -128,18 +128,23 @@
 }
 
 @media (max-width: 767px) {
-  .end-game-win .modal__content,
-    .end-game-lose .modal__content,
-    .confirmation-modal .modal__content {
+  .modal .modal__content {
     height: 300px;
   }
 }
 
 
-.end-game-win p, .end-game-lose p {
+.end-game-win p, .end-game-lose p, .pause-game-modal p {
   color: rgb(217, 0, 51);
-  font-size: 60px;
+  font-size: 40px;
   margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .end-game-win p,
+    .end-game-lose p, .pause-game-modal p {
+      font-size: 60px;
+    }
 }
 
 .confirmation-modal p {
@@ -157,18 +162,18 @@
   }
 }
 
-.end-game-win img, .end-game-lose img {
+/* .end-game-win img, .end-game-lose img {
   width: 150px;
   margin-bottom: 20px;
-}
+} */
 
-#restartBtnWin, #restartBtnLose, .confirmBtn, .cancelBtn {
+#restartBtnWin, #restartBtnLose, .confirmBtn, .cancelBtn, .continueGameBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Rubik Bubbles', cursive;
   color: white;
-  padding: 20px 30px;
+  padding: 10px 20px;
   font-size: 40px;
   border: none;
   border: 3px solid rgb(217, 0, 51);
@@ -184,23 +189,21 @@
   #restartBtnWin,
     #restartBtnLose,
     .confirmBtn,
-    .cancelBtn {
+    .cancelBtn, 
+    .continueGameBtn {
     font-size: 20px;
   }
 }
 
-#restartBtnWin:hover span,
-#restartBtnWin:focus span, #restartBtnLose:hover span,
-#restartBtnLose:focus span, .confirmBtn:hover,
+#restartBtnWin:hover ,
+#restartBtnWin:focus , #restartBtnLose:hover ,
+#restartBtnLose:focus , .confirmBtn:hover,
 .cancelBtn:hover, .confirmBtn:focus,
-.cancelBtn:focus {
+.cancelBtn:focus, .continueGameBtn:hover, .continueGameBtn:focus{
   background-color: white;
   color: rgb(217, 0, 51);
-
+ 
 }
-
-
-
 
 
 #end-window {
