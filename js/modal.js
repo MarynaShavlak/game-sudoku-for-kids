@@ -39,6 +39,7 @@ function openWinWindow() {
   content.style.background = `url('./images/${chosenTopic}/win.jpg') no-repeat center center`;
   content.style.backgroundSize = 'cover';
   winWindow.classList.add('modal--isActive');
+  clearInterval(timerID);
 }
 
 function openConfirmationModal() {
@@ -68,8 +69,8 @@ function openLoseWindow() {
   const content = document.querySelector('.end-game-lose .modal__content');
   content.style.background = `url('./images/${chosenTopic}/lose.jpg') no-repeat center center`;
   content.style.backgroundSize = 'cover';
-
   loseWindow.classList.add('modal--isActive');
+  clearInterval(timerID);
 }
 
 function closeWinWindow() {
@@ -111,6 +112,7 @@ function backToStartMenu() {
   showStartWindow();
   resetAndStopAudioPlayer();
   resetCardsBoard();
+  isPaused = false;
 }
 
 function continueGame() {

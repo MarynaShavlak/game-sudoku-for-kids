@@ -133,6 +133,9 @@
   }
 }
 
+.pause-game-modal .modal__content {
+  justify-content: space-around;
+}
 
 .end-game-win p, .end-game-lose p, .pause-game-modal p {
   color: rgb(217, 0, 51);
@@ -159,6 +162,11 @@
 @media (max-width: 767px) {
   .confirmation-modal p {
     font-size: 18px;
+  }
+}
+@media (min-width: 768px) {
+  .confirmation-modal p {
+    padding: 20px;
   }
 }
 
@@ -204,6 +212,7 @@
   color: rgb(217, 0, 51);
  
 }
+
 
 
 #end-window {
