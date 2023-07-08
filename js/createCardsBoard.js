@@ -244,14 +244,16 @@ function handleMouseLeave(e) {
 }
 
 function calculateRowAndColumn(cardId) {
-  const rowNumber = Math.ceil(cardId / 4);
-  const columnNumber = cardId % 4 || 4;
+  const rowsQuantity = cardsTaskBoard.length;
+  const rowNumber = Math.ceil(cardId / rowsQuantity);
+  const columnNumber = cardId % rowsQuantity || rowsQuantity;
   return { rowNumber, columnNumber };
 }
 
 function handleHintClassByRow(rowNumber, action) {
-  for (let j = 1; j <= 4; j++) {
-    const cardID = (rowNumber - 1) * 4 + j;
+  const rowsQuantity = cardsTaskBoard.length;
+  for (let j = 1; j <= rowsQuantity; j++) {
+    const cardID = (rowNumber - 1) * rowsQuantity + j;
     const rowCard = document.querySelector(`[data-id="${cardID.toString()}"]`);
     if (rowCard) {
       rowCard.classList[action]('hint');
@@ -260,9 +262,10 @@ function handleHintClassByRow(rowNumber, action) {
 }
 
 function handleHintClassByColumn(card, columnNumber, action) {
+  const rowsQuantity = cardsTaskBoard.length;
   const cards = card.parentNode.getElementsByTagName('li');
   Array.from(cards).forEach((card, index) => {
-    if (index % 4 === columnNumber - 1) {
+    if (index % rowsQuantity === columnNumber - 1) {
       card.classList[action]('hint');
     }
   });

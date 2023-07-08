@@ -68,7 +68,8 @@
 .card-selection .card:not(:empty):hover {
   border: 5px solid #002a42;
 }
-/* 
-.hint {
-  border: 6px solid orange;
-} */
+
+.selected {
+  border: 5px solid blue;
+  
+}
