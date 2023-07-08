@@ -170,11 +170,6 @@
   }
 }
 
-/* .end-game-win img, .end-game-lose img {
-  width: 150px;
-  margin-bottom: 20px;
-} */
-
 #restartBtnWin, #restartBtnLose, .confirmBtn, .cancelBtn, .continueGameBtn {
   display: flex;
   align-items: center;

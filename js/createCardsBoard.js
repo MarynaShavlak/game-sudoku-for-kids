@@ -31,6 +31,8 @@ function createListItem(imageIndex) {
     li.appendChild(img);
   }
   li.onclick = onСellOnBoardClick;
+  li.addEventListener('mouseenter', handleMouseEnter);
+  li.addEventListener('mouseleave', handleMouseLeave);
   return li;
 }
 
@@ -83,13 +85,11 @@ function createTaskBoard() {
 function onСellOnBoardClick(e) {
   // Записуємо у змінну який елемент був натиснутий
   const clickedElement = e.target;
-  // Перевіряємо чи була натиснута сама картинка (тег img) чи лішка(тег li). Якщо була натиснута сама картинка , то в змінну clickedCell записуємо не картинку, а її батківський елемент, тобто лішку. Якщо була натиснута лішка, то у змінну clickedCell записуємо цю лішку
   const clickedCell =
     clickedElement.tagName === 'IMG'
       ? clickedElement.parentElement
       : clickedElement;
-  // Перевіряємо чи є в натиснутій лішці картинка чи немає(чи пуста натиснута лішка)
-  const isCellEmpty = !clickedCell.querySelector('img');
+  const isCellEmpty = checkIfCellEmpty(clickedElement);
   //Якщо ми клікнули в пусту клітинку, то:
   if (isCellEmpty) {
     // Знаходимо який номер картинки правильний для натиснутої пустої клітинки
@@ -149,8 +149,9 @@ function setUniqueIdForCards() {
   for (let index = 0; index < totalCards; index++) {
     const li = allCardsElements[index];
     const rowIndex = Math.ceil((index + 1) / (totalCards / rowsQuantity));
-    const liID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
-    li.id = liID;
+    const cardID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
+    li.id = cardID;
+    li.setAttribute('data-id', `${index + 1}`);
   }
 }
 //Фукція появи error-картинки на деякий час
@@ -202,4 +203,84 @@ function checkIfTaskSolved() {
   const cells = [...cardsBox.children];
   const isTaskSolved = cells.every(cell => cell.querySelector('img'));
   return isTaskSolved;
+}
+
+function showVisualHint(card) {
+  const hoveredId = parseInt(card.getAttribute('data-id'));
+  const { rowNumber, columnNumber } = calculateRowAndColumn(hoveredId);
+  applyHintClassByRow(rowNumber);
+  applyHintClassByColumn(card, columnNumber);
+}
+
+function hideVisualHint(card) {
+  const hoveredId = parseInt(card.getAttribute('data-id'));
+  const rowNumber = Math.ceil(hoveredId / 4);
+  const columnNumber = hoveredId % 4 || 4;
+
+  for (let j = 1; j <= 4; j++) {
+    const cardID = (rowNumber - 1) * 4 + j;
+    const rowCard = document.querySelector(`[data-id="${cardID.toString()}"]`);
+    if (rowCard) {
+      rowCard.classList.remove('hint');
+    }
+  }
+
+  const cards = card.parentNode.getElementsByTagName('li');
+  for (let k = 0; k < cards.length; k++) {
+    //перевіряєммо кожку лішку чи вона знаходиться у тому самому стовпчику, що й і лішка, по якій був ховер
+    if (k % 4 === columnNumber - 1) {
+      cards[k].classList.remove('hint');
+    }
+  }
+}
+
+function checkIfCellEmpty(cell) {
+  // Перевіряємо чи була натиснута сама картинка (тег img) чи лішка(тег li). Якщо була натиснута сама картинка , то в змінну clickedCell записуємо не картинку, а її батківський елемент, тобто лішку. Якщо була натиснута лішка, то у змінну clickedCell записуємо цю лішку
+  const clickedCell = cell.tagName === 'IMG' ? cell.parentElement : cell;
+  // Перевіряємо чи є в натиснутій лішці картинка чи немає(чи пуста натиснута лішка)
+  const isCellEmpty = !clickedCell.querySelector('img');
+  return isCellEmpty;
+}
+
+function handleMouseEnter(e) {
+  const hoveredElement = e.target;
+  const isCellEmpty = checkIfCellEmpty(hoveredElement);
+
+  if (isCellEmpty) {
+    showVisualHint(hoveredElement);
+  }
+}
+
+function handleMouseLeave(e) {
+  const hoveredElement = e.target;
+  const isCellEmpty = checkIfCellEmpty(hoveredElement);
+
+  if (isCellEmpty) {
+    hideVisualHint(hoveredElement);
+  }
+}
+
+function calculateRowAndColumn(cardId) {
+  const rowNumber = Math.ceil(cardId / 4);
+  const columnNumber = cardId % 4 || 4;
+  return { rowNumber, columnNumber };
+}
+
+function applyHintClassByRow(rowNumber) {
+  for (let j = 1; j <= 4; j++) {
+    const cardID = (rowNumber - 1) * 4 + j;
+    const rowCard = document.querySelector(`[data-id="${cardID.toString()}"]`);
+    if (rowCard) {
+      rowCard.classList.add('hint');
+    }
+  }
+}
+
+function applyHintClassByColumn(card, columnNumber) {
+  const cards = card.parentNode.getElementsByTagName('li');
+  Array.from(cards).forEach((card, index) => {
+    if (index % 4 === columnNumber - 1) {
+      card.classList.add('hint');
+    }
+  });
 }
