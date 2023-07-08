@@ -208,30 +208,15 @@ function checkIfTaskSolved() {
 function showVisualHint(card) {
   const hoveredId = parseInt(card.getAttribute('data-id'));
   const { rowNumber, columnNumber } = calculateRowAndColumn(hoveredId);
-  applyHintClassByRow(rowNumber);
-  applyHintClassByColumn(card, columnNumber);
+  handleHintClassByRow(rowNumber, 'add');
+  handleHintClassByColumn(card, columnNumber, 'add');
 }
 
 function hideVisualHint(card) {
   const hoveredId = parseInt(card.getAttribute('data-id'));
-  const rowNumber = Math.ceil(hoveredId / 4);
-  const columnNumber = hoveredId % 4 || 4;
-
-  for (let j = 1; j <= 4; j++) {
-    const cardID = (rowNumber - 1) * 4 + j;
-    const rowCard = document.querySelector(`[data-id="${cardID.toString()}"]`);
-    if (rowCard) {
-      rowCard.classList.remove('hint');
-    }
-  }
-
-  const cards = card.parentNode.getElementsByTagName('li');
-  for (let k = 0; k < cards.length; k++) {
-    //перевіряєммо кожку лішку чи вона знаходиться у тому самому стовпчику, що й і лішка, по якій був ховер
-    if (k % 4 === columnNumber - 1) {
-      cards[k].classList.remove('hint');
-    }
-  }
+  const { rowNumber, columnNumber } = calculateRowAndColumn(hoveredId);
+  handleHintClassByRow(rowNumber, 'remove');
+  handleHintClassByColumn(card, columnNumber, 'remove');
 }
 
 function checkIfCellEmpty(cell) {
@@ -245,7 +230,6 @@ function checkIfCellEmpty(cell) {
 function handleMouseEnter(e) {
   const hoveredElement = e.target;
   const isCellEmpty = checkIfCellEmpty(hoveredElement);
-
   if (isCellEmpty) {
     showVisualHint(hoveredElement);
   }
@@ -254,7 +238,6 @@ function handleMouseEnter(e) {
 function handleMouseLeave(e) {
   const hoveredElement = e.target;
   const isCellEmpty = checkIfCellEmpty(hoveredElement);
-
   if (isCellEmpty) {
     hideVisualHint(hoveredElement);
   }
@@ -266,21 +249,21 @@ function calculateRowAndColumn(cardId) {
   return { rowNumber, columnNumber };
 }
 
-function applyHintClassByRow(rowNumber) {
+function handleHintClassByRow(rowNumber, action) {
   for (let j = 1; j <= 4; j++) {
     const cardID = (rowNumber - 1) * 4 + j;
     const rowCard = document.querySelector(`[data-id="${cardID.toString()}"]`);
     if (rowCard) {
-      rowCard.classList.add('hint');
+      rowCard.classList[action]('hint');
     }
   }
 }
 
-function applyHintClassByColumn(card, columnNumber) {
+function handleHintClassByColumn(card, columnNumber, action) {
   const cards = card.parentNode.getElementsByTagName('li');
   Array.from(cards).forEach((card, index) => {
     if (index % 4 === columnNumber - 1) {
-      card.classList.add('hint');
+      card.classList[action]('hint');
     }
   });
 }
