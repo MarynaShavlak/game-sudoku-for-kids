@@ -69,6 +69,7 @@
   border: 5px solid rgb(217, 0, 51);
   border-radius: 5px;
   transform: scale(1.1);
+z-index: 2;
 }
 
 

@@ -1,39 +1,78 @@
 function calculateTotalCardsQuantity(solution) {
-  // Створюємо змінну, в яку будемо записувати скільки всього клітинок в нас має бути в завданні. Для початку записуємо в цю змінну нуль.
   let totalCards = 0;
-  // Для того , щоб дізнатись скільки клітинок ми маємо створити, нам треба порахувати скільки всього цифр є в рядках масиву solutions. У нас 4 рядки по 4 цифри, тобто всього маэ бути 16 клітинок
   for (let i = 0; i < solution.length; i++) {
-    // перебираємо по черзі кожен елемент масиву і додаємо його довжину до значення змінної totalCards.
-    //Тобто, на кожній ітерації додаємо до totalCards 4 (так як в кожному рядку 4 цифри), так і отримуємо 16.
     totalCards += solution[i].length;
   }
   return totalCards;
 }
 
 function createListItem(imageIndex) {
-  // створюємо лішку(додаємо їй потрібний клас)
   const li = document.createElement('li');
   li.className = 'card';
-  // cardsTaskBoard = levelTasks[chosenLevel].task;
-
   cardsTaskBoard = generatedTask;
   const cardsInRowQuantity = cardsTaskBoard.length;
   setCardImageSizes(li, cardsInRowQuantity);
   setEmptyCellBackground(li);
-
-  // Перевіряємо чи має в нас клітинка бути вже із картинкою на початку гри чи повинна бути пустою
-  // Вставляємо у лішку картинку тільки тоді коли ми маємо номер картинки ,  а не дефіс
   if (imageIndex !== '-') {
-    // Створюємо елемент картинки із відповідними атрибутами
     const theme = themes[chosenTopic];
     const img = createImage(theme, imageIndex);
-    // Вставляємо картинку в лішку
     li.appendChild(img);
   }
   li.onclick = onСellOnBoardClick;
   li.addEventListener('mouseenter', handleMouseEnter);
   li.addEventListener('mouseleave', handleMouseLeave);
   return li;
+}
+
+function setCardImageSizes(card, elementsInOneRow) {
+  let screenWidth = window.innerWidth;
+
+  if (screenWidth >= 320 && screenWidth <= 767) {
+    if (elementsInOneRow === 4) {
+      card.style.width = '72px';
+      card.style.height = '72px';
+    } else if (elementsInOneRow === 5) {
+      card.style.width = '58px';
+      card.style.height = '58px';
+    } else if (elementsInOneRow === 6) {
+      card.style.width = '48px';
+      card.style.height = '48px';
+    }
+  } else {
+    // Default sizes for other screen sizes
+    if (elementsInOneRow === 4) {
+      card.style.width = '150px';
+      card.style.height = '150px';
+    } else if (elementsInOneRow === 5) {
+      card.style.width = '120px';
+      card.style.height = '120px';
+    } else if (elementsInOneRow === 6) {
+      card.style.width = '100px';
+      card.style.height = '100px';
+    }
+  }
+}
+
+function setEmptyCellBackground(cell) {
+  const themeColor = themeEmptyCellColors[chosenTopic];
+  cell.style.backgroundColor = themeColor;
+}
+function setUniqueIdForCards() {
+  const allCardsElements = document.querySelectorAll('.card');
+  solution = generatedSolution;
+  totalCards = calculateTotalCardsQuantity(solution);
+  const rowsQuantity = solution.length;
+  const finishedImagesIndexes = solution.join('');
+
+  //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
+
+  for (let index = 0; index < totalCards; index++) {
+    const li = allCardsElements[index];
+    const rowIndex = Math.ceil((index + 1) / (totalCards / rowsQuantity));
+    const cardID = `${rowIndex}-${finishedImagesIndexes[index]}`;
+    li.id = cardID;
+    li.setAttribute('data-id', `${index + 1}`);
+  }
 }
 
 function generateTaskBoard() {
@@ -83,78 +122,29 @@ function createTaskBoard() {
 }
 
 function onСellOnBoardClick(e) {
-  // Записуємо у змінну який елемент був натиснутий
   const clickedElement = e.target;
-  const clickedCell =
-    clickedElement.tagName === 'IMG'
-      ? clickedElement.parentElement
-      : clickedElement;
+  const clickedCell = getClickedCell(clickedElement);
   const isCellEmpty = checkIfCellEmpty(clickedElement);
-  //Якщо ми клікнули в пусту клітинку, то:
   if (isCellEmpty) {
-    // Знаходимо який номер картинки правильний для натиснутої пустої клітинки
-    const correctIndex = getIndexOfCorrectImageForClickedEmtyCell(clickedCell);
-    // Порівнюємо айдішник пустої клітинки із номером картинки , яку ми до цього обрали в блоці selection
-    const isMatched = correctIndex == chosenImageIndex;
-
-    // Якщо співпадыння Є, то:
-    if (isMatched) {
-      //  створюємо розмітку картинки із коректнимм ідексом в  та вставляємо її в пусту лішку а яку ми клікнули
-      const theme = themes[chosenTopic];
-      const imageToSetOnBoard = createImage(theme, correctIndex);
-      clickedElement.appendChild(imageToSetOnBoard);
-      //Позитивний звук(якщо вгадали)
-      positiveSound();
-      const isTaskSolved = checkIfTaskSolved();
-      if (isTaskSolved) {
-        openWinWindow();
-      }
-    } else {
-      //Зменшення життів
-      minusLife();
-
-      //При помилці з'являється картинка-еррор на деякий час
-      errorImage(clickedElement);
-      //Негативний звук(якщо помилка)
-      negativeSound();
-    }
+    handleEmptyCellClicked(clickedElement, clickedCell);
+    hideVisualHint(clickedCell);
   } else {
-    // Якщо користувач натискає на клітинку, яка не пуста, то ніяких дій виконувати не треба і ми просто виходимо із функції
-
-    return;
+    handleNonEmptyCellClicked(clickedCell);
   }
 }
 
+function checkIfCellEmpty(cell) {
+  const clickedCell = getClickedCell(cell);
+  const isCellEmpty = !clickedCell.querySelector('img');
+  return isCellEmpty;
+}
+
 function getIndexOfCorrectImageForClickedEmtyCell(emptyCell) {
-  // Знаходимо айдішник натиснутої пустої клітинки(лішки)
   const idOfLi = emptyCell.id;
-  // Так як айдішник - це рядок, що складається із двох цифр розділених дефісом, то треба перетворити цей рядок на масив , і в цьому масиві знайти другий елемент, так як перший відповідає за номер рядку на якому лішка знаходиться  в дошці,  а другий саме за номер картинки
   const index = idOfLi.split('-')[1];
   return index;
 }
 
-function setUniqueIdForCards() {
-  // Знаходимо всі елементи лішки із класом card на сторінці
-  const allCardsElements = document.querySelectorAll('.card');
-  // solution = levelTasks[chosenLevel].solution;
-  solution = generatedSolution;
-  // Розраховуємо скільки всього картинок має бути на дошці
-  totalCards = calculateTotalCardsQuantity(solution);
-  // Розраховуємо скільки всього має бути рядків на дошці
-  const rowsQuantity = solution.length;
-  const finishedImagesIndexes = solution.join('');
-
-  //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
-
-  for (let index = 0; index < totalCards; index++) {
-    const li = allCardsElements[index];
-    const rowIndex = Math.ceil((index + 1) / (totalCards / rowsQuantity));
-    const cardID = `${rowIndex}-${finishedImagesIndexes[index]}`; // це звичайна конкатенація рядків, запис аналогічний до : rowIndex + '-' + imageIndex
-    li.id = cardID;
-    li.setAttribute('data-id', `${index + 1}`);
-  }
-}
-//Фукція появи error-картинки на деякий час
 function errorImage(clickedElement) {
   const imgError = document.createElement('img');
   imgError.src = `./images/error.png`;
@@ -164,40 +154,6 @@ function errorImage(clickedElement) {
   }, 500);
 }
 
-function setCardImageSizes(card, elementsInOneRow) {
-  let screenWidth = window.innerWidth;
-
-  if (screenWidth >= 320 && screenWidth <= 767) {
-    if (elementsInOneRow === 4) {
-      card.style.width = '72px';
-      card.style.height = '72px';
-    } else if (elementsInOneRow === 5) {
-      card.style.width = '58px';
-      card.style.height = '58px';
-    } else if (elementsInOneRow === 6) {
-      card.style.width = '48px';
-      card.style.height = '48px';
-    }
-  } else {
-    // Default sizes for other screen sizes
-    if (elementsInOneRow === 4) {
-      card.style.width = '150px';
-      card.style.height = '150px';
-    } else if (elementsInOneRow === 5) {
-      card.style.width = '120px';
-      card.style.height = '120px';
-    } else if (elementsInOneRow === 6) {
-      card.style.width = '100px';
-      card.style.height = '100px';
-    }
-  }
-}
-
-function setEmptyCellBackground(cell) {
-  const themeColor = themeEmptyCellColors[chosenTopic];
-  cell.style.backgroundColor = themeColor;
-}
-
 function checkIfTaskSolved() {
   const cardsBox = document.querySelector('.cards');
   const cells = [...cardsBox.children];
@@ -205,68 +161,45 @@ function checkIfTaskSolved() {
   return isTaskSolved;
 }
 
-function showVisualHint(card) {
-  const hoveredId = parseInt(card.getAttribute('data-id'));
-  const { rowNumber, columnNumber } = calculateRowAndColumn(hoveredId);
-  handleHintClassByRow(rowNumber, 'add');
-  handleHintClassByColumn(card, columnNumber, 'add');
+function checkIfMatchedCell(clickedCell) {
+  const correctIndex = getIndexOfCorrectImageForClickedEmtyCell(clickedCell);
+  const isMatched = correctIndex == chosenImageIndex;
+  return { correctIndex, isMatched };
 }
 
-function hideVisualHint(card) {
-  const hoveredId = parseInt(card.getAttribute('data-id'));
-  const { rowNumber, columnNumber } = calculateRowAndColumn(hoveredId);
-  handleHintClassByRow(rowNumber, 'remove');
-  handleHintClassByColumn(card, columnNumber, 'remove');
-}
-
-function checkIfCellEmpty(cell) {
-  // Перевіряємо чи була натиснута сама картинка (тег img) чи лішка(тег li). Якщо була натиснута сама картинка , то в змінну clickedCell записуємо не картинку, а її батківський елемент, тобто лішку. Якщо була натиснута лішка, то у змінну clickedCell записуємо цю лішку
-  const clickedCell = cell.tagName === 'IMG' ? cell.parentElement : cell;
-  // Перевіряємо чи є в натиснутій лішці картинка чи немає(чи пуста натиснута лішка)
-  const isCellEmpty = !clickedCell.querySelector('img');
-  return isCellEmpty;
-}
-
-function handleMouseEnter(e) {
-  const hoveredElement = e.target;
-  const isCellEmpty = checkIfCellEmpty(hoveredElement);
-  if (isCellEmpty) {
-    showVisualHint(hoveredElement);
-  }
-}
-
-function handleMouseLeave(e) {
-  const hoveredElement = e.target;
-  const isCellEmpty = checkIfCellEmpty(hoveredElement);
-  if (isCellEmpty) {
-    hideVisualHint(hoveredElement);
-  }
-}
-
-function calculateRowAndColumn(cardId) {
-  const rowsQuantity = cardsTaskBoard.length;
-  const rowNumber = Math.ceil(cardId / rowsQuantity);
-  const columnNumber = cardId % rowsQuantity || rowsQuantity;
-  return { rowNumber, columnNumber };
-}
-
-function handleHintClassByRow(rowNumber, action) {
-  const rowsQuantity = cardsTaskBoard.length;
-  for (let j = 1; j <= rowsQuantity; j++) {
-    const cardID = (rowNumber - 1) * rowsQuantity + j;
-    const rowCard = document.querySelector(`[data-id="${cardID.toString()}"]`);
-    if (rowCard) {
-      rowCard.classList[action]('hint');
+function handleEmptyCellClicked(clickedElement, clickedCell) {
+  const { correctIndex, isMatched } = checkIfMatchedCell(clickedCell);
+  if (isMatched) {
+    const theme = themes[chosenTopic];
+    const imageToSetOnBoard = createImage(theme, correctIndex);
+    clickedElement.appendChild(imageToSetOnBoard);
+    positiveSound();
+    const isTaskSolved = checkIfTaskSolved();
+    if (isTaskSolved) {
+      openWinWindow();
     }
+  } else {
+    minusLife();
+    errorImage(clickedElement);
+    negativeSound();
   }
 }
 
-function handleHintClassByColumn(card, columnNumber, action) {
-  const rowsQuantity = cardsTaskBoard.length;
-  const cards = card.parentNode.getElementsByTagName('li');
-  Array.from(cards).forEach((card, index) => {
-    if (index % rowsQuantity === columnNumber - 1) {
-      card.classList[action]('hint');
+function handleNonEmptyCellClicked(clickedCell) {
+  const imgName = clickedCell.children[0].alt;
+  const cards = clickedCell.parentNode.getElementsByTagName('li');
+  const isAlreadySelected = clickedCell.classList.contains('selected');
+  if (isAlreadySelected) {
+    clickedCell.classList.remove('selected');
+    clearSelectedCards(cards);
+    return;
+  }
+  clearSelectedCards(cards);
+  Array.from(cards).forEach(card => {
+    const img = card.querySelector('img');
+    if (img && img.getAttribute('alt') === imgName) {
+      card.classList.add('selected');
     }
   });
+  return;
 }
