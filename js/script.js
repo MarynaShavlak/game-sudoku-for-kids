@@ -12,6 +12,8 @@ let cardsTaskBoard = generatedTask;
 const cardsContainer = document.querySelector('.cards-container');
 const bodyEl = document.querySelector('body');
 const backBtn = document.querySelector('.back-btn');
+const hintsBlock = document.querySelector('.hints-block');
+
 // Гравець може повернутись на стартове меню при кліці на кнопку "назад"
 backBtn.onclick = openConfirmationModal;
 createTaskBoard();

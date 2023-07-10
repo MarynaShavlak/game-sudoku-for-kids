@@ -115,15 +115,23 @@ align-items: center;
   gap: 10px;
   align-items: center;
   padding: 10px;
-  background-color: #fff;
   border-radius: 20px;
+  background-color: #fff;
   border: 1px solid black;
   cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;}
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  transition: 300ms border cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms color cubic-bezier(0.075, 0.82, 0.165, 1),300ms box-shadow cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.hints-block:hover, .hints-block:focus {
+  color: rgb(217, 0, 51);
+  border: 1px solid rgb(217, 0, 51);
+  box-shadow: rgba(217, 0, 51, 0.4) 0px 2px 4px, rgba(217, 0,51, 0.3) 0px 7px 13px -3px, rgba(217, 0, 51, 0.2) 0px -3px 0px inset;
+}
 
 .hint-text {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   .hint-text {
     font-size: 18px;

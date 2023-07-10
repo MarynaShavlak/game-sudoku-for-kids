@@ -10,12 +10,11 @@ function minusHint() {
       // Змінити текст кнопки
     }, 300);
   }
-  createhints();
+  createHints();
 }
 
-function createhints() {
+function createHints() {
   let hintsBlock = document.querySelector('.menu .hints');
-  console.log('hintsBlock: ', hintsBlock);
   hintsBlock.innerHTML = '';
   for (let i = 0; i < hints; i++) {
     let span = document.createElement('span');

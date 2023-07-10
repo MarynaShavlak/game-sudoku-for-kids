@@ -36,7 +36,7 @@ function onStartGameBtnClick() {
   lifes = lifesValue[chosenLevel];
   hints = hintsValue[chosenLevel];
   createLifes();
-  createhints();
+  createHints();
   hideStartWindow();
   showGameField();
   setTimerInterface();
