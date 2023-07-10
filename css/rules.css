@@ -18,8 +18,8 @@
         width: 150px;
     }
   #rules-window {
-    bottom: 250px;
-    left: 130px;         }  
+    bottom: 260px;
+    left: 135px;         }  
 
 }
 
@@ -53,14 +53,14 @@
 
 @media (min-width: 768px) {
   #rules-window {
-      bottom: 350px;
+      bottom: 370px;
       left: 180px;
   }
 }
 
 @media (min-width: 1200px) {
   #rules-window {
-    bottom: 370px;
+    bottom: 390px;
     left: 220px;
   }
 }

@@ -36,6 +36,7 @@ function onStartGameBtnClick() {
   lifes = lifesValue[chosenLevel];
   hints = hintsValue[chosenLevel];
   createLifes();
+  hintsBlock.setAttribute('data-type', themes[chosenTopic]);
   createHints();
   hideStartWindow();
   showGameField();
