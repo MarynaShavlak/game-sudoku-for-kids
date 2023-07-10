@@ -52,12 +52,13 @@ align-items: center;
   }
 }
 
-.lifes {
+.lifes, .hints {
   display: flex;
   gap: 5px;
 }
 @media (min-width: 768px) {
-  .lifes {
+  .lifes,
+  .hints {
     gap: 10px;
   }
 }
@@ -107,6 +108,56 @@ align-items: center;
     height: 70px;
   }
 }
+
+.hints-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid black;
+  cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;}
+
+.hint-text {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .hint-text {
+    font-size: 18px;
+  }
+}
+
+.hint-element {
+  width: 20px;
+  height: 20px;
+  background: url('../images/hint.png');
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (min-width: 768px) {
+  .hint-element {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hint-element {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+
+
+
+
 
 .timer {
   display: none;
@@ -162,7 +213,7 @@ align-items: center;
   right: 10px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px;
 }
 
 @media (min-width: 768px) {
@@ -170,6 +221,7 @@ align-items: center;
     flex-direction: column;
     top: 100px;
     right: 10px;
+    gap: 10px;
   }
 }
 

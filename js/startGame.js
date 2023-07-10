@@ -34,7 +34,9 @@ function onParametersBtnClick() {
 function onStartGameBtnClick() {
   chosenImageIndex = 1;
   lifes = lifesValue[chosenLevel];
+  hints = hintsValue[chosenLevel];
   createLifes();
+  createhints();
   hideStartWindow();
   showGameField();
   setTimerInterface();

@@ -14,7 +14,10 @@ body {
   overflow: hidden;
 } 
 
-
+p {
+  margin: 0;
+  padding: 0;
+}
 body {
   background: url('../images/start-background.jpg') no-repeat center center;
   background-size: cover;

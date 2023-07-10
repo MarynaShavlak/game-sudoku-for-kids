@@ -52,6 +52,9 @@
   transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+
+
+
 .card.hint::before {
   content: '';
   position: absolute;
@@ -63,13 +66,11 @@
   opacity: 0.5;
 }
 
-
-
 .card-selection .card:not(:empty):hover {
   border: 5px solid #002a42;
 }
 
 .selected {
   border: 5px solid blue;
-  
+
 }

@@ -2,7 +2,8 @@ let emptyCellIndex = null; // на початку гри користувач щ
 let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
 let chosenLevel = 'level1';
 let chosenTopic = 'theme1';
-let lifes; //Кількість життів
+let lifes;
+let hints;
 let generatedSolution = generateArrayWithUniqueDigit(4);
 let generatedTask = createTaskArrayWithHyphen(generatedSolution);
 let solution = generatedSolution;
@@ -13,6 +14,5 @@ const bodyEl = document.querySelector('body');
 const backBtn = document.querySelector('.back-btn');
 // Гравець може повернутись на стартове меню при кліці на кнопку "назад"
 backBtn.onclick = openConfirmationModal;
-
 createTaskBoard();
 createImageSelectionBlock(solution);

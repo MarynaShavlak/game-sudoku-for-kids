@@ -24,33 +24,68 @@ function createListItem(imageIndex) {
   return li;
 }
 
-function setCardImageSizes(card, elementsInOneRow) {
-  let screenWidth = window.innerWidth;
+// function setCardImageSizes(card, elementsInOneRow) {
+//   let screenWidth = window.innerWidth;
 
-  if (screenWidth >= 320 && screenWidth <= 767) {
-    if (elementsInOneRow === 4) {
-      card.style.width = '72px';
-      card.style.height = '72px';
-    } else if (elementsInOneRow === 5) {
-      card.style.width = '58px';
-      card.style.height = '58px';
-    } else if (elementsInOneRow === 6) {
-      card.style.width = '48px';
-      card.style.height = '48px';
-    }
-  } else {
-    // Default sizes for other screen sizes
-    if (elementsInOneRow === 4) {
-      card.style.width = '150px';
-      card.style.height = '150px';
-    } else if (elementsInOneRow === 5) {
-      card.style.width = '120px';
-      card.style.height = '120px';
-    } else if (elementsInOneRow === 6) {
-      card.style.width = '100px';
-      card.style.height = '100px';
+//   if (screenWidth >= 320 && screenWidth <= 767) {
+//     if (elementsInOneRow === 4) {
+//       card.style.width = '72px';
+//       card.style.height = '72px';
+//     } else if (elementsInOneRow === 5) {
+//       card.style.width = '58px';
+//       card.style.height = '58px';
+//     } else if (elementsInOneRow === 6) {
+//       card.style.width = '48px';
+//       card.style.height = '48px';
+//     }
+//   } else {
+//     if (elementsInOneRow === 4) {
+//       card.style.width = '150px';
+//       card.style.height = '150px';
+//     } else if (elementsInOneRow === 5) {
+//       card.style.width = '120px';
+//       card.style.height = '120px';
+//     } else if (elementsInOneRow === 6) {
+//       card.style.width = '100px';
+//       card.style.height = '100px';
+//     }
+//   }
+// }
+
+function setCardImageSizes(card, elementsInOneRow) {
+  function updateCardSize() {
+    let screenWidth = window.innerWidth;
+
+    if (screenWidth >= 320 && screenWidth <= 767) {
+      if (elementsInOneRow === 4) {
+        card.style.width = '72px';
+        card.style.height = '72px';
+      } else if (elementsInOneRow === 5) {
+        card.style.width = '58px';
+        card.style.height = '58px';
+      } else if (elementsInOneRow === 6) {
+        card.style.width = '48px';
+        card.style.height = '48px';
+      }
+    } else {
+      if (elementsInOneRow === 4) {
+        card.style.width = '150px';
+        card.style.height = '150px';
+      } else if (elementsInOneRow === 5) {
+        card.style.width = '120px';
+        card.style.height = '120px';
+      } else if (elementsInOneRow === 6) {
+        card.style.width = '100px';
+        card.style.height = '100px';
+      }
     }
   }
+
+  // Call the function initially
+  updateCardSize();
+
+  // Attach the event listener to update the card size on window resize
+  window.addEventListener('resize', updateCardSize);
 }
 
 function setEmptyCellBackground(cell) {
