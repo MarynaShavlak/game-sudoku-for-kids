@@ -14,7 +14,7 @@ const bodyEl = document.querySelector('body');
 const backBtn = document.querySelector('.back-btn');
 const hintsBlock = document.querySelector('.hints-block');
 hintsBlock.setAttribute('data-type', themes[chosenTopic]);
-hintsBlock.addEventListener('click', pop);
+hintsBlock.addEventListener('click', showVisualEffect);
 backBtn.onclick = openConfirmationModal;
 
 createTaskBoard();
