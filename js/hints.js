@@ -1,3 +1,10 @@
+const hintsBlock = document.querySelector('.menu .hints-block');
+const hintsList = document.querySelector('.menu .hints');
+const noHintsText = document.querySelector('.no-hints-text');
+const hintsText = document.querySelector('.hint-text');
+hintsBlock.setAttribute('data-type', themes[chosenTopic]);
+hintsBlock.addEventListener('click', onHintsBlockClick);
+
 const hintsValue = {
   level1: 3,
   level2: 4,
@@ -7,19 +14,21 @@ function minusHint() {
   hints--;
   if (hints <= 0) {
     setTimeout(function () {
-      // Змінити текст кнопки
+      noHintsText.style.display = 'block';
+      hintsText.style.display = 'none';
     }, 300);
   }
   createHints();
 }
 
 function createHints() {
-  let hintsBlock = document.querySelector('.menu .hints');
-  hintsBlock.innerHTML = '';
+  noHintsText.style.display = 'none';
+  hintsText.style.display = 'block';
+  hintsList.innerHTML = '';
   for (let i = 0; i < hints; i++) {
     let span = document.createElement('span');
     span.className = 'hint-element';
-    hintsBlock.appendChild(span);
+    hintsList.appendChild(span);
   }
 }
 
@@ -151,4 +160,19 @@ function animateParticle(particle, x, y) {
     },
   );
   animation.onfinish = removeParticle;
+}
+
+function onHintsBlockClick(e) {
+  console.log('e: ', e);
+  const clickedBlock =
+    e.target.className === 'hints-block'
+      ? e.target
+      : e.target.className === 'hint-element'
+      ? e.target.parentElement.parentElement
+      : e.target.parentElement;
+  console.log('clickedBlock: ', clickedBlock);
+  if (e.target.children.length > 0) {
+    minusHint();
+    showVisualEffect(e);
+  }
 }
