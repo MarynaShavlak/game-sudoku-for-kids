@@ -111,6 +111,8 @@ align-items: center;
 
 .hints-block {
   display: flex;
+  min-height: 50px;
+  max-width: 170px;
   flex-direction: column;
   gap: 10px;
   align-items: center;
@@ -126,10 +128,17 @@ align-items: center;
   transition: 300ms border cubic-bezier(0.075, 0.82, 0.165, 1), 300ms transform cubic-bezier(0.075, 0.82, 0.165, 1), 300ms color cubic-bezier(0.075, 0.82, 0.165, 1),300ms box-shadow cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.hints-block.disabled {
+  background-color: #ffffff97;
+}
+
+
+
 @media (min-width: 768px) {
   .hints-block {
     max-width: 220px;
     min-height: 70px;
+    
   }
 }
 

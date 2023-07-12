@@ -171,10 +171,16 @@ function onHintsBlockClick(e) {
       ? e.target.parentElement.parentElement
       : e.target.parentElement;
   if (hintsList.children.length > 0) {
-    console.log('hints: ', hints);
-
     minusHint();
-
     showVisualEffect(e, clickedBlock);
+  }
+  if (hintsList.children.length === 0) {
+    makeHintsBlockDisabled();
+  }
+}
+
+function makeHintsBlockDisabled() {
+  if (noHintsText && window.getComputedStyle(noHintsText).display === 'block') {
+    hintsBlock.classList.add('disabled');
   }
 }
