@@ -12,33 +12,34 @@ const hintsValue = {
 };
 function minusHint() {
   hints--;
-  if (hints <= 0) {
-    setTimeout(function () {
-      noHintsText.style.display = 'block';
-      hintsText.style.display = 'none';
-    }, 300);
-  }
   createHints();
 }
 
 function createHints() {
+  hintsList.style.display = 'flex';
   noHintsText.style.display = 'none';
   hintsText.style.display = 'block';
   hintsList.innerHTML = '';
-  for (let i = 0; i < hints; i++) {
+  console.log('hintsin createHints: ', hints);
+  for (let i = 1; i <= hints; i++) {
     let span = document.createElement('span');
     span.className = 'hint-element';
     hintsList.appendChild(span);
   }
+  if (hints === 0) {
+    hintsList.style.display = 'none';
+    hintsText.style.display = 'none';
+    noHintsText.style.display = 'block';
+  }
 }
 
-function showVisualEffect(e) {
+function showVisualEffect(e, clickedBlock) {
   let amount = 50;
   for (let i = 0; i < amount; i++) {
     createParticle(
       e.clientX,
       e.clientY + window.scrollY,
-      e.target.dataset.type,
+      clickedBlock.dataset.type,
     );
   }
 }
@@ -163,16 +164,17 @@ function animateParticle(particle, x, y) {
 }
 
 function onHintsBlockClick(e) {
-  console.log('e: ', e);
   const clickedBlock =
     e.target.className === 'hints-block'
       ? e.target
       : e.target.className === 'hint-element'
       ? e.target.parentElement.parentElement
       : e.target.parentElement;
-  console.log('clickedBlock: ', clickedBlock);
-  if (e.target.children.length > 0) {
+  if (hintsList.children.length > 0) {
+    console.log('hints: ', hints);
+
     minusHint();
-    showVisualEffect(e);
+
+    showVisualEffect(e, clickedBlock);
   }
 }

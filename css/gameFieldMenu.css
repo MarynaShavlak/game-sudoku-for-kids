@@ -128,7 +128,7 @@ align-items: center;
 
 @media (min-width: 768px) {
   .hints-block {
-    max-width: 210px;
+    max-width: 220px;
     min-height: 70px;
   }
 }
@@ -143,6 +143,9 @@ align-items: center;
 .hint-text {
   font-size: 14px;
 }
+.no-hints-text {
+  font-size: 14px;
+}
 
 
 .no-hints-text {
@@ -150,6 +153,9 @@ align-items: center;
 }
 @media (min-width: 768px) {
   .hint-text {
+    font-size: 18px;
+  }
+  .no-hints-text {
     font-size: 18px;
   }
 }
