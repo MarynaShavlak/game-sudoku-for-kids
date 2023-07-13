@@ -173,6 +173,7 @@ function onHintsBlockClick(e) {
   if (hintsList.children.length > 0) {
     minusHint();
     showVisualEffect(e, clickedBlock);
+    getAllEmptyCells();
   }
   if (hintsList.children.length === 0) {
     makeHintsBlockDisabled();
@@ -183,4 +184,17 @@ function makeHintsBlockDisabled() {
   if (noHintsText && window.getComputedStyle(noHintsText).display === 'block') {
     hintsBlock.classList.add('disabled');
   }
+}
+
+function getAllEmptyCells() {
+  let emptyCells = [];
+  const cardsBox = document.querySelector('.cards');
+  const cells = [...cardsBox.children];
+  console.log('cells: ', cells);
+  cells.forEach(cell => {
+    if (!cell.querySelector('img')) {
+      emptyCells.push(cell);
+    }
+  });
+  console.log('emptyCells: ', emptyCells);
 }
