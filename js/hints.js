@@ -10,6 +10,9 @@ const hintsValue = {
   level2: 4,
   level3: 5,
 };
+
+let isHintTimeOutRunning = false;
+
 function minusHint() {
   hints--;
   createHints();
@@ -164,6 +167,8 @@ function animateParticle(particle, x, y) {
 }
 
 function onHintsBlockClick(e) {
+  if (isHintTimeOutRunning) return;
+
   const clickedBlock =
     e.target.className === 'hints-block'
       ? e.target
@@ -173,7 +178,26 @@ function onHintsBlockClick(e) {
   if (hintsList.children.length > 0) {
     minusHint();
     showVisualEffect(e, clickedBlock);
-    getAllEmptyCells();
+    const randomEmptyCell = getRandomEmptyCell();
+    console.log('randomEmptyCell: ', randomEmptyCell);
+    const correctIndex =
+      getIndexOfCorrectImageForClickedEmtyCell(randomEmptyCell);
+    console.log('correctIndex : ', correctIndex);
+    const theme = themes[chosenTopic];
+    const imageToSetOnBoard = createImage(theme, correctIndex);
+    randomEmptyCell.style.backgroundColor = 'rgb(255, 247, 0)';
+    randomEmptyCell.style.border = '3px solid blue';
+    randomEmptyCell.appendChild(imageToSetOnBoard);
+    imageToSetOnBoard.classList.add('rotate-animation');
+    isHintTimeOutRunning = true;
+
+    setTimeout(function () {
+      randomEmptyCell.style.border = '1px solid #002a42';
+      randomEmptyCell.removeChild(imageToSetOnBoard);
+      imageToSetOnBoard.classList.remove('rotate-animation');
+      setEmptyCellBackground(randomEmptyCell);
+      isHintTimeOutRunning = false;
+    }, 2000);
   }
   if (hintsList.children.length === 0) {
     makeHintsBlockDisabled();
@@ -197,4 +221,14 @@ function getAllEmptyCells() {
     }
   });
   console.log('emptyCells: ', emptyCells);
+  return emptyCells;
+}
+
+function getRandomEmptyCell() {
+  const emptyCells = getAllEmptyCells();
+  if (emptyCells.length === 0) {
+    return null;
+  }
+  const randomIndex = Math.floor(Math.random() * emptyCells.length);
+  return emptyCells[randomIndex];
 }

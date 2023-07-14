@@ -221,6 +221,7 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
 }
 
 function handleNonEmptyCellClicked(clickedCell) {
+  if (isHintTimeOutRunning) return;
   const imgName = clickedCell.children[0].alt;
   const cards = clickedCell.parentNode.getElementsByTagName('li');
   const isAlreadySelected = clickedCell.classList.contains('selected');

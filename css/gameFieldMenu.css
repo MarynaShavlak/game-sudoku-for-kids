@@ -193,6 +193,25 @@ align-items: center;
 }
 
 
+.rotate-animation {
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
 .particle {
   position: fixed;
   top: 0;
