@@ -2,7 +2,6 @@ const cloudOpenModal = document.querySelector('.cloud-rules');
 const catOpenModal = document.querySelector('.cat-rules');
 const rulesTitle = document.querySelector('#rules');
 const rulesModal = document.querySelector('.rules-modal');
-
 const modalWindow = document.querySelector('.modal');
 const modalOverlay = document.querySelector('.modal__overlay');
 const restartBtnWin = document.querySelector('#restartBtnWin');

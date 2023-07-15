@@ -181,16 +181,11 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
     const isTaskSolved = checkIfTaskSolved();
     if (isTaskSolved) {
       openGameResultModal(winWindow);
-
       increaseWinsQuantity();
+      handleCurrentGamesWithoutMistakesQuantity();
       console.log('winsQuantity: ', winsQuantity);
       console.log('losesQuantity: ', losesQuantity);
       calculateWinsPercentage();
-      // winsPercentage = ((winsQuantity + losesQuantity) / winsQuantity) * 100;
-      // console.log(
-      //   'winsQuantity + losesQuantity: ',
-      //   typeof (winsQuantity + losesQuantity),
-      // );
       console.log('winsPercentage: ', winsPercentage);
     }
   } else {
