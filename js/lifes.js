@@ -7,7 +7,7 @@ function minusLife() {
   lifes--;
   if (lifes <= 0) {
     setTimeout(function () {
-      openLoseWindow();
+      openGameResultModal(loseWindow);
       increaseLosesQuantity();
       console.log('losesQuantity: ', losesQuantity);
       console.log('winsPercentage: ', winsPercentage);

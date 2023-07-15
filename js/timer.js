@@ -12,7 +12,7 @@ const timerBlockElement = document.querySelector('.timer span');
 const pauseGameBtn = document.querySelector('.pause-icon-wrapper');
 const playGameBtn = document.querySelector('.play-icon-wrapper');
 const pauseBtnMenu = document.querySelector('.pause');
-pauseBtnMenu.onclick = togglePause;
+pauseBtnMenu.addEventListener('click', togglePause);
 
 function setTimer(value) {
   timer = value;
@@ -28,7 +28,7 @@ function countdownTime() {
 
     if (timer <= 0) {
       clearInterval(timerID);
-      openLoseWindow();
+      openGameResultModal(loseWindow);
     }
   }, 1000);
 }

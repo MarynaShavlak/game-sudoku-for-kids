@@ -180,7 +180,8 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
     positiveSound();
     const isTaskSolved = checkIfTaskSolved();
     if (isTaskSolved) {
-      openWinWindow();
+      openGameResultModal(winWindow);
+
       increaseWinsQuantity();
       console.log('winsQuantity: ', winsQuantity);
       console.log('losesQuantity: ', losesQuantity);

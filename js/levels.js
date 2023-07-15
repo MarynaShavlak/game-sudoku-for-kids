@@ -1,18 +1,12 @@
-const levelBtnCollection = [
-  document.querySelector('#level1'),
-  document.querySelector('#level2'),
-  document.querySelector('#level3'),
-];
-
-levelBtnCollection.forEach(level => {
-  level.onclick = onLevelBtnClick;
-});
+const levelButtons = Array.from(document.querySelectorAll('.level'));
+const levelsList = document.querySelector('.levels-list');
+levelsList.addEventListener('click', onLevelBtnClick);
 
 function onLevelBtnClick(e) {
   const clickedLevel = e.target;
-
+  if (clickedLevel.nodeName !== 'BUTTON') return;
   if (clickedLevel.classList.contains('active')) return;
-  levelBtnCollection.forEach(level => {
+  levelButtons.forEach(level => {
     if (level === clickedLevel) {
       chosenLevel = clickedLevel.id;
       level.classList.add('active');

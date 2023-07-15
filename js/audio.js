@@ -27,8 +27,8 @@ const musicOffBtn = document.querySelector('.musicOff');
 let mutedMusic = false;
 let mutedSounds = false;
 let audioPlayer;
-soundBtnMenu.onclick = toggleMuted;
-musicBtnMenu.onclick = toggleMusic;
+soundBtnMenu.addEventListener('click', toggleMuted);
+musicBtnMenu.addEventListener('click', toggleMusic);
 
 function setSoundProperties(sound, volume) {
   sound.volume = volume;

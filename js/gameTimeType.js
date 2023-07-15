@@ -1,17 +1,14 @@
 let chosenGameType = 'game-without-timer';
-
+const gameTypeList = document.querySelector('.game-type-list');
+gameTypeList.addEventListener('click', onTypeBtnClick);
 const gameTimeTypeBtnCollection = [
   document.querySelector('#game-with-timer'),
   document.querySelector('#game-without-timer'),
 ];
 
-gameTimeTypeBtnCollection.forEach(type => {
-  type.onclick = onTypeBtnClick;
-});
-
 function onTypeBtnClick(e) {
   const clickedType = e.target;
-
+  if (clickedType.nodeName !== 'BUTTON') return;
   if (clickedType.classList.contains('active')) return;
   gameTimeTypeBtnCollection.forEach(type => {
     if (type === clickedType) {
