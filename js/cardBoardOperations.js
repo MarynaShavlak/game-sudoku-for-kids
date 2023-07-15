@@ -1,13 +1,13 @@
 function showVisualHint(card) {
   const hoveredId = parseInt(card.getAttribute('data-id'));
-  const { rowNumber, columnNumber } = calculateRowAndColumn(hoveredId);
+  const { rowNumber, columnNumber } = getRowAndColumn(hoveredId);
   handleHintClassByRow(rowNumber, 'add');
   handleHintClassByColumn(card, columnNumber, 'add');
 }
 
 function hideVisualHint(card) {
   const hoveredId = parseInt(card.getAttribute('data-id'));
-  const { rowNumber, columnNumber } = calculateRowAndColumn(hoveredId);
+  const { rowNumber, columnNumber } = getRowAndColumn(hoveredId);
   handleHintClassByRow(rowNumber, 'remove');
   handleHintClassByColumn(card, columnNumber, 'remove');
 }
@@ -32,7 +32,7 @@ function handleMouseLeave(e) {
   }
 }
 
-function calculateRowAndColumn(cardId) {
+function getRowAndColumn(cardId) {
   const rowsQuantity = cardsTaskBoard.length;
   const rowNumber = Math.ceil(cardId / rowsQuantity);
   const columnNumber = cardId % rowsQuantity || rowsQuantity;

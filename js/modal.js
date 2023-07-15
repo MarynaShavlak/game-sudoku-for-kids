@@ -77,18 +77,8 @@ function reloadGame() {
   hideGameField();
   showStartWindow();
   resetCardsBoard();
-  console.log('winsQuantity: ', winsQuantity);
-  console.log('losesQuantity: ', losesQuantity);
-  console.log('startedGamesQuantity: ', startedGamesQuantity);
-  console.log('winsWithoutMistakesQuantity: ', winsWithoutMistakesQuantity);
-  console.log(
-    'maxContinuousGamesWithoutMistakesQuantity: ',
-    maxContinuousGamesWithoutMistakesQuantity,
-  );
-  console.log(
-    'currentContinuousGamesWithoutMistakesQuantity: ',
-    currentContinuousGamesWithoutMistakesQuantity,
-  );
+  getWinsPercentage();
+  console.log('statistics: ', statistics);
 }
 
 function resetCardsBoard() {
@@ -105,6 +95,14 @@ function backToStartMenu() {
   resetAndStopAudioPlayer();
   resetCardsBoard();
   isPaused = false;
+  statistics[chosenLevel].averageGameTime = getAverageGameTime(
+    statistics[chosenLevel].winGameTimeValues,
+  );
+
+  statistics[chosenLevel].bestGameTime = getBestGameTimeResult(
+    statistics[chosenLevel].winGameTimeValues,
+  );
+  console.log('statistics: ', statistics);
 }
 
 function continueGame() {
@@ -117,6 +115,14 @@ function continueGame() {
 function onRestartBtnWinClick() {
   reloadGame();
   closeGameResultModal(winWindow);
+  statistics[chosenLevel].averageGameTime = getAverageGameTime(
+    statistics[chosenLevel].winGameTimeValues,
+  );
+
+  statistics[chosenLevel].bestGameTime = getBestGameTimeResult(
+    statistics[chosenLevel].winGameTimeValues,
+  );
+  console.log('statistics: ', statistics);
 }
 function onRestartBtnLoseClick() {
   reloadGame();

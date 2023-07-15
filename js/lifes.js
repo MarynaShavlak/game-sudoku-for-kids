@@ -10,11 +10,8 @@ function minusLife() {
       openGameResultModal(loseWindow);
       increaseLosesQuantity();
       isWinBefore = false;
-      console.log('losesQuantity: ', losesQuantity);
-      console.log('winsPercentage: ', winsPercentage);
-      calculateWinsPercentage();
-      // winsPercentage = ((winsQuantity + losesQuantity) / winsQuantity) * 100;
-      console.log('winsPercentage: ', winsPercentage);
+      getWinsPercentage();
+      console.log('statistics: ', statistics);
     }, 300);
   }
   createLifes();

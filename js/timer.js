@@ -30,6 +30,8 @@ function countdownTime() {
       clearInterval(timerID);
       openGameResultModal(loseWindow);
       isWinBefore = false;
+      getWinsPercentage();
+      console.log('statistics: ', statistics);
     }
   }, 1000);
 }

@@ -1,4 +1,4 @@
-function calculateTotalCardsQuantity(solution) {
+function getTotalCardsQuantity(solution) {
   let totalCards = 0;
   for (let i = 0; i < solution.length; i++) {
     totalCards += solution[i].length;
@@ -66,7 +66,7 @@ function setEmptyCellBackground(cell) {
 function setUniqueIdForCards() {
   const allCardsElements = document.querySelectorAll('.card');
   solution = generatedSolution;
-  totalCards = calculateTotalCardsQuantity(solution);
+  totalCards = getTotalCardsQuantity(solution);
   const rowsQuantity = solution.length;
   const finishedImagesIndexes = solution.join('');
 
@@ -182,10 +182,12 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
     if (isTaskSolved) {
       openGameResultModal(winWindow);
       increaseWinsQuantity();
-      handleCurrentGamesWithoutMistakesQuantity();
+      handleGamesWithoutMistakesQuantity();
       handleCurrentContinuousGamesWithoutMistakesQuantity();
-      calculateWinsPercentage();
+      getWinsPercentage();
+      getGameTimeValue();
       isWinBefore = true;
+      console.log('statistics: ', statistics);
     }
   } else {
     minusLife();

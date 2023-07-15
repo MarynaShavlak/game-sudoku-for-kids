@@ -36,7 +36,10 @@ function onStartGameBtnClick() {
   lifes = lifesValue[chosenLevel];
   hints = hintsValue[chosenLevel];
   increaseStartedGamesQuantity();
-  console.log('startedGamesQuantity: ', startedGamesQuantity);
+  console.log(
+    'startedGamesQuantity: ',
+    statistics[chosenLevel].startedGamesQuantity,
+  );
 
   createLifes();
   hintsBlock.setAttribute('data-type', themes[chosenTopic]);
