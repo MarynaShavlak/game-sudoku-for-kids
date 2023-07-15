@@ -18,8 +18,6 @@ function createListItem(imageIndex) {
     const img = createImage(theme, imageIndex);
     li.appendChild(img);
   }
-  // li.addEventListener('mouseenter', handleMouseEnter);
-  // li.addEventListener('mouseleave', handleMouseLeave);
   return li;
 }
 
@@ -112,20 +110,16 @@ function generateTaskBoard() {
 }
 
 function createTaskBoard() {
-  // Створюємо розмітку із картками
   const taskBoard = generateTaskBoard();
   taskBoard.addEventListener('click', onСellOnBoardClick);
   taskBoard.addEventListener('mouseover', handleMouseEnter);
   taskBoard.addEventListener('mouseout', handleMouseLeave);
-  // Список із всіма готовими лішками вставляємо у контейнер
   cardsContainer.appendChild(taskBoard);
-  // Задаємо лішкам унікальні айдішники
   setUniqueIdForCards();
 }
 
 function onСellOnBoardClick(e) {
   const clickedElement = e.target;
-  console.log('clickedElement.nodeName: ', clickedElement.nodeName);
   if (clickedElement.nodeName === 'UL') return;
   const clickedCell = getClickedCell(clickedElement);
   const isCellEmpty = checkIfCellEmpty(clickedElement);
@@ -182,12 +176,12 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
     if (isTaskSolved) {
       openGameResultModal(winWindow);
       increaseWinsQuantity();
+      setWinsPercentage();
       handleGamesWithoutMistakesQuantity();
-      handleCurrentContinuousGamesWithoutMistakesQuantity();
-      getWinsPercentage();
+      handleCurrentContinuousWinsQuantity();
       getGameTimeValue();
-      isWinBefore = true;
-      console.log('statistics: ', statistics);
+      statistics[chosenLevel].isWinBefore = true;
+      // console.log('statistics: ', statistics);
     }
   } else {
     minusLife();

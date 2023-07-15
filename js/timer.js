@@ -29,8 +29,9 @@ function countdownTime() {
     if (timer <= 0) {
       clearInterval(timerID);
       openGameResultModal(loseWindow);
-      isWinBefore = false;
-      getWinsPercentage();
+      statistics[chosenLevel].isWinBefore = false;
+      increaseLosesQuantity();
+      setWinsPercentage();
       console.log('statistics: ', statistics);
     }
   }, 1000);

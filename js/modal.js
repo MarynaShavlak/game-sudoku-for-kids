@@ -77,7 +77,6 @@ function reloadGame() {
   hideGameField();
   showStartWindow();
   resetCardsBoard();
-  getWinsPercentage();
   console.log('statistics: ', statistics);
 }
 
@@ -95,13 +94,6 @@ function backToStartMenu() {
   resetAndStopAudioPlayer();
   resetCardsBoard();
   isPaused = false;
-  statistics[chosenLevel].averageGameTime = getAverageGameTime(
-    statistics[chosenLevel].winGameTimeValues,
-  );
-
-  statistics[chosenLevel].bestGameTime = getBestGameTimeResult(
-    statistics[chosenLevel].winGameTimeValues,
-  );
   console.log('statistics: ', statistics);
 }
 
@@ -115,16 +107,11 @@ function continueGame() {
 function onRestartBtnWinClick() {
   reloadGame();
   closeGameResultModal(winWindow);
-  statistics[chosenLevel].averageGameTime = getAverageGameTime(
-    statistics[chosenLevel].winGameTimeValues,
-  );
-
-  statistics[chosenLevel].bestGameTime = getBestGameTimeResult(
-    statistics[chosenLevel].winGameTimeValues,
-  );
+  setGameTimeResults();
   console.log('statistics: ', statistics);
 }
 function onRestartBtnLoseClick() {
   reloadGame();
   closeGameResultModal(loseWindow);
+  console.log('statistics: ', statistics);
 }

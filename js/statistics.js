@@ -1,8 +1,47 @@
+let statistics = {
+  level1: {
+    winsQuantity: 0,
+    losesQuantity: 0,
+    winsPercentage: 0,
+    startedGamesQuantity: 0,
+    winsWithoutMistakesQuantity: 0,
+    isWinBefore: true,
+    maxContinuousWinsQuantity: 0,
+    currentContinuousWinsQuantity: 0,
+    winGameTimeValues: [],
+    averageGameTime: 0,
+    bestGameTime: 0,
+  },
+  level2: {
+    winsQuantity: 0,
+    losesQuantity: 0,
+    winsPercentage: 0,
+    startedGamesQuantity: 0,
+    winsWithoutMistakesQuantity: 0,
+    isWinBefore: true,
+    maxContinuousWinsQuantity: 0,
+    currentContinuousWinsQuantity: 0,
+    winGameTimeValues: [],
+    averageGameTime: 0,
+    bestGameTime: 0,
+  },
+  level3: {
+    winsQuantity: 0,
+    losesQuantity: 0,
+    winsPercentage: 0,
+    startedGamesQuantity: 0,
+    winsWithoutMistakesQuantity: 0,
+    isWinBefore: true,
+    maxContinuousWinsQuantity: 0,
+    currentContinuousWinsQuantity: 0,
+    winGameTimeValues: [],
+    averageGameTime: 0,
+    bestGameTime: 0,
+  },
+};
 function getGameTimeValue() {
   if (timerID) {
     const gameTime = timerValue[chosenLevel] - timer;
-    console.log('gameTime: ', gameTime);
-    console.log('timer', timer);
     statistics[chosenLevel].winGameTimeValues.push(gameTime);
   }
 }
@@ -16,20 +55,31 @@ function getAverageGameTime(timeValues) {
 function getBestGameTimeResult(timeValues) {
   return timeValues.length !== 0 ? Math.min(...timeValues) : 0;
 }
+
+function setGameTimeResults() {
+  statistics[chosenLevel].averageGameTime = getAverageGameTime(
+    statistics[chosenLevel].winGameTimeValues,
+  );
+  statistics[chosenLevel].bestGameTime = getBestGameTimeResult(
+    statistics[chosenLevel].winGameTimeValues,
+  );
+}
+
 function increaseWinsQuantity() {
   statistics[chosenLevel].winsQuantity += 1;
 }
 function increaseLosesQuantity() {
   statistics[chosenLevel].losesQuantity += 1;
 }
-function getWinsPercentage() {
+function setWinsPercentage() {
   const data = statistics[chosenLevel];
   if (data.winsQuantity === 0) {
     data.winsPercentage = 0;
     return;
   }
-  data.winsPercentage =
-    (data.winsQuantity / (data.winsQuantity + data.losesQuantity)) * 100;
+  data.winsPercentage = Math.floor(
+    (data.winsQuantity / (data.winsQuantity + data.losesQuantity)) * 100,
+  );
 }
 function increaseStartedGamesQuantity() {
   statistics[chosenLevel].startedGamesQuantity += 1;
@@ -39,65 +89,15 @@ function handleGamesWithoutMistakesQuantity() {
   if (lifes === maxLifesForLevel) {
     statistics[chosenLevel].winsWithoutMistakesQuantity += 1;
   }
-  console.log(
-    'winsWithoutMistakesQuantity: ',
-    statistics[chosenLevel].winsWithoutMistakesQuantity,
-  );
 }
-function handleCurrentContinuousGamesWithoutMistakesQuantity() {
+function handleCurrentContinuousWinsQuantity() {
   const data = statistics[chosenLevel];
   if (data.isWinBefore) {
-    data.currentContinuousGamesWithoutMistakesQuantity += 1;
-    if (
-      data.currentContinuousGamesWithoutMistakesQuantity >
-      data.maxContinuousGamesWithoutMistakesQuantity
-    ) {
-      data.maxContinuousGamesWithoutMistakesQuantity =
-        data.currentContinuousGamesWithoutMistakesQuantity;
+    data.currentContinuousWinsQuantity += 1;
+    if (data.currentContinuousWinsQuantity > data.maxContinuousWinsQuantity) {
+      data.maxContinuousWinsQuantity = data.currentContinuousWinsQuantity;
     }
   } else {
-    data.currentContinuousGamesWithoutMistakesQuantity = 0;
+    data.currentContinuousWinsQuantity = 0;
   }
 }
-
-let statistics = {
-  level1: {
-    winsQuantity: 0,
-    losesQuantity: 0,
-    winsPercentage: 0,
-    startedGamesQuantity: 0,
-    winsWithoutMistakesQuantity: 0,
-    isWinBefore: true,
-    maxContinuousGamesWithoutMistakesQuantity: 0,
-    currentContinuousGamesWithoutMistakesQuantity: 0,
-    winGameTimeValues: [],
-    averageGameTime: 0,
-    bestGameTime: 0,
-  },
-  level2: {
-    winsQuantity: 0,
-    losesQuantity: 0,
-    winsPercentage: 0,
-    startedGamesQuantity: 0,
-    winsWithoutMistakesQuantity: 0,
-    isWinBefore: true,
-    maxContinuousGamesWithoutMistakesQuantity: 0,
-    currentContinuousGamesWithoutMistakesQuantity: 0,
-    winGameTimeValues: [],
-    averageGameTime: 0,
-    bestGameTime: 0,
-  },
-  level3: {
-    winsQuantity: 0,
-    losesQuantity: 0,
-    winsPercentage: 0,
-    startedGamesQuantity: 0,
-    winsWithoutMistakesQuantity: 0,
-    isWinBefore: true,
-    maxContinuousGamesWithoutMistakesQuantity: 0,
-    currentContinuousGamesWithoutMistakesQuantity: 0,
-    winGameTimeValues: [],
-    averageGameTime: 0,
-    bestGameTime: 0,
-  },
-};
