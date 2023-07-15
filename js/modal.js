@@ -27,6 +27,8 @@ cancelBtn.addEventListener('click', closeConfirmationModal);
 confirmBtn.addEventListener('click', backToStartMenu);
 continueGameBtn.addEventListener('click', continueGame);
 rulesCloseIcon.addEventListener('click', closeRulesModal);
+restartBtnWin.addEventListener('click', onRestartBtnWinClick);
+restartBtnLose.addEventListener('click', onRestartBtnLoseClick);
 
 function openRules() {
   rulesModal.classList.add('modal--isActive');
@@ -37,56 +39,35 @@ function closeRulesModal() {
 }
 
 function openConfirmationModal() {
-  const content = document.querySelector('.confirmation-modal .modal__content');
-  content.style.background = `url('./images/${chosenTopic}/background.jpg') no-repeat center center`;
-  content.style.backgroundSize = 'cover';
-  confirmationWindow.classList.add('modal--isActive');
+  openModal(confirmationWindow);
   pauseTimer();
-}
-
-function openPauseModal() {
-  const content = document.querySelector('.pause-game-modal .modal__content');
-  content.style.background = `url('./images/${chosenTopic}/background.jpg') no-repeat center center`;
-  content.style.backgroundSize = 'cover';
-  pauseGameWindow.classList.add('modal--isActive');
 }
 
 function closeConfirmationModal() {
   confirmationWindow.classList.remove('modal--isActive');
-  if (timerID) {
-    setTimer(pausedTime);
-    countdownTime();
-  }
+  runTimer();
 }
 
-function closeWinWindow() {
-  winWindow.classList.remove('modal--isActive');
-}
-
-function closeLoseWindow() {
-  loseWindow.classList.remove('modal--isActive');
-}
-
-function openGameResultModal(modalElement) {
+function openModal(modalElement) {
   const imageUrl = modalElement.classList.contains('.end-game-win')
     ? `./images/${chosenTopic}/win.jpg`
-    : `./images/${chosenTopic}/lose.jpg`;
+      ? modalElement.classList.contains('.end-game-lose')
+      : `./images/${chosenTopic}/lose.jpg`
+    : `./images/${chosenTopic}/background.jpg`;
   const content = modalElement.querySelector('.modal__content');
   content.style.background = `url('${imageUrl}') no-repeat center center`;
   content.style.backgroundSize = 'cover';
   modalElement.classList.add('modal--isActive');
+}
+
+function openGameResultModal(modalElement) {
+  openModal(modalElement);
   clearInterval(timerID);
 }
 
-restartBtnWin.onclick = function () {
-  reloadGame();
-  closeWinWindow();
-};
-
-restartBtnLose.onclick = function () {
-  reloadGame();
-  closeLoseWindow();
-};
+function closeGameResultModal(modalElement) {
+  modalElement.classList.remove('modal--isActive');
+}
 
 function reloadGame() {
   resetAndStopAudioPlayer();
@@ -116,9 +97,14 @@ function continueGame() {
   pauseGameWindow.classList.remove('modal--isActive');
   pauseGameBtn.classList.toggle('hidden');
   playGameBtn.classList.toggle('hidden');
-  if (timerID) {
-    isPaused = false;
-    setTimer(pausedTime);
-    countdownTime();
-  }
+  runTimer();
+}
+
+function onRestartBtnWinClick() {
+  reloadGame();
+  closeGameResultModal(winWindow);
+}
+function onRestartBtnLoseClick() {
+  reloadGame();
+  closeGameResultModal(loseWindow);
 }

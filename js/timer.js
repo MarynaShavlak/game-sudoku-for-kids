@@ -45,7 +45,15 @@ function togglePause() {
   pauseGameBtn.classList.toggle('hidden');
   playGameBtn.classList.toggle('hidden');
   if (!isPaused) {
-    openPauseModal();
+    openModal(pauseGameWindow);
     pauseTimer();
+  }
+}
+
+function runTimer() {
+  if (timerID) {
+    isPaused = false;
+    setTimer(pausedTime);
+    countdownTime();
   }
 }
