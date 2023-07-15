@@ -18,39 +18,10 @@ function createListItem(imageIndex) {
     const img = createImage(theme, imageIndex);
     li.appendChild(img);
   }
-  li.onclick = onСellOnBoardClick;
-  li.addEventListener('mouseenter', handleMouseEnter);
-  li.addEventListener('mouseleave', handleMouseLeave);
+  // li.addEventListener('mouseenter', handleMouseEnter);
+  // li.addEventListener('mouseleave', handleMouseLeave);
   return li;
 }
-
-// function setCardImageSizes(card, elementsInOneRow) {
-//   let screenWidth = window.innerWidth;
-
-//   if (screenWidth >= 320 && screenWidth <= 767) {
-//     if (elementsInOneRow === 4) {
-//       card.style.width = '72px';
-//       card.style.height = '72px';
-//     } else if (elementsInOneRow === 5) {
-//       card.style.width = '58px';
-//       card.style.height = '58px';
-//     } else if (elementsInOneRow === 6) {
-//       card.style.width = '48px';
-//       card.style.height = '48px';
-//     }
-//   } else {
-//     if (elementsInOneRow === 4) {
-//       card.style.width = '150px';
-//       card.style.height = '150px';
-//     } else if (elementsInOneRow === 5) {
-//       card.style.width = '120px';
-//       card.style.height = '120px';
-//     } else if (elementsInOneRow === 6) {
-//       card.style.width = '100px';
-//       card.style.height = '100px';
-//     }
-//   }
-// }
 
 function setCardImageSizes(card, elementsInOneRow) {
   function updateCardSize() {
@@ -111,7 +82,6 @@ function setUniqueIdForCards() {
 }
 
 function generateTaskBoard() {
-  // Створюємо список, куди будемо додати лішки і даємо списку клас.
   const ul = document.createElement('ul');
   ul.className = 'cards';
   if (chosenLevel === 'level1') {
@@ -123,7 +93,6 @@ function generateTaskBoard() {
   }
 
   generatedTask = createTaskArrayWithHyphen(generatedSolution);
-  // cardsTaskBoard = levelTasks[chosenLevel].task;
   cardsTaskBoard = generatedTask;
   const cardsInRowQuantity = cardsTaskBoard.length;
   // Встановлюємо правильно ширину дошки для відповідної кількості картинок
@@ -132,15 +101,10 @@ function generateTaskBoard() {
 
   for (let i = 0; i < cardsInRowQuantity; i++) {
     const solutionRow = cardsTaskBoard[i];
-    // Кожен рядок із індексами картинок перетворюємо в масив цих індексів. Наприклад , рядок '1234' стає масиовм ['1', '2', '3', '4']
-    const imageIndexesArray = solutionRow.split(''); // цей метод split зробить ыз рядка масив із 4-х елементів. (наприклад, ['1', '2', '3', '4'])
-
-    // Для кожного індекса  із масиву:
+    const imageIndexesArray = solutionRow.split('');
     for (let j = 0; j < imageIndexesArray.length; j++) {
-      // знаходимо номер картинки, яку потрібно вставити
       const imageIndex = imageIndexesArray[j];
       const li = createListItem(imageIndex);
-      // Вставляємо лішку ( вже із картинкою чи пусту) у загальний список
       ul.appendChild(li);
     }
   }
@@ -149,15 +113,20 @@ function generateTaskBoard() {
 
 function createTaskBoard() {
   // Створюємо розмітку із картками
-  const ul = generateTaskBoard();
+  const taskBoard = generateTaskBoard();
+  taskBoard.addEventListener('click', onСellOnBoardClick);
+  taskBoard.addEventListener('mouseover', handleMouseEnter);
+  taskBoard.addEventListener('mouseout', handleMouseLeave);
   // Список із всіма готовими лішками вставляємо у контейнер
-  cardsContainer.appendChild(ul);
+  cardsContainer.appendChild(taskBoard);
   // Задаємо лішкам унікальні айдішники
   setUniqueIdForCards();
 }
 
 function onСellOnBoardClick(e) {
   const clickedElement = e.target;
+  console.log('clickedElement.nodeName: ', clickedElement.nodeName);
+  if (clickedElement.nodeName === 'UL') return;
   const clickedCell = getClickedCell(clickedElement);
   const isCellEmpty = checkIfCellEmpty(clickedElement);
   if (isCellEmpty) {
@@ -212,6 +181,16 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
     const isTaskSolved = checkIfTaskSolved();
     if (isTaskSolved) {
       openWinWindow();
+      increaseWinsQuantity();
+      console.log('winsQuantity: ', winsQuantity);
+      console.log('losesQuantity: ', losesQuantity);
+      calculateWinsPercentage();
+      // winsPercentage = ((winsQuantity + losesQuantity) / winsQuantity) * 100;
+      // console.log(
+      //   'winsQuantity + losesQuantity: ',
+      //   typeof (winsQuantity + losesQuantity),
+      // );
+      console.log('winsPercentage: ', winsPercentage);
     }
   } else {
     minusLife();

@@ -1,3 +1,5 @@
+const topicsList = document.querySelector('.topics');
+topicsList.addEventListener('click', onTopicBtnClick);
 const themes = {
   theme1: 'fish',
   theme2: 'princess',
@@ -8,7 +10,6 @@ const themes = {
   theme7: 'paw',
   theme8: 'minion',
 };
-// Кольори для пустих клітинок на дошці та у блоці вибоу картинки
 const themeEmptyCellColors = {
   theme1: '#74eafd87',
   theme2: '#cfb1cf87',
@@ -20,25 +21,14 @@ const themeEmptyCellColors = {
   theme8: '#5db8ed87',
 };
 
-const topics = [
-  document.querySelector('#theme1'),
-  document.querySelector('#theme2'),
-  document.querySelector('#theme3'),
-  document.querySelector('#theme4'),
-  document.querySelector('#theme5'),
-  document.querySelector('#theme6'),
-  document.querySelector('#theme7'),
-  document.querySelector('#theme8'),
-];
-topics.forEach(topic => {
-  topic.onclick = onTopicBtnClick;
-});
+const topicButtons = Array.from(document.querySelectorAll('.topic-btn'));
 
 function onTopicBtnClick(e) {
   const clickedTopic = e.target;
+  if (clickedTopic.nodeName !== 'BUTTON') return;
 
   if (clickedTopic.classList.contains('active')) return;
-  topics.forEach(topic => {
+  topicButtons.forEach(topic => {
     if (topic === clickedTopic) {
       chosenTopic = clickedTopic.id;
       topic.classList.add('active');

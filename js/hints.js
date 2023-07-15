@@ -23,7 +23,6 @@ function createHints() {
   noHintsText.style.display = 'none';
   hintsText.style.display = 'block';
   hintsList.innerHTML = '';
-  console.log('hintsin createHints: ', hints);
   for (let i = 1; i <= hints; i++) {
     let span = document.createElement('span');
     span.className = 'hint-element';
@@ -178,24 +177,12 @@ function onHintsBlockClick(e) {
   if (hintsList.children.length > 0) {
     minusHint();
     showVisualEffect(e, clickedBlock);
-    const randomEmptyCell = getRandomEmptyCell();
-    console.log('randomEmptyCell: ', randomEmptyCell);
-    const correctIndex =
-      getIndexOfCorrectImageForClickedEmtyCell(randomEmptyCell);
-    console.log('correctIndex : ', correctIndex);
-    const theme = themes[chosenTopic];
-    const imageToSetOnBoard = createImage(theme, correctIndex);
-    randomEmptyCell.style.backgroundColor = 'rgb(255, 247, 0)';
-    randomEmptyCell.style.border = '3px solid blue';
-    randomEmptyCell.appendChild(imageToSetOnBoard);
-    imageToSetOnBoard.classList.add('rotate-animation');
+    const { randomEmptyCell, imageToSetOnBoard } = getCellAndImageForShowHint();
+    showHintOnBoard(randomEmptyCell, imageToSetOnBoard);
     isHintTimeOutRunning = true;
 
     setTimeout(function () {
-      randomEmptyCell.style.border = '1px solid #002a42';
-      randomEmptyCell.removeChild(imageToSetOnBoard);
-      imageToSetOnBoard.classList.remove('rotate-animation');
-      setEmptyCellBackground(randomEmptyCell);
+      hideHintOnBoard(randomEmptyCell, imageToSetOnBoard);
       isHintTimeOutRunning = false;
     }, 2000);
   }
@@ -214,13 +201,11 @@ function getAllEmptyCells() {
   let emptyCells = [];
   const cardsBox = document.querySelector('.cards');
   const cells = [...cardsBox.children];
-  console.log('cells: ', cells);
   cells.forEach(cell => {
     if (!cell.querySelector('img')) {
       emptyCells.push(cell);
     }
   });
-  console.log('emptyCells: ', emptyCells);
   return emptyCells;
 }
 
@@ -231,4 +216,27 @@ function getRandomEmptyCell() {
   }
   const randomIndex = Math.floor(Math.random() * emptyCells.length);
   return emptyCells[randomIndex];
+}
+
+function showHintOnBoard(randomEmptyCell, imageToSetOnBoard) {
+  randomEmptyCell.style.backgroundColor = 'rgb(255, 247, 0)';
+  randomEmptyCell.style.border = '3px solid blue';
+  randomEmptyCell.appendChild(imageToSetOnBoard);
+  imageToSetOnBoard.classList.add('rotate-animation');
+}
+
+function hideHintOnBoard(randomEmptyCell, imageToSetOnBoard) {
+  randomEmptyCell.style.border = '1px solid #002a42';
+  randomEmptyCell.removeChild(imageToSetOnBoard);
+  imageToSetOnBoard.classList.remove('rotate-animation');
+  setEmptyCellBackground(randomEmptyCell);
+}
+
+function getCellAndImageForShowHint() {
+  const randomEmptyCell = getRandomEmptyCell();
+  const correctIndex =
+    getIndexOfCorrectImageForClickedEmtyCell(randomEmptyCell);
+  const theme = themes[chosenTopic];
+  const imageToSetOnBoard = createImage(theme, correctIndex);
+  return { randomEmptyCell, imageToSetOnBoard };
 }

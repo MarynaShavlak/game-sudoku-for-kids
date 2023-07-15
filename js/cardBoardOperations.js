@@ -14,17 +14,21 @@ function hideVisualHint(card) {
 
 function handleMouseEnter(e) {
   const hoveredElement = e.target;
-  const isCellEmpty = checkIfCellEmpty(hoveredElement);
-  if (isCellEmpty) {
-    showVisualHint(hoveredElement);
+  if (hoveredElement.nodeName === 'LI' || hoveredElement.nodeName === 'IMG') {
+    const isCellEmpty = checkIfCellEmpty(hoveredElement);
+    if (isCellEmpty) {
+      showVisualHint(hoveredElement);
+    }
   }
 }
 
 function handleMouseLeave(e) {
   const hoveredElement = e.target;
-  const isCellEmpty = checkIfCellEmpty(hoveredElement);
-  if (isCellEmpty) {
-    hideVisualHint(hoveredElement);
+  if (hoveredElement.nodeName === 'LI' || hoveredElement.nodeName === 'IMG') {
+    const isCellEmpty = checkIfCellEmpty(hoveredElement);
+    if (isCellEmpty) {
+      hideVisualHint(hoveredElement);
+    }
   }
 }
 

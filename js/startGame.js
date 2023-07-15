@@ -35,6 +35,9 @@ function onStartGameBtnClick() {
   chosenImageIndex = 1;
   lifes = lifesValue[chosenLevel];
   hints = hintsValue[chosenLevel];
+  increaseStartedGamesQuantity();
+  console.log('startedGamesQuantity: ', startedGamesQuantity);
+
   createLifes();
   hintsBlock.setAttribute('data-type', themes[chosenTopic]);
   createHints();

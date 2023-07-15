@@ -8,6 +8,12 @@ function minusLife() {
   if (lifes <= 0) {
     setTimeout(function () {
       openLoseWindow();
+      increaseLosesQuantity();
+      console.log('losesQuantity: ', losesQuantity);
+      console.log('winsPercentage: ', winsPercentage);
+      calculateWinsPercentage();
+      // winsPercentage = ((winsQuantity + losesQuantity) / winsQuantity) * 100;
+      console.log('winsPercentage: ', winsPercentage);
     }, 300);
   }
   createLifes();
