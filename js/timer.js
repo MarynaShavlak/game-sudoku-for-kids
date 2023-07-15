@@ -29,6 +29,7 @@ function countdownTime() {
     if (timer <= 0) {
       clearInterval(timerID);
       openGameResultModal(loseWindow);
+      isWinBefore = false;
     }
   }, 1000);
 }

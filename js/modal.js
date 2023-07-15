@@ -48,10 +48,13 @@ function closeConfirmationModal() {
 }
 
 function openModal(modalElement) {
-  const imageUrl = modalElement.classList.contains('.end-game-win')
+  const isWinWindow = modalElement.classList.contains('end-game-win');
+  const isLoseWindow = modalElement.classList.contains('end-game-lose');
+
+  const imageUrl = isWinWindow
     ? `./images/${chosenTopic}/win.jpg`
-      ? modalElement.classList.contains('.end-game-lose')
-      : `./images/${chosenTopic}/lose.jpg`
+    : isLoseWindow
+    ? `./images/${chosenTopic}/lose.jpg`
     : `./images/${chosenTopic}/background.jpg`;
   const content = modalElement.querySelector('.modal__content');
   content.style.background = `url('${imageUrl}') no-repeat center center`;
@@ -74,6 +77,18 @@ function reloadGame() {
   hideGameField();
   showStartWindow();
   resetCardsBoard();
+  console.log('winsQuantity: ', winsQuantity);
+  console.log('losesQuantity: ', losesQuantity);
+  console.log('startedGamesQuantity: ', startedGamesQuantity);
+  console.log('winsWithoutMistakesQuantity: ', winsWithoutMistakesQuantity);
+  console.log(
+    'maxContinuousGamesWithoutMistakesQuantity: ',
+    maxContinuousGamesWithoutMistakesQuantity,
+  );
+  console.log(
+    'currentContinuousGamesWithoutMistakesQuantity: ',
+    currentContinuousGamesWithoutMistakesQuantity,
+  );
 }
 
 function resetCardsBoard() {

@@ -183,10 +183,9 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
       openGameResultModal(winWindow);
       increaseWinsQuantity();
       handleCurrentGamesWithoutMistakesQuantity();
-      console.log('winsQuantity: ', winsQuantity);
-      console.log('losesQuantity: ', losesQuantity);
+      handleCurrentContinuousGamesWithoutMistakesQuantity();
       calculateWinsPercentage();
-      console.log('winsPercentage: ', winsPercentage);
+      isWinBefore = true;
     }
   } else {
     minusLife();

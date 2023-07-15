@@ -43,5 +43,14 @@ function handleCurrentGamesWithoutMistakesQuantity() {
 function handleCurrentContinuousGamesWithoutMistakesQuantity() {
   if (isWinBefore) {
     currentContinuousGamesWithoutMistakesQuantity += 1;
+    if (
+      currentContinuousGamesWithoutMistakesQuantity >
+      maxContinuousGamesWithoutMistakesQuantity
+    ) {
+      maxContinuousGamesWithoutMistakesQuantity =
+        currentContinuousGamesWithoutMistakesQuantity;
+    }
+  } else {
+    currentContinuousGamesWithoutMistakesQuantity = 0;
   }
 }
