@@ -2,8 +2,9 @@ const cloudOpenModal = document.querySelector('.cloud-rules');
 const catOpenModal = document.querySelector('.cat-rules');
 const rulesTitle = document.querySelector('#rules');
 const rulesModal = document.querySelector('.rules-modal');
+const statisticsModal = document.querySelector('.statistics-modal');
 const modalWindow = document.querySelector('.modal');
-const modalOverlay = document.querySelector('.modal__overlay');
+const modalOverlays = document.querySelectorAll('.modal__overlay');
 const restartBtnWin = document.querySelector('#restartBtnWin');
 const restartBtnLose = document.querySelector('#restartBtnLose');
 const winWindow = document.querySelector('.end-game-win.modal');
@@ -15,8 +16,11 @@ const pauseGameWindow = document.querySelector('.pause-game-modal');
 const continueGameBtn = document.querySelector('.continueGameBtn');
 const rulesCloseIcon = document.querySelector('.rules-close-icon');
 const confirmCloseIcon = document.querySelector('.confirm-close-icon');
+const statisticsCloseIcon = document.querySelector('.statistics-close-icon');
 const cancelBtn = document.querySelector('.cancelBtn');
 const confirmBtn = document.querySelector('.confirmBtn');
+const statText = document.querySelector('.stat-info-block p');
+const statIcon = document.querySelector('.stat-info-block');
 
 cloudOpenModal.addEventListener('click', openRules);
 catOpenModal.addEventListener('click', openRules);
@@ -28,9 +32,22 @@ continueGameBtn.addEventListener('click', continueGame);
 rulesCloseIcon.addEventListener('click', closeRulesModal);
 restartBtnWin.addEventListener('click', onRestartBtnWinClick);
 restartBtnLose.addEventListener('click', onRestartBtnLoseClick);
+statIcon.addEventListener('click', openStatisticsModal);
+statText.addEventListener('click', openStatisticsModal);
+statisticsCloseIcon.addEventListener('click', closeStatisticsModal);
+modalOverlays.forEach(overlay => {
+  overlay.addEventListener('click', closeStatisticsModal);
+  overlay.addEventListener('click', closeRulesModal);
+});
 
 function openRules() {
   rulesModal.classList.add('modal--isActive');
+}
+function openStatisticsModal() {
+  statisticsModal.classList.add('modal--isActive');
+}
+function closeStatisticsModal() {
+  statisticsModal.classList.remove('modal--isActive');
 }
 
 function closeRulesModal() {
