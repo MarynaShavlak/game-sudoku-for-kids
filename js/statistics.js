@@ -1,3 +1,12 @@
+const statisticsBlocks = document.querySelectorAll('.statistics-block');
+const buttons = [
+  document.querySelector('#level-1'),
+  document.querySelector('#level-2'),
+  document.querySelector('#level-3'),
+];
+const statLevelBtnList = document.querySelector('.level-btn-list');
+statLevelBtnList.addEventListener('click', onStatLevelBtnClick);
+
 let statistics = {
   level1: initializeStatistics(),
   level2: initializeStatistics(),
@@ -16,7 +25,7 @@ function getGameTimeValue() {
 }
 function getAverageGameTime(timeValues) {
   const sum = timeValues.reduce((acc, value) => acc + value, 0);
-  return timeValues.length !== 0 ? sum / timeValues.length : 0;
+  return timeValues.length !== 0 ? Math.floor(sum / timeValues.length) : 0;
 }
 function getBestGameTimeResult(timeValues) {
   return timeValues.length !== 0 ? Math.min(...timeValues) : 0;
@@ -76,4 +85,38 @@ function initializeStatistics() {
     averageGameTime: 0,
     bestGameTime: 0,
   };
+}
+
+function onStatLevelBtnClick(e) {
+  const clickedButton = e.target;
+  if (clickedButton.nodeName === 'BUTTON') {
+    if (clickedButton.classList.contains('active')) return;
+    buttons.forEach(button => {
+      if (button === clickedButton) {
+        const level = button.className.split(' ')[1];
+        button.classList.add('active');
+        updateStatisticsTable(level);
+      } else {
+        button.classList.remove('active');
+      }
+    });
+  }
+}
+
+function updateStatisticsTable(level) {
+  const levelStats = statistics[level];
+  statisticsBlocks.forEach(block => {
+    const statType = block.id;
+    block.innerHTML = levelStats[statType];
+  });
+}
+
+function resetActiveStatLevel() {
+  buttons.forEach(button => {
+    if (button.classList.contains('level1')) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
 }

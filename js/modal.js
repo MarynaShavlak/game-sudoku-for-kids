@@ -45,9 +45,11 @@ function openRules() {
 }
 function openStatisticsModal() {
   statisticsModal.classList.add('modal--isActive');
+  updateStatisticsTable('level1');
 }
 function closeStatisticsModal() {
   statisticsModal.classList.remove('modal--isActive');
+  resetActiveStatLevel();
 }
 
 function closeRulesModal() {
