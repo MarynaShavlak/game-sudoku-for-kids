@@ -171,7 +171,7 @@
   }
 }
 
-#restartBtnWin, #restartBtnLose, .confirmBtn, .cancelBtn, .continueGameBtn {
+#restartBtnWin, #restartBtnLose, .confirmBtn, .cancelBtn, .continueGameBtn, .reset-statistics {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,6 +189,13 @@
   transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.reset-statistics {
+  margin: 0;
+  font-size: 18px;
+  margin-top: 10px;
+
+}
+
 @media (max-width: 767px) {
   #restartBtnWin,
     #restartBtnLose,
@@ -197,13 +204,16 @@
     .continueGameBtn {
     font-size: 20px;
   }
+    .reset-statistics {
+      font-size: 14px;
+    }
 }
 
 #restartBtnWin:hover ,
 #restartBtnWin:focus , #restartBtnLose:hover ,
 #restartBtnLose:focus , .confirmBtn:hover,
 .cancelBtn:hover, .confirmBtn:focus,
-.cancelBtn:focus, .continueGameBtn:hover, .continueGameBtn:focus{
+.cancelBtn:focus, .continueGameBtn:hover, .continueGameBtn:focus, .reset-statistics:hover, .reset-statistics:focus{
   background-color: white;
   color: rgb(217, 0, 51);
  
@@ -225,6 +235,7 @@
 .modal .statistics-modal__content {
   justify-content: start;
   align-items: flex-start;
+  height: 400px;
 }
 
 

@@ -5,8 +5,9 @@ const buttons = [
   document.querySelector('#level-3'),
 ];
 const statLevelBtnList = document.querySelector('.level-btn-list');
+const resetStatBtn = document.querySelector('.reset-statistics');
 statLevelBtnList.addEventListener('click', onStatLevelBtnClick);
-
+resetStatBtn.addEventListener('click', resetStatistics);
 let statistics = {
   level1: initializeStatistics(),
   level2: initializeStatistics(),
@@ -15,7 +16,8 @@ let statistics = {
 
 const storedStatistics = localStorage.getItem('statistics');
 statistics = storedStatistics ? JSON.parse(storedStatistics) : statistics;
-localStorage.setItem('statistics', JSON.stringify(statistics));
+// localStorage.setItem('statistics', JSON.stringify(statistics));
+updateLocalStorage();
 
 function getGameTimeValue() {
   if (timerID) {
@@ -35,13 +37,13 @@ function setGameTimeResults() {
   levelStats.averageGameTime = getAverageGameTime(levelStats.winGameTimeValues);
   levelStats.bestGameTime = getBestGameTimeResult(levelStats.winGameTimeValues);
 }
-function increaseWinsQuantity() {
+function updateWinsQuantity() {
   statistics[chosenLevel].winsQuantity += 1;
 }
-function increaseLosesQuantity() {
+function updateLosesQuantity() {
   statistics[chosenLevel].losesQuantity += 1;
 }
-function setWinsPercentage() {
+function updateWinsPercentage() {
   const data = statistics[chosenLevel];
   if (data.winsQuantity === 0) {
     data.winsPercentage = 0;
@@ -51,16 +53,16 @@ function setWinsPercentage() {
     (data.winsQuantity / (data.winsQuantity + data.losesQuantity)) * 100,
   );
 }
-function increaseStartedGamesQuantity() {
+function updateStartedGamesQuantity() {
   statistics[chosenLevel].startedGamesQuantity += 1;
 }
-function handleGamesWithoutMistakesQuantity() {
+function updateWinsWithoutMistakesQuantity() {
   const maxLifesForLevel = lifesValue[chosenLevel];
   if (lifes === maxLifesForLevel) {
     statistics[chosenLevel].winsWithoutMistakesQuantity += 1;
   }
 }
-function handleCurrentContinuousWinsQuantity() {
+function updateCurrentContinuousWinsQuantity() {
   const data = statistics[chosenLevel];
   if (data.isWinBefore) {
     data.currentContinuousWinsQuantity += 1;
@@ -88,19 +90,15 @@ function initializeStatistics() {
 }
 
 function onStatLevelBtnClick(e) {
-  const clickedButton = e.target;
-  if (clickedButton.nodeName === 'BUTTON') {
-    if (clickedButton.classList.contains('active')) return;
-    buttons.forEach(button => {
-      if (button === clickedButton) {
-        const level = button.className.split(' ')[1];
-        button.classList.add('active');
-        updateStatisticsTable(level);
-      } else {
-        button.classList.remove('active');
-      }
-    });
-  }
+  const clickedButton = e.target.closest('button');
+  if (!clickedButton) return;
+  if (clickedButton.classList.contains('active')) return;
+  const level = clickedButton.classList[1];
+  buttons.forEach(button => {
+    const isActive = button === clickedButton;
+    button.classList.toggle('active', isActive);
+  });
+  updateStatisticsTable(level);
 }
 
 function updateStatisticsTable(level) {
@@ -119,4 +117,20 @@ function resetActiveStatLevel() {
       button.classList.remove('active');
     }
   });
+}
+
+function resetStatistics() {
+  const activeBtnLevel = buttons.find(btn => btn.classList.contains('active'));
+  const level = activeBtnLevel.classList[1];
+  statistics = {
+    level1: initializeStatistics(),
+    level2: initializeStatistics(),
+    level3: initializeStatistics(),
+  };
+  updateStatisticsTable(level);
+  updateLocalStorage();
+}
+
+function updateLocalStorage() {
+  localStorage.setItem('statistics', JSON.stringify(statistics));
 }

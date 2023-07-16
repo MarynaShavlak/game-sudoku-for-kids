@@ -8,9 +8,9 @@ function minusLife() {
   if (lifes <= 0) {
     setTimeout(function () {
       openGameResultModal(loseWindow);
-      increaseLosesQuantity();
+      updateLosesQuantity();
       statistics[chosenLevel].isWinBefore = false;
-      setWinsPercentage();
+      updateWinsPercentage();
       console.log('statistics: ', statistics);
     }, 300);
   }

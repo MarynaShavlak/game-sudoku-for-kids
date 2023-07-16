@@ -184,10 +184,10 @@ function handleEmptyCellClicked(clickedElement, clickedCell) {
     const isTaskSolved = checkIfTaskSolved();
     if (isTaskSolved) {
       openGameResultModal(winWindow);
-      increaseWinsQuantity();
-      setWinsPercentage();
-      handleGamesWithoutMistakesQuantity();
-      handleCurrentContinuousWinsQuantity();
+      updateWinsQuantity();
+      updateWinsPercentage();
+      updateWinsWithoutMistakesQuantity();
+      updateCurrentContinuousWinsQuantity();
       getGameTimeValue();
       statistics[chosenLevel].isWinBefore = true;
       // console.log('statistics: ', statistics);

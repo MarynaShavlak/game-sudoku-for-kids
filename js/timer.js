@@ -30,8 +30,8 @@ function countdownTime() {
       clearInterval(timerID);
       openGameResultModal(loseWindow);
       statistics[chosenLevel].isWinBefore = false;
-      increaseLosesQuantity();
-      setWinsPercentage();
+      updateLosesQuantity();
+      updateWinsPercentage();
       console.log('statistics: ', statistics);
     }
   }, 1000);
