@@ -1,44 +1,13 @@
 let statistics = {
-  level1: {
-    winsQuantity: 0,
-    losesQuantity: 0,
-    winsPercentage: 0,
-    startedGamesQuantity: 0,
-    winsWithoutMistakesQuantity: 0,
-    isWinBefore: true,
-    maxContinuousWinsQuantity: 0,
-    currentContinuousWinsQuantity: 0,
-    winGameTimeValues: [],
-    averageGameTime: 0,
-    bestGameTime: 0,
-  },
-  level2: {
-    winsQuantity: 0,
-    losesQuantity: 0,
-    winsPercentage: 0,
-    startedGamesQuantity: 0,
-    winsWithoutMistakesQuantity: 0,
-    isWinBefore: true,
-    maxContinuousWinsQuantity: 0,
-    currentContinuousWinsQuantity: 0,
-    winGameTimeValues: [],
-    averageGameTime: 0,
-    bestGameTime: 0,
-  },
-  level3: {
-    winsQuantity: 0,
-    losesQuantity: 0,
-    winsPercentage: 0,
-    startedGamesQuantity: 0,
-    winsWithoutMistakesQuantity: 0,
-    isWinBefore: true,
-    maxContinuousWinsQuantity: 0,
-    currentContinuousWinsQuantity: 0,
-    winGameTimeValues: [],
-    averageGameTime: 0,
-    bestGameTime: 0,
-  },
+  level1: initializeStatistics(),
+  level2: initializeStatistics(),
+  level3: initializeStatistics(),
 };
+
+const storedStatistics = localStorage.getItem('statistics');
+statistics = storedStatistics ? JSON.parse(storedStatistics) : statistics;
+localStorage.setItem('statistics', JSON.stringify(statistics));
+
 function getGameTimeValue() {
   if (timerID) {
     const gameTime = timerValue[chosenLevel] - timer;
@@ -46,25 +15,17 @@ function getGameTimeValue() {
   }
 }
 function getAverageGameTime(timeValues) {
-  const sum =
-    timeValues.length !== 0
-      ? timeValues.reduce((acc, value) => acc + value, 0)
-      : 0;
+  const sum = timeValues.reduce((acc, value) => acc + value, 0);
   return timeValues.length !== 0 ? sum / timeValues.length : 0;
 }
 function getBestGameTimeResult(timeValues) {
   return timeValues.length !== 0 ? Math.min(...timeValues) : 0;
 }
-
 function setGameTimeResults() {
-  statistics[chosenLevel].averageGameTime = getAverageGameTime(
-    statistics[chosenLevel].winGameTimeValues,
-  );
-  statistics[chosenLevel].bestGameTime = getBestGameTimeResult(
-    statistics[chosenLevel].winGameTimeValues,
-  );
+  const levelStats = statistics[chosenLevel];
+  levelStats.averageGameTime = getAverageGameTime(levelStats.winGameTimeValues);
+  levelStats.bestGameTime = getBestGameTimeResult(levelStats.winGameTimeValues);
 }
-
 function increaseWinsQuantity() {
   statistics[chosenLevel].winsQuantity += 1;
 }
@@ -100,4 +61,19 @@ function handleCurrentContinuousWinsQuantity() {
   } else {
     data.currentContinuousWinsQuantity = 0;
   }
+}
+function initializeStatistics() {
+  return {
+    winsQuantity: 0,
+    losesQuantity: 0,
+    winsPercentage: 0,
+    startedGamesQuantity: 0,
+    winsWithoutMistakesQuantity: 0,
+    isWinBefore: true,
+    maxContinuousWinsQuantity: 0,
+    currentContinuousWinsQuantity: 0,
+    winGameTimeValues: [],
+    averageGameTime: 0,
+    bestGameTime: 0,
+  };
 }

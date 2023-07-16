@@ -27,8 +27,8 @@ function setCardImageSizes(card, elementsInOneRow) {
 
     if (screenWidth >= 320 && screenWidth <= 767) {
       if (elementsInOneRow === 4) {
-        card.style.width = '72px';
-        card.style.height = '72px';
+        card.style.width = '70px';
+        card.style.height = '70px';
       } else if (elementsInOneRow === 5) {
         card.style.width = '58px';
         card.style.height = '58px';

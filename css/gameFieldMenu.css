@@ -65,7 +65,7 @@ align-items: center;
 
 .game-info-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
   min-width: 180px;
@@ -73,6 +73,7 @@ align-items: center;
 
 @media (min-width: 768px) {
   .game-info-wrapper {
+      justify-content: space-between;
     min-width: 340px;
     gap: 70px;
   }

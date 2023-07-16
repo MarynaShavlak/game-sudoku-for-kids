@@ -94,6 +94,7 @@ function backToStartMenu() {
   resetAndStopAudioPlayer();
   resetCardsBoard();
   isPaused = false;
+  localStorage.setItem('statistics', JSON.stringify(statistics));
   console.log('statistics: ', statistics);
 }
 
@@ -108,10 +109,12 @@ function onRestartBtnWinClick() {
   reloadGame();
   closeGameResultModal(winWindow);
   setGameTimeResults();
+  localStorage.setItem('statistics', JSON.stringify(statistics));
   console.log('statistics: ', statistics);
 }
 function onRestartBtnLoseClick() {
   reloadGame();
   closeGameResultModal(loseWindow);
+  localStorage.setItem('statistics', JSON.stringify(statistics));
   console.log('statistics: ', statistics);
 }
