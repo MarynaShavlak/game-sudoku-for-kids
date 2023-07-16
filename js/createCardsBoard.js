@@ -24,7 +24,6 @@ function createListItem(imageIndex) {
 function setCardImageSizes(card, elementsInOneRow) {
   function updateCardSize() {
     let screenWidth = window.innerWidth;
-
     if (screenWidth >= 320 && screenWidth <= 767) {
       if (elementsInOneRow === 4) {
         card.style.width = '70px';
@@ -49,12 +48,22 @@ function setCardImageSizes(card, elementsInOneRow) {
       }
     }
   }
-
-  // Call the function initially
   updateCardSize();
-
   // Attach the event listener to update the card size on window resize
   window.addEventListener('resize', updateCardSize);
+}
+
+function updateStartWindowView() {
+  let screenWidth = window.innerWidth;
+  if (
+    screenWidth >= 320 &&
+    screenWidth <= 767 &&
+    parametersBtn.style.display === 'none'
+  ) {
+    backToRulesBtn.style.display = 'block';
+  } else if (screenWidth > 767) {
+    backToRulesBtn.style.display = 'none';
+  }
 }
 
 function setEmptyCellBackground(cell) {

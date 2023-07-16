@@ -10,6 +10,7 @@ const gameTitle = document.querySelector('.game-title');
 startGameBtn.addEventListener('click', onStartGameBtnClick);
 parametersBtn.addEventListener('click', onParametersBtnClick);
 backToRulesBtn.addEventListener('click', onBackToRulesBtnClick);
+window.addEventListener('resize', updateStartWindowView);
 
 function onBackToRulesBtnClick() {
   cloudOpenModal.style.display = 'block';

@@ -81,6 +81,16 @@
         <div id="rules-window">
           <button id="rules">Правила гри</button>
         </div>
+        <div class="stat-info-block">
+          <div class="stat-icon-wrapper">
+            <img
+              class="statistics-icon"
+              src="./images/icon-statistics.svg"
+              alt="satistics-icon"
+            />
+          </div>
+          <p>Статистика</p>
+        </div>
       </div>
       <!-- Модальне вікно з правилами -->
       <div class="rules-modal modal">
@@ -101,6 +111,35 @@
             Обрати картинку в правому полі. Розмістити її в пусту клітину так,
             щоб картинки не збігалися в рядках і стовпчиках.
           </p>
+        </div>
+      </div>
+
+      <!-- Модальне вікно із статистикою -->
+      <div class="statistics-modal modal modal--isActive">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+          <img
+            class="modal__closeIcon statistics-close-icon"
+            src="./images/icon-close.svg"
+            alt="close icon"
+          />
+          <ul class="level-btn-list">
+            <li class="level-item">
+              <button type="button" class="level-btn active" id="level-1">
+                Level 1
+              </button>
+            </li>
+            <li class="level-item">
+              <button type="button" class="level-btn" id="level-2">
+                Level 2
+              </button>
+            </li>
+            <li class="level-item">
+              <button type="button" class="level-btn" id="level-3">
+                Level 3
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
 
