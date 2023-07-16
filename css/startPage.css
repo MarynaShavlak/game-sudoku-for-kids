@@ -252,39 +252,5 @@ background-color: rgb(217, 0, 51);
 }
 
 
-.level-btn-list {
-  display: flex;
-  column-gap: 10px;
-  margin-bottom: 20px;
-  justify-content: center;
-}
 
-.level-btn {
-  height: auto;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid black;
-  padding: 15px 10px;
-  font-size: 13px;
-  /* font-weight: 700; */
-  color: black;
-  cursor: pointer;
-  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
-}
 
-@media (min-width: 768px) {
-  .level-btn {
-    font-size: 16px;
-  }
-
-  .level {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-.level-btn.active {
-  color: white;
-  background-color: rgb(217, 0, 51);
-  border: 1px solid transparent;
-}
