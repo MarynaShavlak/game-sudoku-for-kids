@@ -1,6 +1,6 @@
 # Sudoku for Kids
 
-## Introduction
+## :game_die: Introduction 
 
 Welcome to Sudoku for Kids, a fun and educational web game designed to introduce
 children to the world of Sudoku puzzles! This game provides a simplified version
@@ -9,7 +9,7 @@ minds. With its colorful interface, intuitive controls, and engaging gameplay,
 Sudoku for Kids aims to entertain and challenge children while enhancing their
 critical thinking and problem-solving skills.
 
-## Technologies Used
+## :computer: Technologies Used 
 
 The following technologies were used in the development of Sudoku for Kids:
 
@@ -36,7 +36,7 @@ The following technologies were used in the development of Sudoku for Kids:
   an optimal user experience across various platforms, enhancing accessibility,
   satisfaction, and engagement.
 
-## How to Play
+## :rocket: How to Play 
 
 1. **Launch the Game:** Access the game by visiting the following URL:
    [Sudoku for Kids](https://marynashavlak.github.io/game-sudoku-for-kids/).
@@ -56,22 +56,23 @@ The following technologies were used in the development of Sudoku for Kids:
    chosen the picture, click on an empty cell on the board where you wish to
    insert the image.
 
-   ## Features
+## Features
 
-   - **Child-Friendly Interface:** The game features a visually appealing and
+- :child: **Child-Friendly Interface:**  The game features a visually appealing and
      intuitive interface, designed to engage young players and make solving
-     Sudoku puzzles enjoyable. -**Helpful Hints:** If you get stuck, the game
+     Sudoku puzzles enjoyable.
+- :sparkles: **Helpful Hints:** If you get stuck, the game
      provides hints to guide you towards the correct solution. Use them wisely
      to improve your skills.
-   - **Responsive Design:** The game adapts to different screen sizes, ensuring
+- :iphone:**Responsive Design:**   The game adapts to different screen sizes, ensuring
      an optimal experience on desktops, laptops, tablets, and mobile devices.
-   - **Enhanced Game Experience with Sound Orientation:** This game feature uses
+- :musical_note: **Enhanced Game Experience with Sound Orientation:**  This game feature uses
      sound cues to aid player navigation and decision-making. Distinct effects
      indicate actions such as selecting cells or making correct/incorrect moves.
      These auditory cues improve player engagement and are especially helpful
      for visually impaired or audio-oriented players, promoting inclusivity and
      accessibility.
-   - **Sound Personalization:** The game offers a sound personalization feature
+- :headphones: **Sound Personalization:**  The game offers a sound personalization feature
      that grants players the ability to mute background music or sound effects.
      The game recognizes that audio preferences can vary greatly from person to
      person, and it aims to provide a tailored experience for a more enjoyable
@@ -79,9 +80,9 @@ The following technologies were used in the development of Sudoku for Kids:
      environment or a more tranquil and focused one, the sound personalization
      feature enables them to achieve their desired balance.
 
-     ### Multiple Levels of Difficulty
+### :star: Multiple Levels of Difficulty 
 
-     The game offers an exciting gameplay experience with three levels of
+The game offers an exciting gameplay experience with three levels of
      difficulty, each presenting its own unique challenge.
 
    - Level 1 presents a 4x4 grid for beginners, providing a gentle introduction
@@ -94,7 +95,7 @@ Players can progress through the levels, enhancing their skills and strategies
 as they conquer each one. With varying grid sizes, players can progressively
 enhance their skills and enjoy an increasingly complex puzzle-solving adventure.
 
-### Life System
+### :heart: Life System 
 
 The game implements a life system that adds an element of challenge and
 consequence to the gameplay. Each level has a specific number of lives assigned
@@ -105,7 +106,7 @@ system adds a strategic element to the gameplay, as players must balance their
 progress with the risk of making mistakes. It encourages careful thinking and
 decision-making, making the game more engaging and rewarding.
 
-### Topic Selection and Theme Customization
+### :bulb: Topic Selection and Theme Customization 
 
 The game offers a unique feature where players can choose from eight popular
 cartoon themes, adding a personalized touch to the gameplay. Each theme
@@ -119,7 +120,7 @@ and nostalgic gaming environment. With the ability to choose from various
 cartoon themes, players can infuse their Sudoku gameplay with personalization
 and a touch of nostalgia.
 
-### Timer Options
+### :hourglass_flowing_sand: Timer Options 
 
 The game offers players the choice to play with or without a timer, allowing
 them to customize their gameplay experience.
@@ -130,7 +131,7 @@ relaxed and leisurely experience, allowing players to solve the puzzle at their
 own pace. This feature caters to different play preferences and ensures an
 enjoyable experience for all.
 
-### Pause Game with Timer
+### :pause_button: Pause Game with Timer 
 
 Players who opt to play with a timer can take advantage of the pause feature. By
 clicking the pause button, the game can be temporarily halted, allowing players
@@ -139,7 +140,7 @@ to resume, players can click the resume button to continue from where they left
 off. This feature provides convenience and flexibility during gameplay without
 compromising progress.
 
-### Hint System
+### :mag_right: Hint System 
 
 The game offers a hint system to assist players. By clicking the hint button,
 players can briefly see the correct picture for one random empty cell on the
@@ -152,7 +153,7 @@ and use hints judiciously to maintain the challenge of the game. It provides a
 balance between assistance and maintaining the satisfaction of solving puzzles
 independently.
 
-### Random Card Board Generation
+### :repeat: Random Card Board Generation 
 
 The game utilizes random board generation, creating endless unique puzzles for
 players to solve. This feature prevents repetition and offers a high level of
@@ -160,21 +161,21 @@ replayability, allowing players to enjoy fresh challenges each time they play.
 It enhances the game's longevity and provides a continuous source of
 entertainment.
 
-### Row and Column Backlighting
+### :flashlight: Row and Column Backlighting 
 
 When hovering over an empty cell, the game highlights the corresponding row and
 column. This visual cue helps players identify the specific areas they need to
 focus on, ensuring adherence to the puzzle's rules. It enhances gameplay
 efficiency and accuracy.
 
-### Highlight Fulfilled Cells
+### :heavy_check_mark: Highlight Fulfilled Cells 
 
 Clicking on a fulfilled cell highlights all other cells with the same image,
 aiding players in identifying patterns and making informed decisions. This
 feature enhances the gameplay experience, streamlining puzzle-solving and
 providing visual clarity.
 
-### Level Statistics Tracking
+### :bar_chart:  Level Statistics Tracking 
 
 The game provides a comprehensive feature that allows players to view detailed
 statistics for each level they have played. These statistics offer insights into
@@ -185,7 +186,7 @@ player's achievements and performance, fostering a sense of accomplishment and
 motivating them to strive for better results. The level statistics feature
 provides valuable information and serves as a benchmark for progress and growth.
 
-### Statistics Reset
+### :arrows_counterclockwise: Statistics Reset 
 
 The game allows players to reset their statistics, clearing all recorded data.
 This feature provides a fresh start and enables players to set new goals and
