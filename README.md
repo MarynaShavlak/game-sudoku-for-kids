@@ -9,6 +9,33 @@ minds. With its colorful interface, intuitive controls, and engaging gameplay,
 Sudoku for Kids aims to entertain and challenge children while enhancing their
 critical thinking and problem-solving skills.
 
+## Technologies Used
+
+The following technologies were used in the development of Sudoku for Kids:
+
+- **HTML5** is used to structure the game interface, organizing content and
+  interactive elements for a solid user interface foundation.
+- **CSS3** is responsible for styling and enhancing the game visually, with
+  custom styles, animations, and responsive design techniques that ensure a
+  visually appealing and consistent user experience across different devices.
+- **JavaScript** implements the game logic and interactivity, generating
+  puzzles, handling user input, validating solutions, and providing dynamic
+  gameplay elements like hints, animations, and feedback. It enables real-time
+  updates and user interactions, enhancing the interactive and engaging
+  experience.
+- The **BEM methodology** organizes the codebase, making it more maintainable
+  and scalable by breaking down components into reusable building blocks. It
+  enhances code understanding, facilitates collaboration, and reduces
+  duplication.
+- **Git and GitHub** are used for version control, enabling efficient
+  collaboration, code sharing, and tracking of modifications. GitHub serves as a
+  centralized repository for storing the codebase, facilitating version control,
+  issue tracking, and collaboration among developers.
+- **Responsive design** ensures that the game adapts to different screen sizes
+  and devices. By utilizing CSS media queries and flexible layouts, it provides
+  an optimal user experience across various platforms, enhancing accessibility,
+  satisfaction, and engagement.
+
 ## How to Play
 
 1. **Launch the Game:** Access the game by visiting the following URL:
@@ -164,33 +191,6 @@ The game allows players to reset their statistics, clearing all recorded data.
 This feature provides a fresh start and enables players to set new goals and
 track their progress without previous records influencing their gameplay. Access
 the reset option in the game's menu for a clean statistical slate.
-
-## Technologies Used
-
-The following technologies were used in the development of Sudoku for Kids:
-
-- **HTML5** is used to structure the game interface, organizing content and
-  interactive elements for a solid user interface foundation.
-- **CSS3** is responsible for styling and enhancing the game visually, with
-  custom styles, animations, and responsive design techniques that ensure a
-  visually appealing and consistent user experience across different devices.
-- **JavaScript** implements the game logic and interactivity, generating
-  puzzles, handling user input, validating solutions, and providing dynamic
-  gameplay elements like hints, animations, and feedback. It enables real-time
-  updates and user interactions, enhancing the interactive and engaging
-  experience.
-- The **BEM methodology** organizes the codebase, making it more maintainable
-  and scalable by breaking down components into reusable building blocks. It
-  enhances code understanding, facilitates collaboration, and reduces
-  duplication.
-- **Git and GitHub** are used for version control, enabling efficient
-  collaboration, code sharing, and tracking of modifications. GitHub serves as a
-  centralized repository for storing the codebase, facilitating version control,
-  issue tracking, and collaboration among developers.
-- **Responsive design** ensures that the game adapts to different screen sizes
-  and devices. By utilizing CSS media queries and flexible layouts, it provides
-  an optimal user experience across various platforms, enhancing accessibility,
-  satisfaction, and engagement.
 
 ## Future Enhancements
 
