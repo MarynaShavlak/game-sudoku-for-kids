@@ -11,42 +11,42 @@ critical thinking and problem-solving skills.
 
 ## How to Play
 
-1. Launch the Game: Access the game by visiting the following URL:
+1. **Launch the Game:** Access the game by visiting the following URL:
    [Sudoku for Kids](https://marynashavlak.github.io/game-sudoku-for-kids/).
-2. Game Interface: The game interface features a category selection block for
-   theme, difficulty level, and game type. Users can access game rules through
-   an animated Lucky Cat icon. A statistics icon provides information on
+2. **Game Interface:** The game interface features a category selection block
+   for theme, difficulty level, and game type. Users can access game rules
+   through an animated Lucky Cat icon. A statistics icon provides information on
    level-specific indicators. After selecting parameters, users press "Start" to
    enter the game board. The interface displays lives, hints, sound controls,
    and, if applicable, a timer with a pause button. The game board consists of a
    vibrant field with filled and empty cells, along with a block of images for
    insertion into the empty cells.
-3. Objective: The objective of Sudoku for Kids is to fill every empty cell on
-   the grid with a picture, ensuring that each row and each column contains all
-   pictures exactly once.
-4. Picture Selection and Insertion: To select a picture for insertion, simply
-   click on the desired image within the selection block. Once you have chosen
-   the picture, click on an empty cell on the board where you wish to insert the
-   image.
+3. **Objective:** The objective of Sudoku for Kids is to fill every empty cell
+   on the grid with a picture, ensuring that each row and each column contains
+   all pictures exactly once.
+4. **Picture Selection and Insertion:** To select a picture for insertion,
+   simply click on the desired image within the selection block. Once you have
+   chosen the picture, click on an empty cell on the board where you wish to
+   insert the image.
 
    ## Features
 
-   - Child-Friendly Interface: The game features a visually appealing and
+   - **Child-Friendly Interface:** The game features a visually appealing and
      intuitive interface, designed to engage young players and make solving
-     Sudoku puzzles enjoyable.
-   - Helpful Hints: If you get stuck, the game provides hints to guide you
-     towards the correct solution. Use them wisely to improve your skills.
-   - Responsive Design: The game adapts to different screen sizes, ensuring an
-     optimal experience on desktops, laptops, tablets, and mobile devices.
-   - Enhanced Game Experience with Sound Orientation: This game feature uses
+     Sudoku puzzles enjoyable. -**Helpful Hints:** If you get stuck, the game
+     provides hints to guide you towards the correct solution. Use them wisely
+     to improve your skills.
+   - **Responsive Design:** The game adapts to different screen sizes, ensuring
+     an optimal experience on desktops, laptops, tablets, and mobile devices.
+   - **Enhanced Game Experience with Sound Orientation:** This game feature uses
      sound cues to aid player navigation and decision-making. Distinct effects
      indicate actions such as selecting cells or making correct/incorrect moves.
      These auditory cues improve player engagement and are especially helpful
      for visually impaired or audio-oriented players, promoting inclusivity and
      accessibility.
-   - Sound Personalization: The game offers a sound personalization feature that
-     grants players the ability to mute background music or sound effects. The
-     game recognizes that audio preferences can vary greatly from person to
+   - **Sound Personalization:** The game offers a sound personalization feature
+     that grants players the ability to mute background music or sound effects.
+     The game recognizes that audio preferences can vary greatly from person to
      person, and it aims to provide a tailored experience for a more enjoyable
      gameplay session. Whether players prefer a lively and dynamic audio
      environment or a more tranquil and focused one, the sound personalization
@@ -57,14 +57,15 @@ critical thinking and problem-solving skills.
      The game offers an exciting gameplay experience with three levels of
      difficulty, each presenting its own unique challenge.
 
-- Level 1 presents a 4x4 grid for beginners, providing a gentle introduction to
-  Sudoku.
-- Level 2 introduces a 5x5 grid, offering a moderate challenge.
-- Level 3 presents the ultimate challenge with a 6x6 grid, designed for
-  experienced players. Players can progress through the levels, enhancing their
-  skills and strategies as they conquer each one. With varying grid sizes,
-  players can progressively enhance their skills and enjoy an increasingly
-  complex puzzle-solving adventure.
+   - Level 1 presents a 4x4 grid for beginners, providing a gentle introduction
+     to Sudoku.
+   - Level 2 introduces a 5x5 grid, offering a moderate challenge.
+   - Level 3 presents the ultimate challenge with a 6x6 grid, designed for
+     experienced players.
+
+Players can progress through the levels, enhancing their skills and strategies
+as they conquer each one. With varying grid sizes, players can progressively
+enhance their skills and enjoy an increasingly complex puzzle-solving adventure.
 
 ### Life System
 
@@ -170,26 +171,26 @@ The following technologies were used in the development of Sudoku for Kids:
 
 - **HTML5** is used to structure the game interface, organizing content and
   interactive elements for a solid user interface foundation.
-  - **CSS3** is responsible for styling and enhancing the game visually, with
-    custom styles, animations, and responsive design techniques that ensure a
-    visually appealing and consistent user experience across different devices.
-  - **JavaScript** implements the game logic and interactivity, generating
-    puzzles, handling user input, validating solutions, and providing dynamic
-    gameplay elements like hints, animations, and feedback. It enables real-time
-    updates and user interactions, enhancing the interactive and engaging
-    experience.
-  - The **BEM methodology** organizes the codebase, making it more maintainable
-    and scalable by breaking down components into reusable building blocks. It
-    enhances code understanding, facilitates collaboration, and reduces
-    duplication.
-  - **Git and GitHub** are used for version control, enabling efficient
-    collaboration, code sharing, and tracking of modifications. GitHub serves as
-    a centralized repository for storing the codebase, facilitating version
-    control, issue tracking, and collaboration among developers.
-  - **Responsive design** ensures that the game adapts to different screen sizes
-    and devices. By utilizing CSS media queries and flexible layouts, it
-    provides an optimal user experience across various platforms, enhancing
-    accessibility, satisfaction, and engagement.
+- **CSS3** is responsible for styling and enhancing the game visually, with
+  custom styles, animations, and responsive design techniques that ensure a
+  visually appealing and consistent user experience across different devices.
+- **JavaScript** implements the game logic and interactivity, generating
+  puzzles, handling user input, validating solutions, and providing dynamic
+  gameplay elements like hints, animations, and feedback. It enables real-time
+  updates and user interactions, enhancing the interactive and engaging
+  experience.
+- The **BEM methodology** organizes the codebase, making it more maintainable
+  and scalable by breaking down components into reusable building blocks. It
+  enhances code understanding, facilitates collaboration, and reduces
+  duplication.
+- **Git and GitHub** are used for version control, enabling efficient
+  collaboration, code sharing, and tracking of modifications. GitHub serves as a
+  centralized repository for storing the codebase, facilitating version control,
+  issue tracking, and collaboration among developers.
+- **Responsive design** ensures that the game adapts to different screen sizes
+  and devices. By utilizing CSS media queries and flexible layouts, it provides
+  an optimal user experience across various platforms, enhancing accessibility,
+  satisfaction, and engagement.
 
 ## Future Enhancements
 
@@ -202,9 +203,9 @@ The following technologies were used in the development of Sudoku for Kids:
   completing challenges. These achievements can provide a sense of
   accomplishment and motivate players to explore different aspects of the game.
 
-  ## Conclusion
+## Conclusion
 
-  Sudoku for Kids is a fun and educational game that helps children improve
-  their logical reasoning and problem-solving skills. With colorful visuals,
-  different difficulty levels, and helpful hints, it offers an enjoyable
-  learning experience. Start playing now and become a Sudoku master!
+Sudoku for Kids is a fun and educational game that helps children improve their
+logical reasoning and problem-solving skills. With colorful visuals, different
+difficulty levels, and helpful hints, it offers an enjoyable learning
+experience. Start playing now and become a Sudoku master!
