@@ -71,6 +71,11 @@ align-items: center;
   min-width: 180px;
 }
 
+
+.centered {
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   .game-info-wrapper {
     justify-content: space-between;

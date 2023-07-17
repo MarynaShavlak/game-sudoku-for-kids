@@ -167,31 +167,42 @@ function animateParticle(particle, x, y) {
 
 function onHintsBlockClick(e) {
   if (isHintTimeOutRunning) return;
-
-  const clickedBlock =
-    e.target.className === 'hints-block'
-      ? e.target
-      : e.target.className === 'hint-element'
-      ? e.target.parentElement.parentElement
-      : e.target.parentElement;
-  if (hintsList.children.length > 0) {
-    minusHint();
-    showVisualEffect(e, clickedBlock);
-    const { randomEmptyCell, imageToSetOnBoard } = getCellAndImageForShowHint();
-    showHintOnBoard(randomEmptyCell, imageToSetOnBoard);
-    isHintTimeOutRunning = true;
-
-    setTimeout(function () {
-      hideHintOnBoard(randomEmptyCell, imageToSetOnBoard);
-      isHintTimeOutRunning = false;
-    }, 2000);
-  }
-  if (hintsList.children.length === 0) {
-    makeHintsBlockDisabled();
+  const clickedBlock = getClickedBlock(e);
+  if (hasHints()) {
+    processHint(clickedBlock);
+  } else {
+    disableHintsBlock();
   }
 }
 
-function makeHintsBlockDisabled() {
+function hasHints() {
+  return hintsList.children.length > 0;
+}
+
+function processHint(clickedBlock) {
+  minusHint();
+  showVisualEffect(clickedBlock);
+  const { randomEmptyCell, imageToSetOnBoard } = getCellAndImageForShowHint();
+  showHintOnBoard(randomEmptyCell, imageToSetOnBoard);
+  isHintTimeOutRunning = true;
+
+  setTimeout(function () {
+    hideHintOnBoard(randomEmptyCell, imageToSetOnBoard);
+    isHintTimeOutRunning = false;
+  }, 2000);
+}
+
+function getClickedBlock(e) {
+  if (e.target.className === 'hints-block') {
+    return e.target;
+  } else if (e.target.className === 'hint-element') {
+    return e.target.parentElement.parentElement;
+  } else {
+    return e.target.parentElement;
+  }
+}
+
+function disableHintsBlock() {
   if (noHintsText && window.getComputedStyle(noHintsText).display === 'block') {
     hintsBlock.classList.add('disabled');
   }

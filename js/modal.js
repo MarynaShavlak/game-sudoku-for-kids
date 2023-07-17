@@ -69,7 +69,6 @@ function closeConfirmationModal() {
 function openModal(modalElement) {
   const isWinWindow = modalElement.classList.contains('end-game-win');
   const isLoseWindow = modalElement.classList.contains('end-game-lose');
-
   const imageUrl = isWinWindow
     ? `./images/${chosenTopic}/win.jpg`
     : isLoseWindow
