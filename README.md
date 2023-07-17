@@ -203,6 +203,7 @@ the reset option in the game's menu for a clean statistical slate.
   reaching milestones, solving puzzles within specific time limits, or
   completing challenges. These achievements can provide a sense of
   accomplishment and motivate players to explore different aspects of the game.
+- **Language Selection**: Add the ability to toggle between Ukrainian and English languages in the game. This feature will provide players with the option to choose their preferred language, promoting language learning and customization. With language selection, players can enjoy the game in their desired language, enhancing their educational experience.
 
 ## Conclusion
 
