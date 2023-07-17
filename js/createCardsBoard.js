@@ -21,31 +21,27 @@ function createListItem(imageIndex) {
   return li;
 }
 
-function setCardImageSizes(card, elementsInOneRow) {
+function setCardImageSizes(card) {
   function updateCardSize() {
     let screenWidth = window.innerWidth;
+    const elementsInOneRow = levelMap[chosenLevel];
+    const mobileSizes = {
+      4: { width: '70px', height: '70px' },
+      5: { width: '58px', height: '58px' },
+      6: { width: '48px', height: '48px' },
+    };
+    const sizes = {
+      4: { width: '150px', height: '150px' },
+      5: { width: '120px', height: '120px' },
+      6: { width: '100px', height: '100px' },
+    };
+
     if (screenWidth >= 320 && screenWidth <= 767) {
-      if (elementsInOneRow === 4) {
-        card.style.width = '70px';
-        card.style.height = '70px';
-      } else if (elementsInOneRow === 5) {
-        card.style.width = '58px';
-        card.style.height = '58px';
-      } else if (elementsInOneRow === 6) {
-        card.style.width = '48px';
-        card.style.height = '48px';
-      }
+      card.style.width = mobileSizes[elementsInOneRow].width;
+      card.style.height = mobileSizes[elementsInOneRow].height;
     } else {
-      if (elementsInOneRow === 4) {
-        card.style.width = '150px';
-        card.style.height = '150px';
-      } else if (elementsInOneRow === 5) {
-        card.style.width = '120px';
-        card.style.height = '120px';
-      } else if (elementsInOneRow === 6) {
-        card.style.width = '100px';
-        card.style.height = '100px';
-      }
+      card.style.width = sizes[elementsInOneRow].width;
+      card.style.height = sizes[elementsInOneRow].height;
     }
   }
   updateCardSize();
@@ -90,8 +86,8 @@ function setUniqueIdForCards() {
 function generateTaskBoard() {
   const ul = document.createElement('ul');
   ul.className = 'cards';
-  const chosenLevelLength = levelMap[chosenLevel];
-  generatedSolution = generateArrayWithUniqueDigit(chosenLevelLength);
+  const elementsInOneRow = levelMap[chosenLevel];
+  generatedSolution = generateArrayWithUniqueDigit(elementsInOneRow);
   generatedTask = createTaskArrayWithHyphen(generatedSolution);
   cardsTaskBoard = generatedTask;
   const taskBoardElement = createCardsTaskBoard(ul, cardsTaskBoard);
@@ -102,9 +98,9 @@ function createCardsTaskBoard(ul, cardsTaskBoard) {
   // Встановлюємо правильно ширину дошки для відповідної кількості картинок
   // Далі треба для кожного рядку із індексами картинок та дефісами (['-23-', '41-3', '-4-2', '23-1']) створити лішку із відповідною картинкою
   // Перебираємо кожен рядок із індексами картинок
-  const chosenLevelLength = levelMap[chosenLevel];
+  const elementsInOneRow = levelMap[chosenLevel];
 
-  for (let i = 0; i < chosenLevelLength; i++) {
+  for (let i = 0; i < elementsInOneRow; i++) {
     const solutionRow = cardsTaskBoard[i];
     const imageIndexesArray = solutionRow.split('');
 
