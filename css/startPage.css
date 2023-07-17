@@ -15,14 +15,14 @@
   padding-right: 30px;
 }
 
-.game-title {
+.start-window__title {
   text-align: center;
   margin-bottom: 20px;
   font-size: 50px;
 }
 
 @media (min-width: 768px) {
-  .game-title {
+  .start-window__title {
     text-align: end;
     font-size: 60px;
     margin-bottom: 30px;
@@ -30,7 +30,7 @@
 }
 
 @media (min-width: 1200px) {
-  .game-title {
+  .start-window__title {
     font-size: 70px;
     margin-bottom: 50px;
   }
@@ -41,7 +41,7 @@
   }
 }
 
-.category-block {
+.start-window__category-block {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -51,13 +51,13 @@
 }
 
 @media (min-width: 768px) {
-  .category-block {
+  .start-window__category-block {
     align-items: end;
   }
 }
 
 @media (min-width: 1200px) {
-  .category-block {
+  .start-window__category-block {
     align-items: center;
   }
  
@@ -82,19 +82,19 @@
   }
 }
 
-.category-blocks-wrapper {
+.start-window__category-blocks-wrapper {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
 @media (max-width: 1199px) {
-  .category-blocks-wrapper {
+  .start-window__category-blocks-wrapper {
     margin-top: 30px;
   }
 }
 
-.category-block .container {
+.category-block__container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -104,13 +104,13 @@
 }
 
 @media (min-width: 768px) {
-  .category-block .container {
+  .category-block__container {
     justify-content: end;
   }
 }
 
 @media (min-width: 1200px) {
-  .category-block .container {
+  .category-block__container {
     justify-content: center;
   }
 }

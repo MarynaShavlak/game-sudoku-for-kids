@@ -17,7 +17,7 @@ function minusLife() {
 }
 
 function createLifes() {
-  let lifesBlock = document.querySelector('.menu .lifes');
+  let lifesBlock = document.querySelector('.game-header__menu .lifes');
   lifesBlock.innerHTML = '';
   for (let i = 0; i < lifes; i++) {
     let span = document.createElement('span');

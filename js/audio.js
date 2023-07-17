@@ -17,12 +17,12 @@ function choiceSound() {
   audio.play();
 }
 
-const soundBtnMenu = document.querySelector('.sounds');
-const soundOnBtn = document.querySelector('.soundOn');
-const soundOffBtn = document.querySelector('.soundOff');
-const musicBtnMenu = document.querySelector('.music');
-const musicOnBtn = document.querySelector('.musicOn');
-const musicOffBtn = document.querySelector('.musicOff');
+const soundBtnMenu = document.querySelector('.sounds-control__sounds');
+const soundOnBtn = document.querySelector('.sounds__soundOn');
+const soundOffBtn = document.querySelector('.sounds__soundOff');
+const musicBtnMenu = document.querySelector('.sounds-control__music');
+const musicOnBtn = document.querySelector('.music__musicOn');
+const musicOffBtn = document.querySelector('.music__musicOff');
 
 let mutedMusic = false;
 let mutedSounds = false;

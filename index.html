@@ -21,18 +21,21 @@
   </head>
   <body>
     <div class="game-wrapper">
-      <div id="start-window">
-        <h1 class="game-title">Судоку для малюків</h1>
-        <button type="button" class="btn parameters-btn">
+      <div id="start-window" class="start-window">
+        <h1 class="start-window__title">Судоку для малюків</h1>
+        <button type="button" class="start-window__button btn parameters-btn">
           Обрати парамери гри
         </button>
-        <button type="button" class="btn back-to-rules-btn">
+        <button
+          type="button"
+          class="start-window__button btn back-to-rules-btn"
+        >
           Назад до правил
         </button>
-        <div id="start-window-categories">
-          <div class="category-block themes-block">
+        <div id="start-window-categories" class="start-window__categories">
+          <div class="start-window__category-block themes-block">
             <h2>Виберіть тему:</h2>
-            <div class="container topics">
+            <div class="category-block__container topics">
               <button
                 id="theme1"
                 type="button"
@@ -48,18 +51,18 @@
             </div>
           </div>
 
-          <div class="category-blocks-wrapper">
-            <div class="category-block levels-block">
+          <div class="start-window__category-blocks-wrapper">
+            <div class="start-window__category-block levels-block">
               <h2>Виберіть рівень складності:</h2>
-              <div class="container levels-list">
+              <div class="category-block__container levels-list">
                 <button id="level1" class="level btn active">Рівень 1</button>
                 <button id="level2" class="level btn">Рівень 2</button>
                 <button id="level3" class="level btn">Рівень 3</button>
               </div>
             </div>
-            <div class="category-block timer-block">
+            <div class="start-window__category-block timer-block">
               <h2>Виберіть тип гри:</h2>
-              <div class="container game-type-list">
+              <div class="category-block__container game-type-list">
                 <button id="game-without-timer" class="game-type btn active">
                   Гра без таймера
                 </button>
@@ -68,7 +71,7 @@
                 </button>
               </div>
             </div>
-            <button id="start-game-btn">
+            <button id="start-game-btn" class="start-window__button">
               <span>С</span>
               <span>Т</span>
               <span>А</span>
@@ -94,7 +97,6 @@
           <p>Статистика</p>
         </div>
       </div>
-
       <div class="modal--rules modal">
         <div class="modal__overlay"></div>
         <div class="modal__content">
@@ -186,7 +188,10 @@
               <td id="bestGameTime" class="statistics-block">0</td>
             </tr>
           </table>
-          <button type="button" class="reset-statistics">
+          <button
+            type="button"
+            class="modal__button modal__button--reset-statistics"
+          >
             Обнулити статистику
           </button>
         </div>
@@ -209,7 +214,7 @@
         <div class="modal__overlay"></div>
         <div class="modal__content">
           <p>Пауза</p>
-          <button class="continueGameBtn" class="modal__button">
+          <button id="continueGameBtn" class="modal__button">
             Продовжити гру
           </button>
         </div>
@@ -239,11 +244,12 @@
       </div>
 
       <!------- МЕНЮ ------->
-      <div id="game-window">
-        <div class="menu">
-          <div class="sounds-control">
-            <div class="sounds">
-              <div class="soundOn hidden">
+      <div id="game-header" class="game-header">
+        <div class="game-header__menu">
+          <div class="menu__sounds-control">
+            <audio src="sound/themeSounds/theme1.mp3" id="audio" loop></audio>
+            <div class="sounds-control__sounds">
+              <div class="sounds__soundOn hidden">
                 <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                   <g data-name="1">
                     <path
@@ -261,7 +267,7 @@
                   </g>
                 </svg>
               </div>
-              <div class="soundOff">
+              <div class="sounds__soundOff">
                 <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                   <g data-name="1">
                     <path
@@ -280,8 +286,8 @@
                 </svg>
               </div>
             </div>
-            <div class="music">
-              <div class="musicOn">
+            <div class="sounds-control__music">
+              <div class="music__musicOn">
                 <svg
                   viewBox="0 0 20 20"
                   version="1.1"
@@ -302,7 +308,7 @@
                   </g>
                 </svg>
               </div>
-              <div class="musicOff hidden">
+              <div class="music__musicOff hidden">
                 <svg
                   viewBox="0 -0.91 122.88 122.88"
                   version="1.1"
@@ -319,8 +325,8 @@
                 </svg>
               </div>
             </div>
-            <div class="pause">
-              <div class="pause-icon-wrapper">
+            <div class="sounds-control__pause">
+              <div class="pause__pause-icon-wrapper">
                 <svg class="pause-icon" viewBox="0 0 512 512">
                   <g>
                     <path
@@ -332,7 +338,7 @@
                   </g>
                 </svg>
               </div>
-              <div class="play-icon-wrapper hidden">
+              <div class="pause__play-icon-wrapper hidden">
                 <svg class="play-icon" viewBox="0 0 512 512">
                   <path
                     d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z"
@@ -341,22 +347,21 @@
               </div>
             </div>
           </div>
-          <button type="button" class="back-btn">Назад до меню</button>
-          <div class="hints-block" data-type="emoji">
-            <p class="hint-text">Отримати підказку</p>
+          <button type="button" class="menu__back-btn">Назад до меню</button>
+          <div class="menu__hints-block" data-type="emoji">
+            <p class="hints-block__hint-text">Отримати підказку</p>
             <div class="hints"></div>
-            <p class="no-hints-text">Всі підказки використано</p>
+            <p class="hints-block__no-hints-text">Всі підказки використано</p>
           </div>
 
-          <audio src="sound/themeSounds/theme1.mp3" id="audio" loop></audio>
-          <div class="game-info-wrapper">
+          <div class="menu__game-info">
             <div class="timer"><span></span></div>
             <div class="lifes"></div>
           </div>
         </div>
       </div>
 
-      <div class="cards-container"></div>
+      <div class="game-field"></div>
     </div>
 
     <script src="js/audio.js"></script>

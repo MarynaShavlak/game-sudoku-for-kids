@@ -83,7 +83,7 @@ function setUniqueIdForCards() {
 
 function generateTaskBoard() {
   const ul = document.createElement('ul');
-  ul.className = 'cards';
+  ul.className = 'game-field__cards-board';
   const elementsInOneRow = levelMap[chosenLevel];
   generatedSolution = generateArrayWithUniqueDigit(elementsInOneRow);
   generatedTask = createTaskArrayWithHyphen(generatedSolution);
@@ -148,7 +148,7 @@ function errorImage(clickedElement) {
 }
 
 function checkIfTaskSolved() {
-  const cardsBox = document.querySelector('.cards');
+  const cardsBox = document.querySelector('.game-field__cards-board');
   const cells = [...cardsBox.children];
   const isTaskSolved = cells.every(cell => cell.querySelector('img'));
   return isTaskSolved;
@@ -175,14 +175,16 @@ function handleNonEmptyCellClicked(clickedCell) {
   const cards = clickedCell.parentNode.getElementsByTagName('li');
   const isAlreadySelected = clickedCell.classList.contains('selected');
   if (isAlreadySelected) {
-    deselectCell(clickedCell, cards);
+    deselectCell(clickedCell);
+    clearSelectedCards(cards);
+  } else {
+    clearSelectedCards(cards);
+    selectMatchingCards(imgName, cards);
   }
-  clearSelectedCards(cards);
-  selectMatchingCards(imgName, cards);
 }
 
 function selectMatchingCards(imgName, cards) {
-  cards.forEach(card => {
+  Array.from(cards).forEach(card => {
     const img = card.querySelector('img');
     if (img?.getAttribute('alt') === imgName) {
       card.classList.add('selected');
@@ -190,9 +192,8 @@ function selectMatchingCards(imgName, cards) {
   });
 }
 
-function deselectCell(cell, cards) {
+function deselectCell(cell) {
   cell.classList.remove('selected');
-  clearSelectedCards(cards);
 }
 
 function handleUnmatchedCell(clickedElement) {

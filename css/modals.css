@@ -168,7 +168,7 @@
   }
 }
 
-#restartBtnWin, #restartBtnLose, .modal__button--confirm, .modal__button--cancel, .continueGameBtn, .reset-statistics {
+.modal__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +186,7 @@
   transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.reset-statistics {
+.modal__button--reset-statistics {
   margin: 0;
   font-size: 18px;
   margin-top: 10px;
@@ -198,24 +198,28 @@
     #restartBtnLose,
     .modal__button--confirm,
     .modal__button--cancel, 
-    .continueGameBtn {
+    #continueGameBtn {
     font-size: 20px;
   }
-    .reset-statistics {
+    .modal__button--reset-statistics {
       font-size: 14px;
     }
 }
 
-#restartBtnWin:hover ,
+/* #restartBtnWin:hover ,
 #restartBtnWin:focus , #restartBtnLose:hover ,
 #restartBtnLose:focus , .modal__button--confirm:hover,
 .modal__button--cancel:hover, .modal__button--confirm:focus,
-.modal__button--cancel:focus, .continueGameBtn:hover, .continueGameBtn:focus, .reset-statistics:hover, .reset-statistics:focus{
+.modal__button--cancel:focus, #continueGameBtn:hover, #continueGameBtn:focus, .modal__button--reset-statistics:hover, .modal__button--reset-statistics:focus{
   background-color: white;
   color: rgb(217, 0, 51);
  
-}
+} */
 
+.modal__button:hover, .modal__button:focus {
+  background-color: white;
+  color: rgb(217, 0, 51);
+}
 
 
 #end-window {

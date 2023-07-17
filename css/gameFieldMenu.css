@@ -1,4 +1,4 @@
-.back-btn {
+.menu__back-btn {
   align-self: flex-start;
   font-weight: 100;
   background-color: white;
@@ -10,7 +10,7 @@
 }
 
 @media (min-width: 768px) {
-  .back-btn {
+  .menu__back-btn {
     align-self: center;
     display: flex;
     font-size: 18px;
@@ -18,19 +18,19 @@
 }
 
 @media (min-width: 1200px) {
-  .back-btn {
+  .menu__back-btn {
     padding: 15px 20px;
     font-size: 24px;
   }
 }
 
-.back-btn:hover,
-.back-btn:focus {
+.menu__back-btn:hover,
+.menu__back-btn:focus {
   color: white;
   background-color: black;
 }
 
-.menu {
+.game-header__menu {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ align-items: center;
 
 
 @media (min-width: 768px) {
-  .menu {
+  .game-header__menu {
     
     flex-direction: row;
     padding: 10px 20px;
@@ -63,7 +63,7 @@ align-items: center;
   }
 }
 
-.game-info-wrapper {
+.menu__game-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,14 +77,14 @@ align-items: center;
 }
 
 @media (min-width: 768px) {
-  .game-info-wrapper {
+  .menu__game-info {
     justify-content: space-between;
     min-width: 340px;
     gap: 70px;
   }
 }
 @media (min-width: 1200px) {
-  .game-info-wrapper {
+  .menu__game-info {
     min-width: 480px;
     gap: 100px;
   }
@@ -115,7 +115,7 @@ align-items: center;
   }
 }
 
-.hints-block {
+.menu__hints-block {
   display: flex;
   min-height: 50px;
   max-width: 170px;
@@ -134,43 +134,43 @@ align-items: center;
   transition: 300ms border cubic-bezier(0.075, 0.82, 0.165, 1), 300ms transform cubic-bezier(0.075, 0.82, 0.165, 1), 300ms color cubic-bezier(0.075, 0.82, 0.165, 1),300ms box-shadow cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.hints-block.disabled {
+.menu__hints-block.disabled {
   background-color: #ffffff97;
 }
 
 
 
 @media (min-width: 768px) {
-  .hints-block {
+  .menu__hints-block {
     max-width: 220px;
     min-height: 70px;
     
   }
 }
 
-.hints-block:hover, .hints-block:focus {
+.menu__hints-block:hover, .menu__hints-block:focus {
   transform: scale(1.1);
   color: rgb(217, 0, 51);
   border: 1px solid rgb(217, 0, 51);
   box-shadow: rgba(217, 0, 51, 0.4) 0px 2px 4px, rgba(217, 0,51, 0.3) 0px 7px 13px -3px, rgba(217, 0, 51, 0.2) 0px -3px 0px inset;
 }
 
-.hint-text {
+.hints-block__hint-text {
   font-size: 14px;
 }
-.no-hints-text {
+.hints-block__no-hints-text  {
   font-size: 14px;
 }
 
 
-.no-hints-text {
+.hints-block__no-hints-text  {
   display: none;
 }
 @media (min-width: 768px) {
-  .hint-text {
+  .hints-block__hint-text {
     font-size: 18px;
   }
-  .no-hints-text {
+  .hints-block__no-hints-text  {
     font-size: 18px;
   }
 }
@@ -279,7 +279,7 @@ align-items: center;
   }
 }
 
-.sounds-control {
+.menu__sounds-control {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -289,7 +289,7 @@ align-items: center;
 }
 
 @media (min-width: 768px) {
-  .sounds-control {
+  .menu__sounds-control {
     flex-direction: column;
     top: 100px;
     right: 10px;
@@ -298,7 +298,7 @@ align-items: center;
 }
 
 @media (min-width: 1200px) {
-  .sounds-control {
+  .menu__sounds-control {
     width: fit-content;
     top: 130px;
     right: 10px;
@@ -306,33 +306,33 @@ align-items: center;
 }
 
 @media (min-width: 320px) {
-  .sounds svg, .pause-icon, .play-icon{
+  .sounds-control__sounds svg, .pause-icon, .play-icon{
     width: 30px;
     height: 30px;
   }
 
-  .music svg {
+  .sounds-control__music svg {
     width: 20px;
     height: 20px;
   }
 }
 
 @media (min-width: 1200px) {
-  .sounds svg,
+  .sounds-control__sounds svg,
    .pause-icon,
    .play-icon {
     width: 40px;
     height: 40px;
   }
  
-  .music svg {
+  .sounds-control__music svg {
     width: 30px;
     height: 30px;
   }
 }
 
-.sounds,
-.music, .pause-icon-wrapper, .play-icon-wrapper {
+.sounds-control__sounds,
+.sounds-control__music, .pause__pause-icon-wrapper, .pause__play-icon-wrapper {
   position: relative;
   background-color: #fff;
   border-radius: 50%;
@@ -340,26 +340,26 @@ align-items: center;
 }
 
 @media (min-width: 320px) {
-  .sounds,
-  .music, 
-  .pause-icon-wrapper,
-  .play-icon-wrapper {
+  .sounds-control__sounds,
+  .sounds-control__music, 
+  .pause__pause-icon-wrapper,
+  .pause__play-icon-wrapper {
     padding: 20px;
   }
 }
 
 @media (min-width: 1200px) {
 
-  .sounds,
-  .music, 
-  .pause-icon-wrapper,
-  .play-icon-wrapper {
+  .sounds-control__sounds,
+  .sounds-control__music, 
+  .pause__pause-icon-wrapper,
+  .pause__play-icon-wrapper {
     padding: 30px;
   }
 }
 
-.sounds svg,
-.music svg, .pause-icon, .play-icon {
+.sounds-control__sounds svg,
+.sounds-control__music svg, .pause-icon, .play-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -369,12 +369,12 @@ align-items: center;
   transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.sounds:hover,
-.music:hover, .pause-icon-wrapper:hover, .play-icon-wrapper:hover {
+.sounds-control__sounds:hover,
+.sounds-control__music:hover, .pause__pause-icon-wrapper:hover, .pause__play-icon-wrapper:hover {
   background-color: black;
 }
 
-.sounds:hover svg,
-.music:hover svg, .pause-icon-wrapper:hover svg, .play-icon-wrapper:hover svg {
+.sounds-control__sounds:hover svg,
+.sounds-control__music:hover svg, .pause__pause-icon-wrapper:hover svg, .pause__play-icon-wrapper:hover svg {
   fill: #fff;
 }

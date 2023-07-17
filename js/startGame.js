@@ -1,10 +1,10 @@
 const startWindow = document.getElementById('start-window');
 const startCategories = document.getElementById('start-window-categories');
-const gameWindow = document.getElementById('game-window');
+const gameWindow = document.getElementById('game-header');
 const startGameBtn = document.getElementById('start-game-btn');
 const parametersBtn = document.querySelector('.parameters-btn');
 const backToRulesBtn = document.querySelector('.back-to-rules-btn');
-const gameTitle = document.querySelector('.game-title');
+const gameTitle = document.querySelector('.start-window__title');
 
 startGameBtn.addEventListener('click', onStartGameBtnClick);
 parametersBtn.addEventListener('click', onParametersBtnClick);

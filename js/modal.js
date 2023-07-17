@@ -7,7 +7,7 @@ const winWindow = document.querySelector('.modal--end-game-win');
 const loseWindow = document.querySelector('.modal--end-game-lose');
 
 const pauseGameWindow = document.querySelector('.modal--pause-game');
-const continueGameBtn = document.querySelector('.continueGameBtn');
+const continueGameBtn = document.querySelector('#continueGameBtn');
 const confirmationWindow = document.querySelector('.modal--confirmation');
 const confirmCloseIcon = document.querySelector('.modal__closeIcon--confirm');
 const confirmBtn = document.querySelector('.modal__button--confirm');

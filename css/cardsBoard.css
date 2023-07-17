@@ -1,8 +1,8 @@
-#game-window {
+#game-header {
   display: none;
 }
 
-.cards-container {
+.game-field {
   display: none;
   justify-content: center;
   margin-top: 20px;
@@ -13,13 +13,13 @@
 
 
 @media (min-width: 1200px) {
-  .cards-container{
+  .game-field{
     gap: 50px;
     flex-direction: row;
   }
 }
 
-.cards {
+.game-field__cards-board {
   display: flex;
   flex-wrap: wrap;
   justify-content:baseline;
@@ -28,13 +28,13 @@
 }
 
 @media (max-width: 767px) {
-  .cards {
+  .game-field__cards-board {
       width: 290px;
       min-width: 290px;
   }
 }
 @media (min-width: 768px) {
-  .cards {
+  .game-field__cards-board {
     width: 600px;
     min-width: 600px;
   }
@@ -66,7 +66,7 @@
   opacity: 0.5;
 }
 
-.card-selection .card:not(:empty):hover {
+.game-field__card-selection-block .card:not(:empty):hover {
   border: 5px solid #002a42;
 }
 

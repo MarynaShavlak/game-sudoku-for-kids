@@ -47,12 +47,12 @@ function onImageFromSelectionBlockClick(e) {
 
 function createImageSelectionBlock(solution) {
   const cardsSelectionBlock = document.createElement('div');
-  cardsSelectionBlock.className = 'card-selection';
+  cardsSelectionBlock.className = 'game-field__card-selection-block';
   const cardsWrapper = document.createElement('div');
   const title = document.createElement('h2');
-  title.className = 'selection-block-title';
+  title.className = 'card-selection-block__title';
   title.innerText = 'Обери картинку';
-  cardsWrapper.className = 'cards-options';
+  cardsWrapper.className = 'card-selection-block__options';
   cardsWrapper.addEventListener('click', onImageFromSelectionBlockClick);
   solution = generatedSolution;
   const imagesQuantity = solution.length;

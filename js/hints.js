@@ -1,7 +1,9 @@
-const hintsBlock = document.querySelector('.menu .hints-block');
-const hintsList = document.querySelector('.menu .hints');
-const noHintsText = document.querySelector('.no-hints-text');
-const hintsText = document.querySelector('.hint-text');
+const hintsBlock = document.querySelector(
+  '.game-header__menu .menu__hints-block',
+);
+const hintsList = document.querySelector('.game-header__menu .hints');
+const noHintsText = document.querySelector('.hints-block__no-hints-text ');
+const hintsText = document.querySelector('.hints-block__hint-text');
 hintsBlock.setAttribute('data-type', themes[chosenTopic]);
 hintsBlock.addEventListener('click', onHintsBlockClick);
 
@@ -168,7 +170,7 @@ function onHintsBlockClick(e) {
   if (isHintTimeOutRunning) return;
   const clickedBlock = getClickedBlock(e);
   if (hasHints()) {
-    processHint(clickedBlock);
+    processHint(e, clickedBlock);
   } else {
     disableHintsBlock();
   }
@@ -178,9 +180,9 @@ function hasHints() {
   return hintsList.children.length > 0;
 }
 
-function processHint(clickedBlock) {
+function processHint(e, clickedBlock) {
   minusHint();
-  showVisualEffect(clickedBlock);
+  showVisualEffect(e, clickedBlock);
   const { randomEmptyCell, imageToSetOnBoard } = getCellAndImageForShowHint();
   showHintOnBoard(randomEmptyCell, imageToSetOnBoard);
   isHintTimeOutRunning = true;
@@ -192,7 +194,7 @@ function processHint(clickedBlock) {
 }
 
 function getClickedBlock(e) {
-  if (e.target.className === 'hints-block') {
+  if (e.target.className === 'menu__hints-block') {
     return e.target;
   } else if (e.target.className === 'hint-element') {
     return e.target.parentElement.parentElement;
@@ -209,7 +211,7 @@ function disableHintsBlock() {
 
 function getAllEmptyCells() {
   let emptyCells = [];
-  const cardsBox = document.querySelector('.cards');
+  const cardsBox = document.querySelector('.game-field__cards-board');
   const cells = [...cardsBox.children];
   cells.forEach(cell => {
     if (!cell.querySelector('img')) {

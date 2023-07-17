@@ -9,9 +9,9 @@ const timerValue = {
 };
 const timerWrapper = document.querySelector('.timer');
 const timerBlockElement = document.querySelector('.timer span');
-const pauseGameBtn = document.querySelector('.pause-icon-wrapper');
-const playGameBtn = document.querySelector('.play-icon-wrapper');
-const pauseBtnMenu = document.querySelector('.pause');
+const pauseGameBtn = document.querySelector('.pause__pause-icon-wrapper');
+const playGameBtn = document.querySelector('.pause__play-icon-wrapper');
+const pauseBtnMenu = document.querySelector('.sounds-control__pause');
 pauseBtnMenu.addEventListener('click', togglePause);
 
 function setTimer(value) {

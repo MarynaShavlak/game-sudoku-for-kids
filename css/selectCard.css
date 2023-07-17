@@ -1,4 +1,4 @@
-.card-selection {
+.game-field__card-selection-block {
   display: flex;
   flex-direction: column;
   height: max-content;
@@ -7,7 +7,7 @@
 }
 
 @media (min-width: 768px) {
-  .card-selection {
+  .game-field__card-selection-block {
     width: 600px;
     padding-left: 20px;
     padding-right: 20px;
@@ -15,14 +15,14 @@
 }
 
 @media (min-width: 1200px) {
-  .card-selection {
+  .game-field__card-selection-block {
     width: 320px;
   }
 }
 
 
 
-.cards-options {
+.card-selection-block__options {
   min-width: auto;
   display: flex;
   flex-wrap: wrap;
@@ -30,7 +30,7 @@
 }
 
 @media (max-width: 767px) {
-  .cards-options {
+  .card-selection-block__options {
     justify-content: stretch;
     width: fit-content;
     min-width: 280px;
@@ -39,7 +39,7 @@
 
 
 
-.selection-block-title {
+.card-selection-block__title {
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
@@ -49,23 +49,23 @@
 }
 
 @media (max-width: 767px) {
-  .selection-block-title {
+  .card-selection-block__title {
     font-size: 20px;
    
   }
 }
 
-.card-selection .card {
+.game-field__card-selection-block .card {
   background-color: #0c6abb8c;
 }
 
 
 
-.cards-options input {
+.card-selection-block__options input {
   display: none;
 }
 
-.cards-options input[type=radio]:checked+label {
+.card-selection-block__options input[type=radio]:checked+label {
   border: 5px solid rgb(217, 0, 51);
   border-radius: 5px;
   transform: scale(1.1);
