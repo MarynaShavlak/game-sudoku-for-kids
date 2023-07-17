@@ -60,3 +60,15 @@ function runTimer() {
     countdownTime();
   }
 }
+
+function setTimerInterface() {
+  if (chosenGameType === 'game-without-timer') {
+    timerWrapper.style.display = 'none';
+    pauseBtnMenu.style.display = 'none';
+  } else {
+    timerWrapper.style.display = 'flex';
+    pauseBtnMenu.style.display = 'block';
+    setTimer(timerValue[chosenLevel]);
+    countdownTime();
+  }
+}
