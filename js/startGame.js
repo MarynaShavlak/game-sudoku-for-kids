@@ -2,7 +2,6 @@ const startWindow = document.getElementById('start-window');
 const startCategories = document.getElementById('start-window-categories');
 const gameWindow = document.getElementById('game-window');
 const startGameBtn = document.getElementById('start-game-btn');
-const endWindow = document.getElementById('end-window');
 const parametersBtn = document.querySelector('.parameters-btn');
 const backToRulesBtn = document.querySelector('.back-to-rules-btn');
 const gameTitle = document.querySelector('.game-title');

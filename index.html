@@ -94,12 +94,12 @@
           <p>Статистика</p>
         </div>
       </div>
-      <!-- Модальне вікно з правилами -->
-      <div class="rules-modal modal">
+
+      <div class="modal--rules modal">
         <div class="modal__overlay"></div>
         <div class="modal__content">
           <img
-            class="modal__closeIcon rules-close-icon"
+            class="modal__closeIcon modal__closeIcon--rules"
             src="./images/icon-close.svg"
             alt="close icon"
           />
@@ -115,18 +115,16 @@
           </p>
         </div>
       </div>
-
-      <!-- Модальне вікно із статистикою -->
-      <div class="statistics-modal modal">
+      <div class="modal--statistics modal">
         <div class="modal__overlay"></div>
         <div class="modal__content statistics-modal__content">
           <img
-            class="modal__closeIcon statistics-close-icon"
+            class="modal__closeIcon statistics-modal__closeIcon"
             src="./images/icon-close.svg"
             alt="close icon"
           />
           <ul class="stat-level-btn-list">
-            <li class="level-item">
+            <li class="stat-level-btn-list__item">
               <button
                 type="button"
                 class="stat-level-btn active level1"
@@ -135,12 +133,12 @@
                 Level 1
               </button>
             </li>
-            <li class="level-item">
+            <li class="stat-level-btn-list__item">
               <button type="button" class="stat-level-btn level2" id="level-2">
                 Level 2
               </button>
             </li>
-            <li class="level-item">
+            <li class="stat-level-btn-list__item">
               <button type="button" class="stat-level-btn level3" id="level-3">
                 Level 3
               </button>
@@ -193,41 +191,34 @@
           </button>
         </div>
       </div>
-
-      <!-- Модальне вікно ПЕРЕМОГА-->
-      <div class="end-game-win modal">
+      <div class="modal--end-game-win modal">
         <div class="modal__overlay"></div>
         <div class="modal__content">
           <p>Перемога</p>
-          <button id="restartBtnWin" class="wrapper">РЕСТАРТ</button>
+          <button id="restartBtnWin" class="modal__button">РЕСТАРТ</button>
         </div>
       </div>
-
-      <!-- Модальне вікно ПОРАЗКА-->
-      <div class="end-game-lose modal">
+      <div class="modal--end-game-lose modal">
         <div class="modal__overlay"></div>
         <div class="modal__content">
           <p>Поразка</p>
-          <button id="restartBtnLose" class="wrapper">РЕСТАРТ</button>
+          <button id="restartBtnLose" class="modal__button">РЕСТАРТ</button>
         </div>
       </div>
-
-      <!-- Модальне вікно Пауза-->
-      <div class="pause-game-modal modal">
+      <div class="modal--pause-game modal">
         <div class="modal__overlay"></div>
         <div class="modal__content">
           <p>Пауза</p>
-          <button class="continueGameBtn" class="wrapper">
+          <button class="continueGameBtn" class="modal__button">
             Продовжити гру
           </button>
         </div>
       </div>
-
-      <div class="confirmation-modal modal">
+      <div class="modal--confirmation modal">
         <div class="modal__overlay"></div>
         <div class="modal__content">
           <img
-            class="modal__closeIcon confirm-close-icon"
+            class="modal__closeIcon modal__closeIcon--confirm"
             src="./images/icon-close.svg"
             alt="close icon"
           />
@@ -236,12 +227,12 @@
             Ви впевнені, що хочете перейти до стартового меню та втратити
             прогрес у грі?
           </p>
-          <ul class="btn-list">
-            <li class="btn-list-item">
-              <button class="confirmBtn wrapper">ТАК</button>
+          <ul class="modal__button-list">
+            <li class="modal__button-list-item">
+              <button class="modal__button modal__button--confirm">ТАК</button>
             </li>
-            <li class="btn-list-item">
-              <button class="cancelBtn wrapper">НІ</button>
+            <li class="modal__button-list-item">
+              <button class="modal__button modal__button--cancel">НІ</button>
             </li>
           </ul>
         </div>
@@ -366,9 +357,6 @@
       </div>
 
       <div class="cards-container"></div>
-      <div id="end-window">
-        <button id="restart-game-btn">Перезапустити гру</button>
-      </div>
     </div>
 
     <script src="js/audio.js"></script>

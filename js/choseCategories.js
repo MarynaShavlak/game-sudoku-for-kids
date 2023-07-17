@@ -38,7 +38,6 @@ function updateCategoryElements(clickedElement, elements) {
 
 function updateChosenCategory(element) {
   const category = element.classList[0];
-  console.log('category: ', category);
   if (category === 'topic') {
     chosenTopic = element.id;
   } else if (category === 'level') {

@@ -100,7 +100,6 @@ function setCircleParticleProperties(particle) {
   )}px ${color}`;
   particle.style.background = color;
   particle.style.borderRadius = '50%';
-  // width = height = Math.random() * 5 + 15;
 }
 
 function setSquareParticleProperties(particle, type) {

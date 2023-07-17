@@ -72,8 +72,6 @@ function setUniqueIdForCards() {
   const rowsQuantity = solution.length;
   const finishedImagesIndexes = solution.join('');
 
-  //Задаємо ДЛЯ КОЖНОЇ лішки унікальний айдішник , який складається із номеру рядку, на якому ця лішка знаходиться, та номеру картинки, яка має бути в цій лішці()
-
   for (let index = 0; index < totalCards; index++) {
     const li = allCardsElements[index];
     const rowIndex = Math.ceil((index + 1) / (totalCards / rowsQuantity));
@@ -95,11 +93,7 @@ function generateTaskBoard() {
 }
 
 function createCardsTaskBoard(ul, cardsTaskBoard) {
-  // Встановлюємо правильно ширину дошки для відповідної кількості картинок
-  // Далі треба для кожного рядку із індексами картинок та дефісами (['-23-', '41-3', '-4-2', '23-1']) створити лішку із відповідною картинкою
-  // Перебираємо кожен рядок із індексами картинок
   const elementsInOneRow = levelMap[chosenLevel];
-
   for (let i = 0; i < elementsInOneRow; i++) {
     const solutionRow = cardsTaskBoard[i];
     const imageIndexesArray = solutionRow.split('');

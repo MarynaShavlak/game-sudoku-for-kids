@@ -1,74 +1,47 @@
-// Як будуть генеруватись дошки для рівнів :
-// 1 рівень : 2 рядки по 2 пустих клітинки
-//            2 рядки по 1 пустій клітинці
-
-// 2 рівень : 2 рядки по 2 пустих клітинки
-//            2 рядки по 1 пустій клітинці
-//            1 рядок по 3 пустих клітинки
-
-// 3 рівень : 3 рядки по 2 пустих клітинки
-//            3 рядки по 3 пустих клітинки
-
-// Функція, для рандомного перемішування елементів масиву
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-// Функція приймає масив і повертає індекс рандомного елементу цього масиву.
 function getRandomArrayElementIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-// Функція приймає рядок  і повертає індекс рандомного символу цього рядку.
 function getRandomCharacterIndex(string) {
   return Math.floor(Math.random() * string.length);
 }
 
-// Функція для заміни цифр у рядку дефісами, приймає як аргументи рядок для заміни та індекси елементів йього рядку , які треба замінити на дефіси
 function replaceCharsInString(str, index1, index2, index3) {
   return str
-    .split('') // Перетворюємо рядок із цифр на масив , в якому кожен елемент - рядок із однією цифрою.
+    .split('')
     .map((char, index) => {
-      // За допомогою цього методу проходимось по кожному елементу масиву (сhar)
-      // Перевіряємо чи співпадає індекс елементу масиву на поточній ітерації із будь-яким індексом , який треба замінити на дефіс
-      // Якщо співпадіння є, то замінюємо елемент під цим індексом на дефіс
       if (index === index1 || index === index2 || index === index3) {
         return '-';
       }
-      // Якщо співпадіння немає, то повертаємо елемент без змін
       return char;
-    }) // Отримуємо новий масив , в якому будуть вже дефіси замість тих цифр,індекси яких ми передали у функцію
-    .join(''); // Отриманий масив цифр та дефісів перетворюємо на рядок (склеюємо всі елементи)
+    })
+    .join('');
 }
 
-//Функція для рандомного генерування варіантів розміщення карток. Приймає як аргумент кількість карток, що має бути в одному рядку.
 function generateArrayWithUniqueDigit(N) {
-  // Створюємо масив рядків, де кожен рядок - це цифра  від 1 до  N
   const digits = [];
   for (let i = 1; i <= N; i++) {
     digits.push(i.toString());
   }
 
-  // Створюєсо новий масив, в якому будемо зберігати рядки із різними рандомними комбінаціями цифр.
   let result = [];
 
-  // Створюємо цикл, що виконається N (задану) кількість разів для обертання масиву цифр , щоб згенерувати різні комбінації цих цифр. Тобто потрібно отримати N різних комбінацій цифр
   for (let i = 0; i < N; i++) {
-    // Здвигаємо масив цифр на одну позицію на кожній ітерації
-    const firstPartOfNewArray = digits.slice(i); // Cтворюємо новий масив , який включатиме всі елементи від масиву digits , починаючи від і-того і до кінця
-    const lastPartOfNewArray = digits.slice(0, i); // Cтворюємо новий масив , який включатиме всі елементи від масиву digits , починаючи від нульвого і до і-того(не включно)
+    const firstPartOfNewArray = digits.slice(i);
+    const lastPartOfNewArray = digits.slice(0, i);
 
-    const rotatedDigits = firstPartOfNewArray.concat(lastPartOfNewArray); // З'єднуэмо два відрізки масивів у один у зворотньому порядку
-    const rotatedDigitsString = rotatedDigits.join(''); // Перетворюємо масив із рядок із цих чисел
+    const rotatedDigits = firstPartOfNewArray.concat(lastPartOfNewArray);
+    const rotatedDigitsString = rotatedDigits.join('');
 
-    // Додаємо у результуючий масив вже трансформований рядок із числами
     result.push(rotatedDigitsString);
   }
-  // Коли в результуючому масиві вже є рядки із цифрами, то послідовність цих рядків треба змінити у рандомному вигляді.
   shuffleArray(result);
-  // Повертаємо масив із рядками в рандомному порядку.
   return result;
 }
 
@@ -99,7 +72,6 @@ function getRandomIndexes(array) {
   return Array.from(indexes);
 }
 
-//Функція , що створює масив із рядків, кожен із яких з n-го символу рядків із array.
 function transformArray(array) {
   const newArray = array.reduce((result, string) => {
     const length = string.length;
@@ -115,12 +87,9 @@ function transformArray(array) {
   return newArray;
 }
 
-// Функція, щоб перевірити чи є в масиві рядок в якому всі або цифри або дефіси
 function containsOnlyDigitsOrHyphens(arr) {
   return arr.some(string => /^\d+$|^[-]+$/.test(string));
 }
-// Функція  для створення масиву із завданням
-// Для заміни цифр на дефіси у масиві , потрбна для того щоб із готового вирішенго завдання згенерувати рандомне розмішення пустих(дефіси) і заповнених(цифри) карток
 function createTaskArrayWithHyphen(array) {
   let task;
   let isError;
@@ -239,7 +208,6 @@ function createTaskArrayWithHyphen(array) {
   return task;
 }
 
-// Функція для знаходженя унікального індексу
 function getRandomUniqueIndex(array, excludeIndices) {
   let index;
   do {

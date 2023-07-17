@@ -12,7 +12,6 @@ function createLabel(theme, index) {
   const label = document.createElement('label');
   label.className = 'card';
   label.htmlFor = `${theme}-${index}`;
-  // cardsTaskBoard = levelTasks[chosenLevel].task;
   cardsTaskBoard = generatedTask;
   const cardsInRowQuantity = cardsTaskBoard.length;
   setCardImageSizes(label, cardsInRowQuantity);

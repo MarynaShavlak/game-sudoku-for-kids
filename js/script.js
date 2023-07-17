@@ -1,7 +1,7 @@
-let emptyCellIndex = null; // на початку гри користувач ще не обрав жодної картинки, яку б вын хотів вставити, тому null
-let chosenImageIndex = 1; // на початку гри перший елемент активний за замовчуванням
-let chosenLevel = 'level1';
+let emptyCellIndex = null;
+let chosenImageIndex = 1;
 let chosenTopic = 'theme1';
+let chosenLevel = 'level1';
 let lifes;
 let hints;
 let generatedSolution = generateArrayWithUniqueDigit(4);

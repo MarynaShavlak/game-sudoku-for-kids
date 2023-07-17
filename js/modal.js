@@ -1,21 +1,23 @@
-const statisticsModal = document.querySelector('.statistics-modal');
+const statisticsModal = document.querySelector('.modal--statistics');
 const modalWindow = document.querySelector('.modal');
 const modalOverlays = document.querySelectorAll('.modal__overlay');
 const restartBtnWin = document.querySelector('#restartBtnWin');
 const restartBtnLose = document.querySelector('#restartBtnLose');
-const winWindow = document.querySelector('.end-game-win.modal');
-const loseWindow = document.querySelector('.end-game-lose.modal');
+const winWindow = document.querySelector('.modal--end-game-win');
+const loseWindow = document.querySelector('.modal--end-game-lose');
 
-const pauseGameWindow = document.querySelector('.pause-game-modal');
+const pauseGameWindow = document.querySelector('.modal--pause-game');
 const continueGameBtn = document.querySelector('.continueGameBtn');
-const confirmationWindow = document.querySelector('.confirmation-modal');
-const confirmCloseIcon = document.querySelector('.confirm-close-icon');
-const confirmBtn = document.querySelector('.confirmBtn');
+const confirmationWindow = document.querySelector('.modal--confirmation');
+const confirmCloseIcon = document.querySelector('.modal__closeIcon--confirm');
+const confirmBtn = document.querySelector('.modal__button--confirm');
 confirmCloseIcon.addEventListener('click', closeConfirmationModal);
 
 confirmBtn.addEventListener('click', backToStartMenu);
-const statisticsCloseIcon = document.querySelector('.statistics-close-icon');
-const cancelBtn = document.querySelector('.cancelBtn');
+const statisticsCloseIcon = document.querySelector(
+  '.statistics-modal__closeIcon',
+);
+const cancelBtn = document.querySelector('.modal__button--cancel');
 const statText = document.querySelector('.stat-info-block p');
 const statIcon = document.querySelector('.stat-info-block');
 
@@ -48,9 +50,9 @@ function closeConfirmationModal() {
 }
 
 function openModal(modalElement) {
-  const isWinWindow = modalElement.classList.contains('end-game-win');
-  const isLoseWindow = modalElement.classList.contains('end-game-lose');
-  const isRulesWindow = modalElement.classList.contains('rules-modal');
+  const isWinWindow = modalElement.classList.contains('modal--end-game-win');
+  const isLoseWindow = modalElement.classList.contains('modal--end-game-lose');
+  const isRulesWindow = modalElement.classList.contains('modal--rules');
   const imageUrl = isWinWindow
     ? `./images/${chosenTopic}/win.jpg`
     : isLoseWindow
