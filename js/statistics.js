@@ -4,7 +4,7 @@ const buttons = [
   document.querySelector('#level-2'),
   document.querySelector('#level-3'),
 ];
-const statLevelBtnList = document.querySelector('.level-btn-list');
+const statLevelBtnList = document.querySelector('.stat-level-btn-list');
 const resetStatBtn = document.querySelector('.reset-statistics');
 statLevelBtnList.addEventListener('click', onStatLevelBtnClick);
 resetStatBtn.addEventListener('click', resetStatistics);

@@ -116,7 +116,7 @@
 }
 
 
-.topic-btn,
+.topic,
 .level,
 #game-with-timer,
 #game-without-timer {
@@ -127,7 +127,7 @@
 }
 
 @media (max-width: 767px) {
-.topic-btn,
+.topic,
    #game-with-timer,
   #game-without-timer  {
     width: 80px;

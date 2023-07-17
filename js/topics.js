@@ -1,5 +1,5 @@
 const topicsList = document.querySelector('.topics');
-topicsList.addEventListener('click', onTopicBtnClick);
+topicsList.addEventListener('click', onCategoryBtnClick);
 const themes = {
   theme1: 'fish',
   theme2: 'princess',
@@ -20,23 +20,4 @@ const themeEmptyCellColors = {
   theme7: '#5db8ed87',
   theme8: '#5db8ed87',
 };
-
-const topicButtons = Array.from(document.querySelectorAll('.topic-btn'));
-
-function onTopicBtnClick(e) {
-  const clickedTopic = e.target;
-  if (clickedTopic.nodeName !== 'BUTTON') return;
-
-  if (clickedTopic.classList.contains('active')) return;
-  topicButtons.forEach(topic => {
-    if (topic === clickedTopic) {
-      chosenTopic = clickedTopic.id;
-      topic.classList.add('active');
-      cardsContainer.innerHTML = '';
-      insertTaskBoard();
-      createImageSelectionBlock(solution);
-    } else {
-      topic.classList.remove('active');
-    }
-  });
-}
+const topicButtons = Array.from(document.querySelectorAll('.topic'));

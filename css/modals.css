@@ -247,14 +247,14 @@
 }
 
 
-.level-btn-list {
+.stat-level-btn-list {
   display: flex;
   column-gap: 10px;
   margin-bottom: 10px;
   justify-content: center;
 }
 
-.level-btn {
+.stat-level-btn {
   height: auto;
   background-color: white;
   border-radius: 10px;
@@ -268,7 +268,7 @@
 }
 
 @media (min-width: 768px) {
-  .level-btn {
+  .stat-level-btn {
     font-size: 16px;
   }
 
@@ -278,13 +278,13 @@
   }
 }
 
-.level-btn.active {
+.stat-level-btn.active {
   color: white;
   background-color: rgb(217, 0, 51);
   border: 1px solid transparent;
 }
 
-.level-btn:not(.active):hover {
+.stat-level-btn:not(.active):hover {
   color: rgb(217, 0, 51);
 }
 
