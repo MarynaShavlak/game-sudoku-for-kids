@@ -14,5 +14,5 @@ const backBtn = document.querySelector('.back-btn');
 
 backBtn.addEventListener('click', openConfirmationModal);
 
-createTaskBoard();
+insertTaskBoard();
 createImageSelectionBlock(solution);

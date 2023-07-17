@@ -1,3 +1,8 @@
+const levelMap = {
+  level1: 4,
+  level2: 5,
+  level3: 6,
+};
 const levelButtons = Array.from(document.querySelectorAll('.level'));
 const levelsList = document.querySelector('.levels-list');
 levelsList.addEventListener('click', onLevelBtnClick);
@@ -11,7 +16,7 @@ function onLevelBtnClick(e) {
       chosenLevel = clickedLevel.id;
       level.classList.add('active');
       cardsContainer.innerHTML = '';
-      createTaskBoard();
+      insertTaskBoard();
       createImageSelectionBlock(solution);
     } else {
       level.classList.remove('active');

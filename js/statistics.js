@@ -16,7 +16,6 @@ let statistics = {
 
 const storedStatistics = localStorage.getItem('statistics');
 statistics = storedStatistics ? JSON.parse(storedStatistics) : statistics;
-// localStorage.setItem('statistics', JSON.stringify(statistics));
 updateLocalStorage();
 
 function getGameTimeValue() {
@@ -62,6 +61,13 @@ function updateWinsWithoutMistakesQuantity() {
     statistics[chosenLevel].winsWithoutMistakesQuantity += 1;
   }
 }
+function updateWinsWithoutHintsQuantity() {
+  const maxHintsForLevel = hintsValue[chosenLevel];
+  if (hints === maxHintsForLevel) {
+    statistics[chosenLevel].winsWithoutHintsQuantity += 1;
+  }
+}
+
 function updateCurrentContinuousWinsQuantity() {
   const data = statistics[chosenLevel];
   if (data.isWinBefore) {
@@ -80,6 +86,7 @@ function initializeStatistics() {
     winsPercentage: 0,
     startedGamesQuantity: 0,
     winsWithoutMistakesQuantity: 0,
+    winsWithoutHintsQuantity: 0,
     isWinBefore: true,
     maxContinuousWinsQuantity: 0,
     currentContinuousWinsQuantity: 0,
@@ -133,4 +140,14 @@ function resetStatistics() {
 
 function updateLocalStorage() {
   localStorage.setItem('statistics', JSON.stringify(statistics));
+}
+
+function updateGameStatisticsResults() {
+  updateWinsQuantity();
+  updateWinsPercentage();
+  updateWinsWithoutMistakesQuantity();
+  updateWinsWithoutHintsQuantity();
+  updateCurrentContinuousWinsQuantity();
+  getGameTimeValue();
+  statistics[chosenLevel].isWinBefore = true;
 }

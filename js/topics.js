@@ -33,7 +33,7 @@ function onTopicBtnClick(e) {
       chosenTopic = clickedTopic.id;
       topic.classList.add('active');
       cardsContainer.innerHTML = '';
-      createTaskBoard();
+      insertTaskBoard();
       createImageSelectionBlock(solution);
     } else {
       topic.classList.remove('active');

@@ -96,12 +96,11 @@ function reloadGame() {
   hideGameField();
   showStartWindow();
   resetCardsBoard();
-  console.log('statistics: ', statistics);
 }
 
 function resetCardsBoard() {
   cardsContainer.innerHTML = '';
-  createTaskBoard();
+  insertTaskBoard();
   createImageSelectionBlock(solution);
 }
 
@@ -114,7 +113,6 @@ function backToStartMenu() {
   resetCardsBoard();
   isPaused = false;
   updateLocalStorage();
-  console.log('statistics: ', statistics);
 }
 
 function continueGame() {
@@ -129,11 +127,9 @@ function onRestartBtnWinClick() {
   closeGameResultModal(winWindow);
   setGameTimeResults();
   updateLocalStorage();
-  console.log('statistics: ', statistics);
 }
 function onRestartBtnLoseClick() {
   reloadGame();
   closeGameResultModal(loseWindow);
   updateLocalStorage();
-  console.log('statistics: ', statistics);
 }

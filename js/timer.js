@@ -32,7 +32,6 @@ function countdownTime() {
       statistics[chosenLevel].isWinBefore = false;
       updateLosesQuantity();
       updateWinsPercentage();
-      console.log('statistics: ', statistics);
     }
   }, 1000);
 }

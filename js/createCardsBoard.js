@@ -49,7 +49,6 @@ function setCardImageSizes(card, elementsInOneRow) {
     }
   }
   updateCardSize();
-  // Attach the event listener to update the card size on window resize
   window.addEventListener('resize', updateCardSize);
 }
 
@@ -91,34 +90,31 @@ function setUniqueIdForCards() {
 function generateTaskBoard() {
   const ul = document.createElement('ul');
   ul.className = 'cards';
-  if (chosenLevel === 'level1') {
-    generatedSolution = generateArrayWithUniqueDigit(4);
-  } else if (chosenLevel === 'level2') {
-    generatedSolution = generateArrayWithUniqueDigit(5);
-  } else if (chosenLevel === 'level3') {
-    generatedSolution = generateArrayWithUniqueDigit(6);
-  }
-
+  const chosenLevelLength = levelMap[chosenLevel];
+  generatedSolution = generateArrayWithUniqueDigit(chosenLevelLength);
   generatedTask = createTaskArrayWithHyphen(generatedSolution);
   cardsTaskBoard = generatedTask;
-  const cardsInRowQuantity = cardsTaskBoard.length;
+  const taskBoardElement = createCardsTaskBoard(ul, cardsTaskBoard);
+  return taskBoardElement;
+}
+
+function createCardsTaskBoard(ul, cardsTaskBoard) {
   // Встановлюємо правильно ширину дошки для відповідної кількості картинок
   // Далі треба для кожного рядку із індексами картинок та дефісами (['-23-', '41-3', '-4-2', '23-1']) створити лішку із відповідною картинкою
   // Перебираємо кожен рядок із індексами картинок
+  const chosenLevelLength = levelMap[chosenLevel];
 
-  for (let i = 0; i < cardsInRowQuantity; i++) {
+  for (let i = 0; i < chosenLevelLength; i++) {
     const solutionRow = cardsTaskBoard[i];
     const imageIndexesArray = solutionRow.split('');
-    for (let j = 0; j < imageIndexesArray.length; j++) {
-      const imageIndex = imageIndexesArray[j];
-      const li = createListItem(imageIndex);
-      ul.appendChild(li);
-    }
+
+    const listItems = imageIndexesArray.map(createListItem);
+    ul.append(...listItems);
   }
   return ul;
 }
 
-function createTaskBoard() {
+function insertTaskBoard() {
   const taskBoard = generateTaskBoard();
   taskBoard.addEventListener('click', onСellOnBoardClick);
   taskBoard.addEventListener('mouseover', handleMouseEnter);
@@ -177,25 +173,9 @@ function checkIfMatchedCell(clickedCell) {
 function handleEmptyCellClicked(clickedElement, clickedCell) {
   const { correctIndex, isMatched } = checkIfMatchedCell(clickedCell);
   if (isMatched) {
-    const theme = themes[chosenTopic];
-    const imageToSetOnBoard = createImage(theme, correctIndex);
-    clickedElement.appendChild(imageToSetOnBoard);
-    positiveSound();
-    const isTaskSolved = checkIfTaskSolved();
-    if (isTaskSolved) {
-      openGameResultModal(winWindow);
-      updateWinsQuantity();
-      updateWinsPercentage();
-      updateWinsWithoutMistakesQuantity();
-      updateCurrentContinuousWinsQuantity();
-      getGameTimeValue();
-      statistics[chosenLevel].isWinBefore = true;
-      // console.log('statistics: ', statistics);
-    }
+    handleMatchedCell(clickedElement, correctIndex);
   } else {
-    minusLife();
-    errorImage(clickedElement);
-    negativeSound();
+    handleUnmatchedCell(clickedElement);
   }
 }
 
@@ -205,16 +185,41 @@ function handleNonEmptyCellClicked(clickedCell) {
   const cards = clickedCell.parentNode.getElementsByTagName('li');
   const isAlreadySelected = clickedCell.classList.contains('selected');
   if (isAlreadySelected) {
-    clickedCell.classList.remove('selected');
-    clearSelectedCards(cards);
-    return;
+    deselectCell(clickedCell, cards);
   }
   clearSelectedCards(cards);
-  Array.from(cards).forEach(card => {
+  selectMatchingCards(imgName, cards);
+}
+
+function selectMatchingCards(imgName, cards) {
+  cards.forEach(card => {
     const img = card.querySelector('img');
-    if (img && img.getAttribute('alt') === imgName) {
+    if (img?.getAttribute('alt') === imgName) {
       card.classList.add('selected');
     }
   });
-  return;
+}
+
+function deselectCell(cell, cards) {
+  cell.classList.remove('selected');
+  clearSelectedCards(cards);
+}
+
+function handleUnmatchedCell(clickedElement) {
+  minusLife();
+  errorImage(clickedElement);
+  negativeSound();
+}
+
+function handleMatchedCell(clickedElement, correctIndex) {
+  const theme = themes[chosenTopic];
+  const imageToSetOnBoard = createImage(theme, correctIndex);
+  clickedElement.appendChild(imageToSetOnBoard);
+  positiveSound();
+
+  const isTaskSolved = checkIfTaskSolved();
+  if (isTaskSolved) {
+    openGameResultModal(winWindow);
+    updateGameStatisticsResults();
+  }
 }

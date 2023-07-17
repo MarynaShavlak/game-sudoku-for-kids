@@ -11,7 +11,6 @@ function minusLife() {
       updateLosesQuantity();
       statistics[chosenLevel].isWinBefore = false;
       updateWinsPercentage();
-      console.log('statistics: ', statistics);
     }, 300);
   }
   createLifes();
