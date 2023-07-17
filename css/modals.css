@@ -4,18 +4,19 @@
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 3;
   transition: all .3s;
-  opacity: 0;
-  visibility: hidden;
+  /* opacity: 0;
+  visibility: hidden; */
 }
 
 .modal--isActive {
-  opacity: 1;
-  visibility: visible;
+  display: flex;
+  /* opacity: 1;
+  visibility: visible; */
 }
 
 .modal__overlay {
