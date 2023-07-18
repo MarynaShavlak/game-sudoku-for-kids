@@ -17,7 +17,7 @@ The linked project presentation visually presents Sudoku for Kids, highlighting
 its features, gameplay, and educational aspects. It demonstrates how the game
 combines entertainment with learning, appealing to viewers through its design
 and graphics.
-[Click here to view the presentation](https://www.canva.com/design/DAFo_yYBwKY/2VVBeMIKfRF6uEI7AnxDvQ/edit?utm_content=DAFo_yYBwKY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
+[Click here to view the presentation](https://www.canva.com/design/DAFo_yYBwKY/2VVBeMIKfRF6uEI7AnxDvQ/edit?utm_content=DAFo_yYBwKY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton){:target="\_blank"}.
 
 ## :computer: Technologies Used
 
@@ -49,7 +49,7 @@ The following technologies were used in the development of Sudoku for Kids:
 ## :rocket: How to Play
 
 1. **Launch the Game:** Access the game by visiting the following URL:
-   [Sudoku for Kids](https://marynashavlak.github.io/game-sudoku-for-kids/).
+   [Sudoku for Kids](https://marynashavlak.github.io/game-sudoku-for-kids/){:target="\_blank"}.
 2. **Game Interface:** The game interface features a category selection block
    for theme, difficulty level, and game type. Users can access game rules
    through an animated Lucky Cat icon. A statistics icon provides information on
