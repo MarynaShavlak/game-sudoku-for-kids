@@ -32,6 +32,7 @@ function countdownTime() {
       statistics[chosenLevel].isWinBefore = false;
       updateLosesQuantity();
       updateWinsPercentage();
+      resetTimer();
     }
   }, 1000);
 }
@@ -71,4 +72,9 @@ function setTimerInterface() {
     setTimer(timerValue[chosenLevel]);
     countdownTime();
   }
+}
+
+function resetTimer() {
+  timerID = null;
+  timer = null;
 }

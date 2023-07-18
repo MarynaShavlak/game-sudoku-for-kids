@@ -11,6 +11,7 @@ function minusLife() {
       updateLosesQuantity();
       statistics[chosenLevel].isWinBefore = false;
       updateWinsPercentage();
+      resetTimer();
     }, 300);
   }
   createLifes();

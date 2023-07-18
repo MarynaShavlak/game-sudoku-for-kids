@@ -212,5 +212,6 @@ function handleMatchedCell(clickedElement, correctIndex) {
   if (isTaskSolved) {
     openGameResultModal(winWindow);
     updateGameStatisticsResults();
+    resetTimer();
   }
 }
