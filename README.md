@@ -8,6 +8,7 @@ of the popular logic-based picture puzzle, specifically tailored to suit young
 minds. With its colorful interface, intuitive controls, and engaging gameplay,
 Sudoku for Kids aims to entertain and challenge children while enhancing their
 critical thinking and problem-solving skills.
+![](https://github.com/MarynaShavlak/game-sudoku-for-kids/blob/main/images/preview.gif)
 
 ## :computer: Technologies Used
 
