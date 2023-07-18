@@ -1,8 +1,8 @@
-# Sudoku for Kids
+# 🧠 Sudoku for Kids :jigsaw:
 
 ![](https://github.com/MarynaShavlak/game-sudoku-for-kids/blob/main/images/preview.gif)
 
-## :game_die: Introduction
+## 🔢 Introduction
 
 Welcome to Sudoku for Kids, a fun and educational web game designed to introduce
 children to the world of Sudoku puzzles! This game provides a simplified version
@@ -11,7 +11,13 @@ minds. With its colorful interface, intuitive controls, and engaging gameplay,
 Sudoku for Kids aims to entertain and challenge children while enhancing their
 critical thinking and problem-solving skills.
 
-[Project Presentation ](https://www.canva.com/design/DAFo_yYBwKY/2VVBeMIKfRF6uEI7AnxDvQ/edit?utm_content=DAFo_yYBwKY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
+## :sparkles: Project Presentation
+
+The linked project presentation visually presents Sudoku for Kids, highlighting
+its features, gameplay, and educational aspects. It demonstrates how the game
+combines entertainment with learning, appealing to viewers through its design
+and graphics.
+[Click here to view the presentation](https://www.canva.com/design/DAFo_yYBwKY/2VVBeMIKfRF6uEI7AnxDvQ/edit?utm_content=DAFo_yYBwKY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
 
 ## :computer: Technologies Used
 
