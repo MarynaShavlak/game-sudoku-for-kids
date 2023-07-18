@@ -181,6 +181,7 @@ function handleNonEmptyCellClicked(clickedCell) {
     clearSelectedCards(cards);
     selectMatchingCards(imgName, cards);
   }
+  showSimilarImagesSound();
 }
 
 function selectMatchingCards(imgName, cards) {
