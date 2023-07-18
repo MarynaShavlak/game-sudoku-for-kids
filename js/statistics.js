@@ -19,8 +19,6 @@ statistics = storedStatistics ? JSON.parse(storedStatistics) : statistics;
 updateLocalStorage();
 
 function getGameTimeValue() {
-  console.log('timerID: ', timerID);
-  console.log('timer: ', timer);
   if (timerID) {
     const gameTime = timerValue[chosenLevel] - timer;
     statistics[chosenLevel].winGameTimeValues.push(gameTime);
