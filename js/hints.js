@@ -171,6 +171,7 @@ function onHintsBlockClick(e) {
   const clickedBlock = getClickedBlock(e);
   if (hasHints()) {
     processHint(e, clickedBlock);
+    hintSound();
   } else {
     disableHintsBlock();
   }

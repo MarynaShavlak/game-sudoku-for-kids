@@ -17,6 +17,13 @@ function choiceSound() {
   audio.play();
 }
 
+function hintSound() {
+  let audio = new Audio('./sound/hint.mp3');
+  audio.volume = 0.5;
+  audio.muted = mutedSounds;
+  audio.play();
+}
+
 const soundBtnMenu = document.querySelector('.sounds-control__sounds');
 const soundOnBtn = document.querySelector('.sounds__soundOn');
 const soundOffBtn = document.querySelector('.sounds__soundOff');
