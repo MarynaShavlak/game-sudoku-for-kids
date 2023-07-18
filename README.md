@@ -79,10 +79,10 @@ The following technologies were used in the development of Sudoku for Kids:
   devices.
 - :musical_note: **Enhanced Game Experience with Sound Orientation:** This game
   feature uses sound cues to aid player navigation and decision-making. Distinct
-  effects indicate actions such as selecting cells or making correct/incorrect
-  moves. These auditory cues improve player engagement and are especially
-  helpful for visually impaired or audio-oriented players, promoting inclusivity
-  and accessibility.
+  effects indicate actions such as selecting cells,using hints or making
+  correct/incorrect moves. These auditory cues improve player engagement and are
+  especially helpful for visually impaired or audio-oriented players, promoting
+  inclusivity and accessibility.
 - :headphones: **Sound Personalization:** The game offers a sound
   personalization feature that grants players the ability to mute background
   music or sound effects. The game recognizes that audio preferences can vary
